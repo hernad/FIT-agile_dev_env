@@ -23,8 +23,46 @@ Na ovom mjestu ću ta pitanja pokušati barem djelimično doći do odgovora.
 Započeću sa uspostavom agilnog razvojnog okruženja.
 
 
-Bilješke
---------
+"Pravi" sofverski projekat
+-----------------------------
+
+"Pravi" softverski projekat odlikuje jedna osnovna činjenica: koristiće
+se od strane korisnika.
+
+To korištenje može biti ograničeno i na interno korištenje od strane
+samog razvojnog tima.
+
+Ako je on podrška poslovnim procesima organizacije direktno ili
+indirektno, projekat je pravi.
+
+Ovo naglašavam iz jednostavnog razloga što se često rezonuje na sljedeći
+način:
+
+"Ovaj projekt ćemo koristiti interno, ne moramo previše trošiti vrijeme -
+nije projekat od kojeg ćemo zaraditi pare - koji je usmjeren na naše
+klijente."
+
+Da li je developerski toolset "pravi" projekat ?
+
+Ako se radi o developerskom toolsetu, on je sredstvo za zarađivanje
+novca u IT firmi. Ali i za gubljenje, ako taj toolset nije dobar. 
+
+Postojeće stanje u "bring.out"
+-------------------------------
+
+Koje "agilne" prakse već postoje u bring.out ?
+
+Coolective code ?
+
+Komunikacija ?
+
+Version control - da
+
+Koji segmenti firme su pokriveni ?
+
+
+Eksterni resursi
+----------------
 
 http://jenkins-ci.org
 
@@ -45,19 +83,12 @@ https://wiki.jenkins-ci.org/display/JENKINS/xUnit+Plugin
 
 http://www.mabishu.com/blog/2012/04/17/setting-up-jenkins-in-ubuntu-precise-12-04-for-php-projects/
 
-
-Postojeće stanje u "bring.out"
--------------------------------
-
-Koje "agilne" prakse već postoje u bring.out ?
-
-Coolective code ?
-
-Komunikacija ?
-
-Version control - da
-
-Koji segmenti firme su pokriveni ?
+http://marcelog.github.com/articles/ci_jenkins_hudson_continuous_integration_php_phing.html
 
 
+tvorac php-template:
+
+https://github.com/sebastianbergmann/
+
+https://github.com/sebastianbergmann/php-jenkins-template
 
