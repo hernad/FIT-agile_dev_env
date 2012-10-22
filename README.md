@@ -67,7 +67,10 @@ Gornji prikazi prikazuju način na koji developeri "brackets"-a obezbjeđuju efi
 
 ## Dijagrami
 
+### [PlantUML](http://plantuml.sourceforge.net)
+
 ![plantuml qeditor](https://raw.github.com/hernad/agile_dev_env/master/img/plantuml_example.png)
+
 
 
 
