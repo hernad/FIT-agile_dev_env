@@ -601,7 +601,7 @@ na kraju imamo nekakvu grešku ?
 phpab
 =====
 
-
+<pre>
 vagrant@precise64:~$ sudo pear channel-discover pear.netpirates.net
 Channel "pear.netpirates.net" is already initialized
 vagrant@precise64:~$ sudo pear channel-discover components.ez.no
@@ -659,5 +659,145 @@ Usage: phpab [switches] <directory>
 
   -h, --help          Prints this usage information
   -v, --version       Prints the version and exits
+
+</pre>
+
+
+ručni build php projekta na ci serveru
+-----------------------------------------------
+
+<pre>
+	
+	jenkins@precise64:~/jobs/agile-php-2/workspace$ ant
+	Buildfile: /var/lib/jenkins/jobs/agile-php-2/workspace/build.xml
+
+	clean:
+	   [delete] Deleting directory /var/lib/jenkins/jobs/agile-php-2/workspace/build/api
+	   [delete] Deleting directory /var/lib/jenkins/jobs/agile-php-2/workspace/build/code-browser
+	   [delete] Deleting directory /var/lib/jenkins/jobs/agile-php-2/workspace/build/coverage
+	   [delete] Deleting directory /var/lib/jenkins/jobs/agile-php-2/workspace/build/logs
+	   [delete] Deleting directory /var/lib/jenkins/jobs/agile-php-2/workspace/build/pdepend
+
+	phpab:
+	     [exec] Autoload file '/var/lib/jenkins/jobs/agile-php-2/workspace/PHP/Timer/Autoload.php' generated.
+	     [exec] 
+
+	prepare:
+	    [mkdir] Created dir: /var/lib/jenkins/jobs/agile-php-2/workspace/build/api
+	    [mkdir] Created dir: /var/lib/jenkins/jobs/agile-php-2/workspace/build/code-browser
+	    [mkdir] Created dir: /var/lib/jenkins/jobs/agile-php-2/workspace/build/coverage
+	    [mkdir] Created dir: /var/lib/jenkins/jobs/agile-php-2/workspace/build/logs
+	    [mkdir] Created dir: /var/lib/jenkins/jobs/agile-php-2/workspace/build/pdepend
+
+	lint:
+
+	phploc:
+	     [exec] phploc 1.7.1 by Sebastian Bergmann.
+	     [exec] 
+	     [exec] Directories:                                          1
+	     [exec] Files:                                                2
+	     [exec] 
+	     [exec] Lines of Code (LOC):                                224
+	     [exec]   Cyclomatic Complexity / Lines of Code:           0.10
+	     [exec] Comment Lines of Code (CLOC):                       128
+	     [exec] Non-Comment Lines of Code (NCLOC):                   96
+	     [exec] 
+	     [exec] Namespaces:                                           0
+	     [exec] Interfaces:                                           0
+	     [exec] Traits:                                               0
+	     [exec] Classes:                                              1
+	     [exec]   Abstract:                                           0 (0.00%)
+	     [exec]   Concrete:                                           1 (100.00%)
+	     [exec]   Average Class Length (NCLOC):                      67
+	     [exec] Methods:                                              5
+	     [exec]   Scope:
+	     [exec]     Non-Static:                                       0 (0.00%)
+	     [exec]     Static:                                           5 (100.00%)
+	     [exec]   Visibility:
+	     [exec]     Public:                                           4 (80.00%)
+	     [exec]     Non-Public:                                       1 (20.00%)
+	     [exec]   Average Method Length (NCLOC):                     13
+	     [exec]   Cyclomatic Complexity / Number of Methods:       2.20
+	     [exec] 
+	     [exec] Anonymous Functions:                                  1
+	     [exec] Functions:                                            0
+	     [exec] 
+	     [exec] Constants:                                            0
+	     [exec]   Global constants:                                   0
+	     [exec]   Class constants:                                    0
+
+	pdepend:
+	     [exec] PHP_Depend 1.1.0 by Manuel Pichler
+	     [exec] 
+	     [exec] Parsing source files:
+	     [exec] ..                                                               2
+	     [exec] 
+	     [exec] Executing Coupling-Analyzer:
+	     [exec]                                                                 10
+	     [exec] 
+	     [exec] Executing CyclomaticComplexity-Analyzer:
+	     [exec]                                                                 10
+	     [exec] 
+	     [exec] Executing Dependency-Analyzer:
+	     [exec]                                                                  7
+	     [exec] 
+	     [exec] Executing Inheritance-Analyzer:
+	     [exec]                                                                  2
+	     [exec] 
+	     [exec] Executing NodeCount-Analyzer:
+	     [exec]                                                                  7
+	     [exec] 
+	     [exec] Executing NodeLoc-Analyzer:
+	     [exec]                                                                  8
+	     [exec] 
+	     [exec] Generating pdepend log files, this may take a moment.
+	     [exec] 
+	     [exec] Time: 00:00; Memory: 11.25Mb
+
+	phpmd-ci:
+
+	phpcs-ci:
+
+	phpcpd:
+	     [exec] phpcpd 1.4.0 by Sebastian Bergmann.
+	     [exec] 
+	     [exec] 0.00% duplicated lines out of 224 total lines of code.
+	     [exec] 
+	     [exec] Time: 0 seconds, Memory: 2.75Mb
+
+	phpunit:
+	     [exec] PHPUnit 3.7.8 by Sebastian Bergmann.
+	     [exec] 
+	     [exec] Configuration read from /var/lib/jenkins/jobs/agile-php-2/workspace/phpunit.xml.dist
+	     [exec] 
+	     [exec] .F..
+	     [exec] 
+	     [exec] Time: 0 seconds, Memory: 8.50Mb
+	     [exec] 
+	     [exec] There was 1 failure:
+	     [exec] 
+	     [exec] 1) PHP_TimerTest::testSecondsToTimeString
+	     [exec] Failed asserting that two strings are equal.
+	     [exec] --- Expected
+	     [exec] +++ Actual
+	     [exec] @@ @@
+	     [exec] -'01:00:02'
+	     [exec] +'01:00:03'
+	     [exec] 
+	     [exec] /var/lib/jenkins/jobs/agile-php-2/workspace/Tests/TimerTest.php:87
+	     [exec] 
+	     [exec] FAILURES!
+	     [exec] Tests: 4, Assertions: 13, Failures: 1.
+	     [exec] 
+	     [exec] Generating code coverage report in Clover XML format ... done
+	     [exec] 
+	     [exec] Generating code coverage report in HTML format ...
+	     [exec]  done
+
+	BUILD FAILED
+	/var/lib/jenkins/jobs/agile-php-2/workspace/build.xml:146: exec returned: 1
+
+	Total time: 5 seconds
+</pre>
 
 
