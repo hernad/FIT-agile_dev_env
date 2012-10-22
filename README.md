@@ -68,8 +68,7 @@ http://www.jamesshore.com/Agile-Book/
 
 Mnoge prakse XP-a (extreme programming) nisu primjenljive u bring.out.
 Ali bez obzira knjiga bukvalno tjera čitaoca na jedan potpuni rethink o
-razvoju software-a.
-  
+razvoju software-a.  
 
 Adobe brackets - case study
 ----------------------------
@@ -119,7 +118,13 @@ Koliko se ulaže u promociju projekta:
 http://www.youtube.com/watch?v=VKitqLpJtAY&feature=plcp
 
 
+Ooou mi je ostavio board "Brackets history":
 
+https://trello.com/board/brackets-history/500e06f24d9424351519d050
+
+"To je to!" rekao sam sebi. 
+
+Ovo je pravi način da se developer uključi u projekat, Uvid u istoriju projekta je jednako bitan kao što su i trenutne aktivnosti projekta.
 
 
 Eksterni resursi
