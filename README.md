@@ -62,6 +62,15 @@ Adobe brackets projekat primjenjuje "scrum" agile development metode.
 
 Gornji prikazi prikazuju način na koji developeri "brackets"-a obezbjeđuju efikasan uvid u trenutno stanje projekata, ali i uvid u istoriju ranijih operacija ("sprint"-ovi su iteracije)
 
+Github "issues" se koristi u kombinaciji sa "trello"-om. Na prvi pogled,
+tu bi moglo biti konfuzije, u smislu "nadležnosti" (šta se prijavljuje
+na trello a šta na github issues. Na github-u su logično samo "code
+related" stavke, a na trello-u svi zadaci razvojnog ciklusa). 
+
+Ono što je pravo interesantno jeste kako je sistem labeliranja pomogao u
+preglednosti i snalaženju po stavkama:
+ 
+![github](https://raw.github.com/hernad/agile_dev_env/master/img/brakcets_github_issues.png)
 
 #Analiza i dizajn toolset
 
