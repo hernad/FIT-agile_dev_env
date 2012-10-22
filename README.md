@@ -62,3 +62,12 @@ Adobe brackets projekat primjenjuje "scrum" agile development metode.
 
 Gornji prikazi prikazuju način na koji developeri "brackets"-a obezbjeđuju efikasan uvid u trenutno stanje projekata, ali i uvid u istoriju ranijih operacija ("sprint"-ovi su iteracije)
 
+
+#Analiza i dizajn toolset
+
+## Dijagrami
+
+![plantuml qeditor](https://raw.github.com/hernad/agile_dev_env/master/img/plantuml_example.png)
+
+
+
