@@ -33,7 +33,12 @@ Uspostava procesa i procedura koje će obezbjediti
 
 Adobe brackets projekat primjenjuje "scrum" agile development metode. 
 
-## Continous integration - Jenkins
+## Continous integration CI - Jenkins
+
+Jenkins je najpoznatiji OSS CI server. Sadrži plugin-ove za gotovo sve
+poznate project management sisteme, SCM (source code management), programske jezike:
+
+![plugins install](https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_plugins.png)
 
 ### Primjer: PHP projekat
 
@@ -50,12 +55,7 @@ Na kraju dobijamo:
 
 ![agile php](https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_agile_php.png)
 
-Jenkins plugins:
-
-![plugins install](https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_plugins.png)
-
-Namjerno pravimo [test koji je
-neuspješan](https://github.com/hernad/php-timer/commit/ae3b1b2ccbeccbe65938c0aaba20e8b6249275f9) :
+Namjerno pravimo [test koji je neuspješan](https://github.com/hernad/php-timer/commit/ae3b1b2ccbeccbe65938c0aaba20e8b6249275f9) :
 
 ![test fail](https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_test_fail.png)
 
