@@ -27,9 +27,9 @@ Započeću sa uspostavom agilnog razvojnog okruženja.
 
 Uspostava procesa i procedura koje će obezbjediti
 
-!(https://raw.github.com/hernad/agile_dev_env/master/img/brackets_trello_sprint_history.png)
+!https://raw.github.com/hernad/agile_dev_env/master/img/brackets_trello_sprint_history.png
 
-!(https://raw.github.com/hernad/agile_dev_env/master/img/brackets_trello_card.png)
+!https://raw.github.com/hernad/agile_dev_env/master/img/brackets_trello_card.png
 
 Adobe brackets projekat primjenjuje "scrum" agile development metode. 
 
@@ -44,18 +44,18 @@ https://github.com/hernad/php-timer/blob/master/Tests/TimerTest.php
 kreiranje jenkinks job-a (na osnovu
 [php-template](http://jenkins-php.org)): 
 
-!(https://raw.github.com/hernad/agile_dev_env/master/img/jenkings_create_job_from_php_template.png)
+!https://raw.github.com/hernad/agile_dev_env/master/img/jenkings_create_job_from_php_template.png
 
 Na kraju dobijamo:
 
-!(https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_agile_php.png)
+!https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_agile_php.png
 
-!(https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_plugins.png)
+!https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_plugins.png
 
 Namjerno pravimo [test koji je
 neuspješan](https://github.com/hernad/php-timer/commit/ae3b1b2ccbeccbe65938c0aaba20e8b6249275f9) :
 
-!(https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_test_fail.png)
+!https://raw.github.com/hernad/agile_dev_env/master/img/jenkins_test_fail.png
 
 
 
