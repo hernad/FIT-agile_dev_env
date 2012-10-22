@@ -25,13 +25,15 @@ Započeću sa uspostavom agilnog razvojnog okruženja.
 
 ## Agile project management
 
-Uspostava procesa i procedura koje će obezbjediti
+## Case study: Adobe "brackets" projekat
+
+Adobe brackets projekat primjenjuje "scrum" agile development metode. 
 
 ![sprint history](https://raw.github.com/hernad/agile_dev_env/master/img/brackets_trello_sprint_history.png)
 
 ![sprint card](https://raw.github.com/hernad/agile_dev_env/master/img/brackets_trello_card.png)
 
-Adobe brackets projekat primjenjuje "scrum" agile development metode. 
+Gornji prikazi prikazuju način na koji developeri "brackets"-a obezbjeđuju efikasan uvid u trenutno stanje projekata, ali i uvid u istoriju ranijih operacija ("sprint"-ovi su iteracije)
 
 ## Continous integration CI - Jenkins
 
