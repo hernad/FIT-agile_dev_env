@@ -1,0 +1,3 @@
+[submodule "vagrant/ci/cookbooks"]
+	path = vagrant/ci/cookbooks
+	url = git@github.com:hernad/gitorious-cookbooks.git
