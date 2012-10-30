@@ -67,12 +67,50 @@ Vagrant::Config.run do |config|
      chef.cookbooks_path = "cookbooks"
   #   chef.roles_path = "../my-recipes/roles"
   #   chef.data_bags_path = "../my-recipes/data_bags"
+      chef.add_recipe "rvm"
       chef.add_recipe "gitorious"
   #   chef.add_role "web"
   #
   #   # You may also specify custom JSON attributes:
   #   chef.json = { :mysql_password => "foo" }
-  end
+
+
+  #"run_list": [ "recipe[vim]", "recipe[custom_environment]", "recipe[ntpdate]", "recipe[smtp]", "recipe[gitorious]" ]
+  chef.json = {
+         :passenger => { :version => "3.0.14" },
+         :gitorious => {
+            :host => "gitorious.local",
+            :git => {
+            :url => "git://github.com/hernad/gitorious.git",
+            :reference => "HEAD"
+      },
+      :db => {
+         :user => "gitorious",
+         :host => "localhost",
+         :database => "gitorious",
+         :password => "gitorious"
+       },
+       :hide_http_clone_urls => "false",
+       :locale => "en",
+       :support_email => "username@provider.com",
+       :notification_emails => "username@provider.com",
+       :public_mode => "false",
+       :only_admins_create => "false",
+       :admin => {
+          :email => "username@provider.com",
+          :password => "admin"
+       }
+      },
+     :smtp => {
+         :address => "smtp.not-gmail-provider.com",
+         :port => "25",
+         :username => "username@provider.com",
+         :password => "password",
+         :default_sender => "username@provider.com"
+      },
+    }
+
+   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
