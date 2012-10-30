@@ -79,3 +79,48 @@ cn: Domain Guests
 
 # pagedresults: cookie=
 </pre>
+
+
+
+
+
+vagrant@precise32:~$ ldapsearch -x -LLL -E pr=200/noprompt -h zentyal.bring.out.ba -D "Administrator@bring.out.ba" -w bringout -b "cn=users,dc=bring,dc=out,dc=ba" -s sub "(cn=hernad)"
+<pre>
+dn: CN=hernad,CN=Users,DC=bring,DC=out,DC=ba
+objectClass: top
+objectClass: posixAccount
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: hernad
+sn: Husremovic
+givenName: Ernad
+instanceType: 4
+whenCreated: 20121030115040.0Z
+uSNCreated: 3788
+name: hernad
+objectGUID:: 6i98lnhAQkSHWbtacU5uCw==
+badPwdCount: 0
+codePage: 0
+countryCode: 0
+badPasswordTime: 0
+lastLogoff: 0
+lastLogon: 0
+primaryGroupID: 513
+objectSid:: AQUAAAAAAAUVAAAALcPe+2gUlhA3VCplUAQAAA==
+accountExpires: 9223372036854775807
+logonCount: 0
+sAMAccountName: hernad
+sAMAccountType: 805306368
+userPrincipalName: hernad@BRING.OUT.BA
+objectCategory: CN=Person,CN=Schema,CN=Configuration,DC=bring,DC=out,DC=ba
+uidNumber: 51104
+pwdLastSet: 129960714410000000
+userAccountControl: 512
+homeDrive: H:
+whenChanged: 20121030115314.0Z
+homeDirectory: \\zentyal.BRING.OUT.BA\hernad
+uSNChanged: 3802
+memberOf: CN=gitlab,CN=Users,DC=bring,DC=out,DC=ba
+distinguishedName: CN=hernad,CN=Users,DC=bring,DC=out,DC=ba
+</pre>
