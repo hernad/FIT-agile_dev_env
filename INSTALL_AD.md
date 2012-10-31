@@ -124,3 +124,34 @@ uSNChanged: 3802
 memberOf: CN=gitlab,CN=Users,DC=bring,DC=out,DC=ba
 distinguishedName: CN=hernad,CN=Users,DC=bring,DC=out,DC=ba
 </pre>
+
+
+Omniauth-ldap - mail treba biti prvi
+----------------------------------------------- 
+
+vagrant@precise32:/opt/gitlab$ bundle show omniauth-ldap
+<pre>
+/home/vagrant/.rvm/gems/ruby-1.9.3-p286/bundler/gems/omniauth-ldap-f038dd852d7b
+</pre>
+
+/home/vagrant/.rvm/gems/ruby-1.9.3-p286/bundler/gems/omniauth-ldap-f038dd852d7b/lib/omniauth/strategies/ldap.rb 
+<pre>
+require 'omniauth'
+
+module OmniAuth
+  module Strategies
+    class LDAP
+      class MissingCredentialsError < StandardError; end
+      include OmniAuth::Strategy
+      @@config = {
+        'name' => 'cn',
+        'first_name' => 'givenName',
+        'last_name' => 'sn',
+#        'email' => 'userPrincipalName',
+#        'email' => ['mail', "email", 'userPrincipalName'],
+        'email' => ['mail', 'userPrincipalName', 'email'],
+        'phone' => ['telephoneNumber', 'homePhone',
+'facsimileTelephoneNumber'],
+        'mobile' => ['mobile', 'mobileTelephoneNumber'],
+</pre>
+
