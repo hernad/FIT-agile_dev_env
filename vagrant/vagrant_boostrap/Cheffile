@@ -1,0 +1,17 @@
+site "http://community.opscode.com/api/v1"
+
+cookbook 'git'
+cookbook 'build-essential'
+cookbook 'readline'
+cookbook 'openssh'
+cookbook 'perl'
+cookbook 'xml'
+cookbook 'zlib'
+cookbook 'postgresql'
+cookbook 'database'
+cookbook 'mysql'
+cookbook 'nginx'
+
+cookbook 'rvm',
+  :git => 'git://github.com/hernad/chef-rvm.git',
+  :ref => 'd836a2fb92861a2'
