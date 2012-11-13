@@ -69,7 +69,7 @@
 
 \LoadClass[12pt, onecolumn]{report}
 
-\RequirePackage[a4paper, left=3.5cm, right=3cm, bottom=3cm, top=3cm]{geometry}
+\RequirePackage[a4paper, left=3cm, right=2.5cm, bottom=2.7cm, top=2.7cm]{geometry}
 
 % Postavljanje encodinga
 \if@encutf \RequirePackage[utf8]{inputenc}
