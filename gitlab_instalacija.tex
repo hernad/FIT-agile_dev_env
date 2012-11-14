@@ -1,0 +1,144 @@
+\section{GitlabHQ}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_hernad_310_after_merge.png}
+\caption{Gitlabhq nakon `merge' operacije sa `upstream' projektom}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_stable_3.0.2.png}
+\caption{Gitlabhq - stable 3.0.2}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlabhq_3.0.3.png}
+\caption{Gitlabhq - 3.0.3}
+\end{figure}
+
+
+
+\subsection{Gitlabhq merge from upstream}
+
+gitlabhq\$ git fetch gitlabhq
+
+\begin{lstlisting}
+remote: Counting objects: 570, done.
+remote: Compressing objects: 100\% (174/174), done.
+remote: Total 342 (delta 262), reused 237 (delta 165)
+Receiving objects: 100\% (342/342), 43.70 KiB, done.
+Resolving deltas: 100\% (262/262), completed with 122 local objects.
+From git://github.com/gitlabhq/gitlabhq
+   dd4d124..3c7806c  master     -> gitlabhq/master
+\end{lstlisting}
+
+
+gitlabhq\$ git branch -l
+
+\begin{lstlisting}
+* master
+\end{lstlisting}
+
+
+gitlabhq\$ git commit -a
+
+\begin{lstlisting}
+[master 9bacff4] http://www.quora.com/Ruby-on-Rails/What-is-schema-rb-in-rails-project
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+\end{lstlisting}
+
+
+
+gitlabhq\$ git diff HEAD\^1 HEAD
+
+\begin{lstlisting}
+diff --git a/db/schema.rb b/db/schema.rb
+index 51ab207..19eb8eb 100644
+--- a/db/schema.rb
++++ b/db/schema.rb
+@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20121026114600) do
+     t.boolean  "closed",                              :default => false, :null => false
+     t.datetime "created_at",                                             :null => false
+     t.datetime "updated_at",                                             :null => false
+-    t.text     "st_commits",    :limit => 2147483647
+-    t.text     "st_diffs",      :limit => 2147483647
++    t.text     "st_commits",    :limit => 4294967295
+
+  ...
+
+     t.integer  "project_id"
+     t.string   "attachment"
+     t.string   "line_code"
+@@ -156,30 +156,30 @@ ActiveRecord::Schema.define(:version => 20121026114600) do
+   end
+ 
+   create_table "users", :force => true do |t|
+\end{lstlisting}
+
+
+gitlabhq\$ git merge gitlabhq/master
+
+\begin{lstlisting}
+Removing lib/gitlab/encode.rb
+Removing gitlab
+Auto-merging doc/development.md
+Removing Procfile.production
+Merge made by the recursive strategy
+ .travis.yml                                        |    2 +-
+ CHANGELOG                                          |    2 +-
+ Gemfile                                            |    4 +-
+ Gemfile.lock                                       |   12 +++-
+ Procfile.production                                |    2 -
+ VERSION                                            |    2 +-
+ app/assets/images/event_filter_comments.png        |  Bin 0 -> 750 bytes
+ app/assets/images/event_filter_merged.png          |  Bin 0 -> 463 bytes
+ app/assets/images/event_filter_push.png            |  Bin 0 -> 632 bytes
+ 
+ ...
+
+ app/controllers/application_controller.rb          |    9 +++
+ app/controllers/blob_controller.rb                 |   10 +--
+ app/controllers/dashboard_controller.rb            |   11 ++-
+ app/controllers/profile_controller.rb              |    2 +-
+
+ ...
+
+ app/views/blame/show.html.haml                     |    4 +-
+ app/views/commits/_commit.html.haml                |    4 +-
+ app/views/commits/_head.html.haml                  |    5 ++
+ app/views/dashboard/index.html.haml                |    9 ++-
+ 
+ ... 
+ 
+ delete mode 100644 Procfile.production
+ create mode 100644 app/assets/images/event_filter_comments.png
+ create mode 100644 app/assets/images/event_filter_merged.png
+ create mode 100644 app/assets/images/event_filter_push.png
+ ...
+ delete mode 100644 lib/gitlab/encode.rb
+ create mode 100644 lib/gitlab/git_stats.rb
+ create mode 100644 vendor/assets/javascripts/g.bar-min.js
+ create mode 100644 vendor/assets/javascripts/g.raphael-min.js
+\end{lstlisting}
+
+
+
+gitlabhq\$ git push origin master
+
+\begin{lstlisting}
+Counting objects: 581, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100\% (85/85), done.
+Writing objects: 100\% (350/350), 45.00 KiB, done.
+Total 350 (delta 267), reused 342 (delta 262)
+To git@github.com:hernad/gitlabhq.git
+   038ac96..28f5807  master -> master
+
+\end{lstlisting}
+
+
+
+

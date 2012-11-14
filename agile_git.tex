@@ -14,6 +14,7 @@
 \usepackage{datetime}
 \usepackage{needspace}
 \usepackage{titlesec}
+%\usepackage{hyperref}
 %\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
 \begin{document}
@@ -57,8 +58,9 @@
 
 \begin{abstract}
 
-Dokument na bazi konkretnog primjera (`HOWTO' stil) objašnjava uobičajeni developerski `workflow' pri korištenu GIT SCM-a. U promjeru se koriste GIT Web servisi `Github' i `Gitlab'.
-Čitalac bi čitanjem materijala trebao upoznati osnovne operacije GIT klijenta kao i navedenih Web servisa.
+Dokument na bazi konkretnog primjera\footnote{"HOWTO" stil} objašnjava uobičajeni developerski `workflow' pri korištenju GIT `Source Code Management' (SCM) alata. 
+U primjeru se koriste GIT web servisi `Github'\footnote{\url{https://www.github.com}} i `Gitlab'\footnote{\url{https://gitlab.knowhow.out.ba}, \url{http://gitlabhq.com}}.
+Čitalac će upoznati osnovne operacije GIT klijenta i način korištenje navedenih web servisa.
 
 
 \keywords{open source software, OSS, Source code management, SCM, DSCM, Version control, GIT}
@@ -99,15 +101,118 @@ Iako ovaj koncept na prvi pogled djeluje kao izvor velikih glavobolja, pravilna 
 
 Jedna od ključnih prednosti DSM-ova je `off-line' režim rada, kao posljedica činjenice da svaki korisnik ima sopstveni lokalni repozitorij promjena.
 
-\chapter{Gitlab servis}
+\chapter{Gitlab servis i git klijent}
 \vspace*{-0.7cm}
+
+\section{Gitlab servis}
+
+"Gitlab"\footnote{\url{http://gitlabhq.com}} je OSS projekat, po mnogo čemu "klon" popularnog "Github" servisa. 
+Autor nudi komercijalni servis \href{https://gitlab.com}{\color{blue}{''gitlab.com''}} baziran na ovom serveru.
+
+S obzirom da se radi OSS software-u, korisnici bez ograničenja mogu kreirati sopstvene "gitlab" server-e.
+U ovom materijalu se koristi server \href{https://gitlab.knowhow.out.ba}{\color{blue}{''gitlab.knowhow.out.ba''}} instaliran upravo na taj način.
+
+\section{git klijent}
+
+Tvorac git-a je kreator Linux-a, Linus Torvalds.
+Prve verzije git-a su se mogle koristiti samo ''unix-like'' sistemima\footnote{git se mogao koristiti na Windows-ima putem ''cygwin'' emulacijskog sloja, ali je rad sa iole većim repozitorijem bio veoma spor}. 
+Popularnost i otvorenost projekta je brzo rezultirala i ''native'' git verzijom klijenta.
+
+U našem primjeru je radi jednostavnosti korištenja na ''Windows'' klijentu korišten \href{http://railsinstaller.org/}{\color{blue}{''Rails installer''}}. 
+''Rails installer'' sadrži kompletno ruby/rails/git razvojno okruženje za ''Windows'' XP/W7 OS.
+
+Nakon instalacije ''Rails installer'' traži podatke o korisniku, te kreira ssh ključ koji će se koristiti za povezivanje sa git serverom putem ssh protokola:
+
+\begin{lstlisting}
+# Rails Environment Configuration.
+
+Your git configuration is incomplete.
+user.name and user.email are required for properly using git and services such
+as GitHub ( http://github.com/ ).
+
+ Please enter your name, for example mine is: Wayne E. Seguin
+name > Bakir Husremovic                   <<<<<<<<<<<<<<<< unijeti <<<<<<<<<<<<<<<<
+Setting user.name to Bakir Husremovic
+
+ Please enter your email address, for example mine is: wayneeseguin@gmail.com
+email > bakir.husremovic@gmail.com        <<<<<<<<<<<<<<<< unijeti <<<<<<<<<<<<<<<<
+Setting user.email to bakir.husremovic@gmail.com
+---
+git:
+  user.name:  Bakir Husremovic
+  user.email: bakir.husremovic@gmail.com
+  version:    git version 1.7.9.msysgit.0
+
+ruby:
+  bin:        C:/RailsInstaller/Ruby1.9.2/bin/ruby.exe
+  version:    ruby 1.9.3p125 (2012-02-16) [i386-mingw32]
+
+rails:
+  bin:        C:/RailsInstaller/Ruby1.9.2/bin/rails.bat
+  version:    Rails 3.2.1
+
+ssh:
+  public_key_location: C:\Documents and Settings\hbakir/.ssh/id_rsa.pub  <<<<<<<<<<<
+  public_key_contents: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAwSrpSeOyx7OaWZ7b6ZZ8
+  ....
+  45tg6Y18rxVgzOgK6YxsZP+qOuOtCGK4J23GPb/3fIRRqOYVx5UpftMqq0p0e54GUQOcr0bS+/ooYNC
+Q== Bakir Husremovic <bakir.husremovic@gmail.com>
+\end{lstlisting}
+
+\subsection{Gitlab ssh pristup}
+
+Gitlab web servis obezbjeđuje smještaj git repozitorija na server putem ssh i http(s) protokola. 
+Takođe obezbjeđuje upravljanje korisnicima, pregled git repozitorija kao i niz drugih funkcija koje omogućavaju rad sa softverskim projektima\foonote{''Issues'', ''Wikies'', ''Code Snippets''}. 
+U ovom materijalu ćemo se fokusirati na git funkcije. 
+
+Korisnik na svom računu podešava ssh ključ:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_ssh_profile.png}
+\caption{Gitlab ssh profil}
+\end{figure}
+
+\section{Git workflow}
+
+\subsection{Novi projekat}
+
+Kreirajmo naš ''helo\_ruby'' projekat.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_project.png}
+\caption{Gitlab: novi projekat}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_project_2.png}
+\caption{Gitlab: novi projekat /2}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_project_3.png}
+\caption{Gitlab: novi projekat /3}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_show_project.png}
+\caption{Gitlab: prikaz aktivnosti za projekat}
+\end{figure}
+
+
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_add_new_member_to_project.png}
-\caption{Gitlab dodaj novog člana u projekat}
+\caption{Gitlab: dodaj novog člana u projekat}
 \end{figure}
-
 
 \begin{figure}[H]
 \centering
@@ -115,7 +220,23 @@ Jedna od ključnih prednosti DSM-ova je `off-line' režim rada, kao posljedica �
 \caption{Gitlab dodaj novog člana u projekat 2}
 \end{figure}
 
+
+
+
 \section{Github servis}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/github_ssh_profile.png}
+\caption{Github ssh profil}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/github_ssh_profile_2.png}
+\caption{Github ssh profil /2}
+\end{figure}
+
 
 \begin{figure}[H]
 \centering
@@ -129,17 +250,6 @@ Jedna od ključnih prednosti DSM-ova je `off-line' režim rada, kao posljedica �
 \caption{Github novi repozitorij / 2}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/github_ssh_profile.png}
-\caption{Github ssh profil}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/github_ssh_profile.png}
-\caption{Github ssh profil /2}
-\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -153,12 +263,25 @@ Jedna od ključnih prednosti DSM-ova je `off-line' režim rada, kao posljedica �
 \caption{Github prijava}
 \end{figure}
 
-\section{Branches}
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/github_push_branches_and_tags.png}
 \caption{Pošalji sve branchove i tag-ove na github repozitorij}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_add_new_member_to_project.png}
+\caption{Gitlab: dodaj novog člana u projekat}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_add_new_member_to_project_2.png}
+\caption{Gitlab dodaj novog člana u projekat 2}
 \end{figure}
 
 
@@ -187,189 +310,31 @@ Jedna od ključnih prednosti DSM-ova je `off-line' režim rada, kao posljedica �
 \end{figure}
 
 
-\section{Commit}
-
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/gitlab_first_commit.png}
-\caption{Gitlab prvi commit}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_first_commit_2.png}
-\caption{Gitlab prvi commit /2}
-\end{figure}
-
-\section{Merge}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_merge_request.png}
-\caption{Gitlab merge request}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_merge_request_2.png}
-\caption{Gitlab merge request /2}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_merge_request_answer.png}
-\caption{Gitlab merge request answer}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_merge_request_email_notification.png}
-\caption{Gitlab merge request email notification}
-\end{figure}
-
-
-\section{GitlabHQ}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_hernad_310_after_merge.png}
-\caption{Gitlabhq nakon `merge' operacije sa `upstream' projektom}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_stable_3.0.2.png}
-\caption{Gitlabhq - stable 3.0.2}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlabhq_3.0.3.png}
-\caption{Gitlabhq - 3.0.3}
+\includegraphics[width=15cm]{img/github_ssh_profile.png}
+\caption{Github ssh profil}
 \end{figure}
 
 
 
-\subsection{Gitlabhq merge from upstream}
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/github_ssh_profile_2.png}
+\caption{Github ssh profil /2}
+\end{figure}
 
-gitlabhq\$ git fetch gitlabhq
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm]{img/github_new_tag.png}
+\caption{Github - novi tag}
+\end{figure}
 
-\begin{lstlisting}
-remote: Counting objects: 570, done.
-remote: Compressing objects: 100\% (174/174), done.
-remote: Total 342 (delta 262), reused 237 (delta 165)
-Receiving objects: 100\% (342/342), 43.70 KiB, done.
-Resolving deltas: 100\% (262/262), completed with 122 local objects.
-From git://github.com/gitlabhq/gitlabhq
-   dd4d124..3c7806c  master     -> gitlabhq/master
-\end{lstlisting}
-
-
-gitlabhq\$ git branch -l
-
-\begin{lstlisting}
-* master
-\end{lstlisting}
-
-
-gitlabhq\$ git commit -a
-
-\begin{lstlisting}
-[master 9bacff4] http://www.quora.com/Ruby-on-Rails/What-is-schema-rb-in-rails-project
- 1 file changed, 19 insertions(+), 19 deletions(-)
-\end{lstlisting}
-
-
-
-gitlabhq\$ git diff HEAD\^1 HEAD
-
-\begin{lstlisting}
-diff --git a/db/schema.rb b/db/schema.rb
-index 51ab207..19eb8eb 100644
---- a/db/schema.rb
-+++ b/db/schema.rb
-@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20121026114600) do
-     t.boolean  "closed",                              :default => false, :null => false
-     t.datetime "created_at",                                             :null => false
-     t.datetime "updated_at",                                             :null => false
--    t.text     "st_commits",    :limit => 2147483647
--    t.text     "st_diffs",      :limit => 2147483647
-+    t.text     "st_commits",    :limit => 4294967295
-
-  ...
-
-     t.integer  "project_id"
-     t.string   "attachment"
-     t.string   "line_code"
-@@ -156,30 +156,30 @@ ActiveRecord::Schema.define(:version => 20121026114600) do
-   end
- 
-   create_table "users", :force => true do |t|
-\end{lstlisting}
-
-
-gitlabhq\$ git merge gitlabhq/master
-
-\begin{lstlisting}
-Removing lib/gitlab/encode.rb
-Removing gitlab
-Auto-merging doc/development.md
-Removing Procfile.production
-Merge made by the recursive strategy
- .travis.yml                                        |    2 +-
- CHANGELOG                                          |    2 +-
- Gemfile                                            |    4 +-
- Gemfile.lock                                       |   12 +++-
- Procfile.production                                |    2 -
- VERSION                                            |    2 +-
- app/assets/images/event_filter_comments.png        |  Bin 0 -> 750 bytes
- app/assets/images/event_filter_merged.png          |  Bin 0 -> 463 bytes
- app/assets/images/event_filter_push.png            |  Bin 0 -> 632 bytes
- 
- ...
-
- app/controllers/application_controller.rb          |    9 +++
- app/controllers/blob_controller.rb                 |   10 +--
- app/controllers/dashboard_controller.rb            |   11 ++-
- app/controllers/profile_controller.rb              |    2 +-
-
- ...
-
- app/views/blame/show.html.haml                     |    4 +-
- app/views/commits/_commit.html.haml                |    4 +-
- app/views/commits/_head.html.haml                  |    5 ++
- app/views/dashboard/index.html.haml                |    9 ++-
- 
- ... 
- 
- delete mode 100644 Procfile.production
- create mode 100644 app/assets/images/event_filter_comments.png
- create mode 100644 app/assets/images/event_filter_merged.png
- create mode 100644 app/assets/images/event_filter_push.png
- ...
- delete mode 100644 lib/gitlab/encode.rb
- create mode 100644 lib/gitlab/git_stats.rb
- create mode 100644 vendor/assets/javascripts/g.bar-min.js
- create mode 100644 vendor/assets/javascripts/g.raphael-min.js
-\end{lstlisting}
-
-
-
-gitlabhq\$ git push origin master
-
-\begin{lstlisting}
-Counting objects: 581, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100\% (85/85), done.
-Writing objects: 100\% (350/350), 45.00 KiB, done.
-Total 350 (delta 267), reused 342 (delta 262)
-To git@github.com:hernad/gitlabhq.git
-   038ac96..28f5807  master -> master
-
-\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/github_prijava.png}
+\caption{Github prijava}
+\end{figure}
 
 
 
