@@ -610,44 +610,50 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
 
 \subsection{Eclipse}
 
-%http://www.vogella.com/articles/EGit/article.html
+%
 
+Instalacijom \href{http://www.vogella.com/articles/EGit/article.html}{\color{blue}{EGit plugin-a}} možemo unutar našeg IDE-a vršiti operacije nad git repozitorijom.
+
+Untar našeg projekta podešavamo, git repozitorij (s obzirom da on već postoji):
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/eclipse_git_01.png}
-\caption{Eclipse IDE GIT /1}
+\includegraphics[width=10cm]{img/eclipse_git_01.png}
+\caption{Eclipse IDE git - setup postojećeg repozitorija u IDE-u}
 \end{figure}
 
+Nakon toga su nam dostupne SCM operacije nad repozitorijom:
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{img/eclipse_git_02.png}
+\caption{Eclipse IDE GIT - Project team support}
+\end{figure}
+
+Nakon izvršenih promjena unutar IDE-a, pokrećemo commit unutar IDE-a:
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{img/eclipse_git_03.png}
+\caption{Eclipse IDE commit dijalog}
+\end{figure}
+
+Push na remote repozitorij:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/eclipse_git_02.png}
-\caption{Eclipse IDE GIT /2}
+\includegraphics[width=5cm]{img/eclipse_git_04.png}
+\caption{Eclipse push dijalog}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/eclipse_git_03.png}
-\caption{Eclipse IDE GIT /3}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/eclipse_git_04.png}
-\caption{Eclipse IDE GIT /4}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/eclipse_git_05.png}
-\caption{Eclipse IDE GIT /5}
+\includegraphics[width=10cm]{img/eclipse_git_05.png}
+\caption{Eclipse IDE, informacija o izvršenoj push operaciji}
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/eclipse_git_06.png}
-\caption{Eclipse IDE GIT /6}
+\caption{Naša promjena nalazi se na gitlab serveru}
 \end{figure}
 
 \section{''Collective code ownership''}
@@ -713,7 +719,7 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
 \end{lstlisting}
 
 Treba uočiti da je ovaj proces brz i jednostavan. Ne traži nikakve posebne dogovore između developera.
-Jednostavno, svako ko uoči potrebu da napravi sitnu korekciju - to i učini.
+Jednostavno, svako ko uoči potrebu da napravi sitnu korekciju - to i čini.
 
 \chapter{Zaključak}
 
@@ -778,7 +784,7 @@ Stoga se termini ''hardware'', ''software'', ''commit'', ''push'', ''merge'', ''
 \chapter{Software repozitoriji}
 
 \begin{itemize}
-  \item Agilni developerski environment  \url{https://github.com/hernad/atile\_dev\_env}
+  \item Agilni developerski environment  \url{https://github.com/hernad/agile\_dev\_env}
 
 \end{itemize}
 

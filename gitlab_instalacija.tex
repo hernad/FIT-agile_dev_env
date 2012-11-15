@@ -1,30 +1,10 @@
 \section{GitlabHQ}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_hernad_310_after_merge.png}
-\caption{Gitlabhq nakon `merge' operacije sa `upstream' projektom}
-\end{figure}
+\chapter{Gitlab arhitektura}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_stable_3.0.2.png}
-\caption{Gitlabhq - stable 3.0.2}
-\end{figure}
+\chapter{Gitlab merge from upstream}
 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlabhq_3.0.3.png}
-\caption{Gitlabhq - 3.0.3}
-\end{figure}
-
-
-
-\subsection{Gitlabhq merge from upstream}
-
-gitlabhq\$ git fetch gitlabhq
-
+gitlabhq\$ \texttt{git fetch gitlabhq}
 \begin{lstlisting}
 remote: Counting objects: 570, done.
 remote: Compressing objects: 100\% (174/174), done.
@@ -37,14 +17,12 @@ From git://github.com/gitlabhq/gitlabhq
 
 
 gitlabhq\$ git branch -l
-
 \begin{lstlisting}
 * master
 \end{lstlisting}
 
 
 gitlabhq\$ git commit -a
-
 \begin{lstlisting}
 [master 9bacff4] http://www.quora.com/Ruby-on-Rails/What-is-schema-rb-in-rails-project
  1 file changed, 19 insertions(+), 19 deletions(-)
@@ -53,7 +31,6 @@ gitlabhq\$ git commit -a
 
 
 gitlabhq\$ git diff HEAD\^1 HEAD
-
 \begin{lstlisting}
 diff --git a/db/schema.rb b/db/schema.rb
 index 51ab207..19eb8eb 100644
@@ -139,6 +116,97 @@ To git@github.com:hernad/gitlabhq.git
 
 \end{lstlisting}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_hernad_310_after_merge.png}
+\caption{Gitlabhq nakon `merge' operacije sa `upstream' projektom}
+\end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_stable_3.0.2.png}
+\caption{Gitlabhq - stable 3.0.2}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlabhq_3.0.3.png}
+\caption{Gitlabhq - 3.0.3}
+\end{figure}
+
+
+\chapter{Instalacija gitlab-a na rackspacecloud server}
+
+\begin{lstlisting}
+
+Server sa imenom gitlab.knowhow.out.ba vec postoji !
+Server: gitlab.knowhow.out.ba IP: 198.101.149.48
+server je kreiran !
+Server: gitlab.knowhow.out.ba IP: 198.101.149.48
+vrsim update domena knowhow.out.ba, zapis gitlab.knowhow.out.ba sa javnom adresom 198.101.149.48
+./manage_domains.py -d knowhow.out.ba -r gitlab.knowhow.out.ba -i 198.101.149.48
+dns_domain: knowhow.out.ba dns_record: gitlab.knowhow.out.ba ip_address 198.101.149.48
+
+....
+
+[2012-11-12T11:15:43+00:00] INFO: template[/etc/rvmrc] mode changed to 644
+[2012-11-12T11:15:43+00:00] INFO: Processing execute[install system-wide RVM] action run (rvm::system_install line 76)
+[2012-11-12T11:15:43+00:00] INFO: Processing execute[upgrade system-wide RVM to none] action run (rvm::system_install line 110)
+[2012-11-12T11:15:43+00:00] INFO: Processing rvm_ruby[ruby-1.9.3-p327] action install (rvm::system line 170)
+/root/vagrant_gitlab/cookbooks/rvm/libraries/rvm_chef_user_environment.rb:36: warning: class variable access from toplevel
+[2012-11-12T11:15:45+00:00] INFO: Processing package[build-essential] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[openssl] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[libreadline6] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[libreadline6-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[zlib1g] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[zlib1g-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[libssl-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[libyaml-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+
+...
+
+[2012-11-12T11:15:45+00:00] INFO: Processing package[libsqlite3-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:45+00:00] INFO: Processing package[sqlite3] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: Processing package[libxml2-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: Processing package[libxslt-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: package[libxslt-dev] is a virtual package, actually acting on package[libxslt1-dev]
+[2012-11-12T11:15:46+00:00] INFO: Processing package[autoconf] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: Processing package[libc6-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: Processing package[ncurses-dev] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: package[ncurses-dev] is a virtual package, actually acting on package[libncurses5-dev]
+[2012-11-12T11:15:46+00:00] INFO: Processing package[automake] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: Processing package[libtool] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: Processing package[bison] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:46+00:00] INFO: Processing package[ssl-cert] action install (/root/vagrant_gitlab/cookbooks/rvm/providers/ruby.rb line 156)
+[2012-11-12T11:15:47+00:00] INFO: Building rvm_ruby[ruby-1.9.3-p327], this could take awhile...
+
+....
+
+boostrap chef for vagrant_gitlab is finished (0.9.9) :)
+restartujem server ...
+Restartujem server gitlab.knowhow.out.ba
+
+real15m29.472s
+user0m3.928s
+sys0m0.387s
+
+\end{lstlisting}
+
+
+root@gitlab:~# \texttt{sudo su - www-data}
+\begin{lstlisting}
+www-data@gitlab:~$ chefd /opt/gitlab
+Using /usr/local/rvm/gems/ruby-1.9.3-p327
+Using ruby-1.9.3-p327 with gemset gitlab
+Using /usr/local/rvm/gems/ruby-1.9.3-p327 with gemset gitlab
+\end{lstlisting}
+
+
+www-data@gitlab:/opt/gitlab$ \texttt{cat /etc/init.d/gitlab | grep ruby}
+\begin{lstlisting}
+source "/usr/local/rvm/environments/ruby-1.9.3-p327"
+declare -r GITLAB_RUBY="ruby-1.9.3-p327@gitlab"
+\end{lstlisting}
 
 
