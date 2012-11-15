@@ -99,7 +99,7 @@ Usljed nedostatka centralnog repozitorija, sasvim su normalne situacije u kojima
 U tom slučaju potrebno je izvršiti manuelni ''merge'' proces kojim se promjene primljene iz različitih izvora usaglašavaju.
 Iako ovaj koncept na prvi pogled djeluje kao izvor velikih glavobolja, pravilna primjena DSCM alatima daje veliku fleksibilnost i niz prednosti u odnosu na centralizirane SCM-ove.
 
-Jedna od ključnih prednosti DSM-ova je `off-line' režim rada, kao posljedica činjenice da svaki korisnik ima sopstveni lokalni repozitorij promjena.
+Jedna od ključnih prednosti DSCM-ova je `off-line' režim rada, kao posljedica činjenice da svaki korisnik ima sopstveni lokalni repozitorij promjena.
 
 \chapter{Gitlab servis i git klijent}
 \vspace*{-0.7cm}
@@ -192,7 +192,7 @@ Kreirajmo naš ''helo\_ruby'' projekat.
 \caption{Gitlab: novi projekat - kreiranje git repozitorija}
 \end{figure}
 
-Nakon što je git repozitorij kreiran, dobijamo informacije o operacijam koje se obavljaju na remote klijentu za kreiranje i pristup git repozitoriju:
+Nakon što je git repozitorij kreiran, dobijamo informacije o operacijama koje se obavljaju na remote klijentu za kreiranje i pristup git repozitoriju:
 
 \begin{figure}[H]
 \centering
@@ -251,15 +251,15 @@ Nakon svih ovih operacija možemo vidjeti pregled operacija koje su do sada izvr
 \end{figure}
 
 
-\section{Github public mirror}
+\section{Public mirror projekta na Github-u}
 
-Glavni repozitorj projekta nalazi se na gitlab serveru. Međutim, "gitlab" ne omogućava anonimni pristup repozitorijima.
+Glavni repozitorj projekta se nalazi na gitlab serveru. Međutim, ''gitlab'' ne omogućava anonimni pristup repozitorijima.
 
 Ništa nas ne sprječava da na drugom git serveru kreiramo mirror našeg repozitorija.
 
 To ćemo i učiniti. Otvorićemo account na github-u i na njemu kreirati hello\_ruby projekat.
 
-\subsection{Githu account}
+\subsection{Github account}
 
 Kreiranje novog korisničkog računa na github-u:
 
@@ -370,13 +370,13 @@ Developeri primaju email notifikacije o svim bitnim događajima na projektu:
 
 \subsection{git clone}
 
+\setlength{\parindent}{0cm}
 Prvi korak novog developera je kloniranje repozitorija projekta na svoj desktop. 
 
 Novi developer koristi Ubuntu linux desktop.
 
-\setlength{\parindent}{0cm}
-
-hernad@agile\_dev\_env\$ \texttt{git clone git@gitlab.knowhow.out.ba:hello\_ruby.git}
+hernad@agile\_dev\_env\$ \newline
+\texttt{git clone git@gitlab.knowhow.out.ba:hello\_ruby.git}
 \begin{lstlisting}
 Cloning into 'hello_ruby'...
 remote: Counting objects: 16, done.
@@ -490,7 +490,7 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
 \section{Zajednički rad}
 
 
-C:\\Sites\\hello\_ruby> \texttt{git pull}
+C:/Sites/hello\_ruby> \texttt{git pull}
 \begin{lstlisting}
 remote: Counting objects: 12, done.
 remote: Compressing objects: 100% (9/9), done.
@@ -518,7 +518,7 @@ use something like the following in your configuration file:
 See git-config(1) for details.
 \end{lstlisting}
 
-C:\\Sites\\hello\_ruby> \texttt{git branch -r}
+C:/Sites/hello\_ruby> \texttt{git branch -r}
 \begin{lstlisting}
   github/master
   github/parametri
@@ -527,20 +527,20 @@ C:\\Sites\\hello\_ruby> \texttt{git branch -r}
   origin/parametri
 \end{lstlisting}
 
-C:\\Sites\\hello\_ruby> \texttt{git checkout babo}
+C:/Sites/hello\_ruby> \texttt{git checkout babo}
 \begin{lstlisting}
 Branch babo set up to track remote branch babo from origin.
 Switched to a new branch 'babo'
 \end{lstlisting}
 
-C:\\Sites\\hello\_ruby> \texttt{git branch -l}
+C:/Sites/hello\_ruby> \texttt{git branch -l}
 \begin{lstlisting}
 * babo
   master
   parametri
 \end{lstlisting}
 
-C:\\Sites\\hello\_ruby> \texttt{git checkout master}
+C:/Sites/hello\_ruby> \texttt{git checkout master}
 \begin{lstlisting}
 Switched to branch 'master'
 
@@ -552,9 +552,9 @@ Fast-forward
  2 files changed, 67 insertions(+), 7 deletions(-)
 \end{lstlisting}
 
-C:\\Sites\\hello\_ruby> \texttt{git tag 0.3.0}
+C:/Sites/hello\_ruby> \texttt{git tag 0.3.0}
 
-C:\\Sites\\hello\_ruby> \texttt{git push github --tags}
+C:/Sites/hello\_ruby> \texttt{git push github --tags}
 \begin{lstlisting}
 Counting objects: 21, done.
 Compressing objects: 100% (18/18), done.
@@ -571,14 +571,14 @@ Nakon merdžiranja branch-a, nema potrebe za brisanjem branch-a ''babo''.
 
 Brišemo branch na lokalnom repozitoriju:
 
-C:\\Sites\\hello\_ruby> \texttt{git branch babo -d}
+C:/Sites/hello\_ruby> \texttt{git branch babo -d}
 \begin{lstlisting}
 Deleted branch babo (was 585688a).
 \end{lstlisting}
 
 Pogledajmo pregled remote branchova-a:
 
-C:\\Sites\\hello\_ruby> \texttt{git branch -r}
+C:/Sites/hello\_ruby> \texttt{git branch -r}
 \begin{lstlisting}
   github/master
   github/parametri
@@ -589,12 +589,12 @@ C:\\Sites\\hello\_ruby> \texttt{git branch -r}
 
 Brišemo i remote branch babo:
 
-C:\\Sites\\hello\_ruby> \texttt{git branch -rd origin/babo}
+C:/Sites/hello\_ruby> \texttt{git branch -rd origin/babo}
 \begin{lstlisting}
 Deleted remote branch origin/babo (was 585688a).
 \end{lstlisting}
 
-hernad@hello\_ruby\$ \texttt{git push origin --delete babo}
+C:/Sites/hello\_ruby> \texttt{git push origin --delete babo}
 \begin{lstlisting}
 To git@gitlab.knowhow.out.ba:hello_ruby.git
  - [deleted]         babo
@@ -608,10 +608,9 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
 
 %Idea Idea IDE http://www.jetbrains.com/idea/webhelp/using-git-integration.html
 
-\subsection{Eclipse}
+\subsection{Eclipse IDE}
 
 %
-
 Instalacijom \href{http://www.vogella.com/articles/EGit/article.html}{\color{blue}{EGit plugin-a}} možemo unutar našeg IDE-a vršiti operacije nad git repozitorijom.
 
 Untar našeg projekta podešavamo, git repozitorij (s obzirom da on već postoji):
@@ -648,7 +647,6 @@ Push na remote repozitorij:
 \includegraphics[width=10cm]{img/eclipse_git_05.png}
 \caption{Eclipse IDE, informacija o izvršenoj push operaciji}
 \end{figure}
-
 
 \begin{figure}[H]
 \centering
