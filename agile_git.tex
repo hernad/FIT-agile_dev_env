@@ -44,7 +44,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.0.1}
+\verzija {0.9.0}
 
 \mentor{mr. Adil Joldić}
 
@@ -251,7 +251,7 @@ Nakon svih ovih operacija možemo vidjeti pregled operacija koje su do sada izvr
 \end{figure}
 
 
-\section{Public mirror projekta na Github-u}
+\section{Public mirror ''hello\_ruby'' projekta na Github-u}
 
 Glavni repozitorj projekta se nalazi na gitlab serveru. Međutim, ''gitlab'' ne omogućava anonimni pristup repozitorijima.
 
@@ -316,19 +316,23 @@ Vrijeme je za novu verziju, zato vršimo tagiranje git repozitorija sa ''0.2.0''
 \end{figure}
 
 
-\section{Compare}
+\section{Gitlab ''Diff'' funkcija}
+
+Gitlab nam obezbjeđuje jednostavan pregled diff-ova (razlika) između različitih tačaka unutar git repozitorija.
+
+Te tačke mogu biti stanje branch-a ili tag-a. Pogledajmo ''diff'' verzija 0.1.0 i 0.2.0:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_compare.png}
-\caption{Gitlab uporedi dvije verzije}
+\caption{Gitlab uporedi dvije verzije (dva tag-a)}
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_compare_2.png}
-\caption{Gitlab uporedi dvije verzije /2}
+\caption{Gitlab uporedi dvije verzije - diff}
 \end{figure}
 
 
@@ -357,7 +361,7 @@ Vlasnik projekta ''hello\_ruby'' Bakir uključuje novog developera u projekat Er
 \caption{Gitlab dodaj novog člana u projekat 2}
 \end{figure}
 
-\section{email notifikacija}
+\section{Email notifikacija}
 
 Developeri primaju email notifikacije o svim bitnim događajima na projektu:
 
@@ -687,14 +691,12 @@ Fast-forward
  2 files changed, 65 insertions(+), 7 deletions(-)
 \end{lstlisting}
 
-Vriš ispravku uputstva u svom editoru:
-
+Vršimo ispravku uputstva u našem editoru:
 hernad@hello\ruby\$ \texttt{vi README.md}
-\begin{lstlisting}
-Commit-uje promjene:
-\end{lstlisting}
 
-hernad@hello\ruby\$ \texttt{git commit -a}
+Commit promjena:
+
+hernad@hello\ruby\$ \texttt{git commit -a -m ''uputstvo update''}
 \begin{lstlisting}
 [master 74fb346] uputstvo update
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -752,7 +754,8 @@ Ta opcija omogućava iskusnijim članovima tima (senior developer, product manag
 
     \item \texttt{branch} - branch označava poseban ogranak projekat u odnosu na glavni tok razvoja. Primjera radi, ako želimo uvesti neke eksperimentalne funkcije, otvaramo poseban "experimental" branch unutar koga implementiramo naše eksperimentalne funkcije. Te promjene se ne vide na glavnom - ''master'' branch-u.
     \item \texttt{merge request} - Proces merdžiranja (eng. merge - spojiti) je proces u kome se vrši spajanje promjena iz različiti branch-ova ili različitih repozotorija. Vezano za primjer branch-a (vidi: branch), ako su se promjene u ''experimental'' branch-u pokazale dobrim, ''merge'' operacijom ih prebacujemo - integriramo u ''master'' branch. Nakon uspješnog merdžiranja ''experimental'' branch možemo obrisati.
-   \item \texttt{repository} - baza u promjena. Lokalni repozitorij se nalazi u .git repozitoriju našeg projekta na lokalnom disku. 'Remote' repozitorij se uobičajeno nalazi na udaljenom serveru kome pristupamo putsem ssh ili http protokola.
+    \item \texttt{repository} - baza u promjena. Lokalni repozitorij se nalazi u .git repozitoriju našeg projekta na lokalnom disku. 'Remote' repozitorij se uobičajeno nalazi na udaljenom serveru kome pristupamo putsem ssh ili http protokola.
+    \item \texttt{diff} - Skraćenica od ''difference''. Koristi se za poređenje dva različita stanja repozitorija. Tačka poređenja mogu biti ''tag'', ''branch'' ili jednostavno određeni ''commit''.
 \end{itemize}
 
 \chapter{Napomene}
