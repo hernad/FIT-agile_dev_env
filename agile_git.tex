@@ -1,5 +1,17 @@
 \documentclass[times, utf8, seminar]{fit}
 
+%\patchcmd{\@makechapterhead}{\vspace*{40\p@}}{}{}{} % Removes space above \chapter head
+%\patchcmd{\@makeschapterhead}{\vspace*{40\p@}}{}{}{} % Removes space above \chapter* head
+
+% this alters "before" spacing (the second length argument) to 0
+%\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+% this changes "before" spacing back to its default of 50pt
+
+%\titlespacing*{\chapter}{0pt}{-50pt}{18pt}
+%\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+
 %\batchmode
 %\usepackage{booktabs}
 \usepackage{listings}
@@ -13,9 +25,29 @@
 \usepackage{etoolbox}
 \usepackage{datetime}
 \usepackage{needspace}
-\usepackage{titlesec}
+\usepackage[compact]{titlesec}
 %\usepackage{hyperref}
 %\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+
+%http://stackoverflow.com/questions/3279194/remove-spacing-before-chapter-in-latex
+%\usepackage{titlesec}
+%\titleformat{\chapter}[display]
+%{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+% this alters "before" spacing (the second length argument) to 0
+%\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+%\renewcommand*{\chapterheadstartvskip}{\vspace*{0.5cm}}
+%\renewcommand*{\chapterheadendvskip}{\vspace{1cm}}
+
+% http://tex.stackexchange.com/questions/40436/vertical-space-before-section-title-with-titlesec
+
+%\usepackage[compact]{titlesec}
+\usepackage{setspace}
+\onehalfspacing
+
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{0pt}{0pt}
 
 \begin{document}
 \widowpenalty=300
@@ -31,20 +63,11 @@
 }
 
 
-% this alters "before" spacing (the second length argument) to 0
-%\titlespacing*{\chapter}{0pt}{0pt}{40pt}
-
-% this changes "before" spacing back to its default of 50pt
-%\titlespacing*{\chapter}{0pt}{50pt}{40pt}}
-
-%\titlespacing*{\chapter}{0pt}{-50pt}{18pt}
-%\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-
 \title{Agilni \emph{software development},\newline GIT SCM}
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.9.5}
+\verzija {0.9.7}
 
 \mentor{mr. Adil Joldić}
 
@@ -69,8 +92,8 @@ Prikazane su glavne operacije GIT klijenta koristeći navedene web servise.
 % abstract end
 
 \chapter{Uvod}
-\vspace*{-0.7cm}
 
+%\vspace*{-1.2cm}
 \section{`Source code management' (SCM) software}
 
 `Source code management' (SCM) software obezbjeđuje pohranu različitih verzija programskog koda u zajednički repozitorij. 
@@ -79,10 +102,7 @@ Sa stanovišta arhitekture, SCM sistemi se dijele na centralizovane i distribuir
 
 \subsection{Centralizirani (mrežni) SCM}
 
-Najpoznatiji predstavnici su `CVS' i `Subversion'. `CVS' je među prvim SCM alatima-ima koji je postigao veliku popularnost. `Subversion' je uveo značajna tehnička unapređenja, ali je arhitekturalno identičan svom predhodniku. Oba alata su `open source' software (OSS).
-
-Njihova glavna karakakteristika je klasična `client-server' arhitektura. Da bi se SCM operacije na klijentu izvršavale, neophodna je dostupnost SCM servera.
-Razlog je taj što se istorija promejan nalazi isključivo na serveru. Ova karakteristika danas se smatra ključnim nedostatkom centraliziranih SCM-ova
+Najpoznatiji predstavnici su `CVS' i `Subversion'. `CVS' je među prvim SCM alatima-ima koji je postigao veliku popularnost. `Subversion' je uveo značajna tehnička unapređenja, ali je arhitekturalno identičan svom predhodniku. Oba alata su `open source' software (OSS). Njihova glavna karakakteristika je klasična `client-server' arhitektura. Da bi se SCM operacije na klijentu izvršavale, neophodna je dostupnost SCM servera. Razlog je taj što se istorija promejan nalazi isključivo na serveru. Ova karakteristika danas se smatra ključnim nedostatkom centraliziranih SCM-ova
 
 \subsection{Distribuirani SCM (DSCM)}
 
@@ -91,9 +111,7 @@ Sami developeri određuju funkciju pojedinačnih repozitorija. Glavni repozitori
 Razmjena podataka (`commit'-a) se vrši sistemom sinhronizacije repozitorija klijenta i servera (`merge' proces). 
 Usljed nedostatka centralnog repozitorija, sasvim su normalne situacije u kojima se repozitoriji koji se usaglašavaju - sinhronizuju u stanju konflikta.
 U tom slučaju potrebno je izvršiti manuelni ''merge'' proces kojim se promjene primljene iz različitih izvora usaglašavaju.
-Ovaj koncept otvara mogućnost da se pojave značajni problemi unutar većeg tima prilikom usaglašavanja repozitorija. Međutim, praksa je pokazala da se pravilnom primjenom obezbjeđuje niz prednosti, prije svega \emph{fleksibilnost} u radu.
-
-Jedna od ključnih prednosti DSCM-ova je `off-line' režim rada, kao posljedica činjenice da svaki korisnik ima sopstveni lokalni repozitorij promjena.
+Ovaj koncept otvara mogućnost da se pojave značajni problemi unutar većeg tima prilikom usaglašavanja repozitorija. Međutim, praksa je pokazala da se pravilnom primjenom obezbjeđuje niz prednosti, prije svega \emph{fleksibilnost} u radu. Jedna od ključnih prednosti DSCM-ova je `off-line' režim rada, kao posljedica činjenice da svaki korisnik ima sopstveni lokalni repozitorij promjena.
 
 \chapter{Gitlab servis i git klijent}
 \vspace*{-0.7cm}
@@ -555,13 +573,13 @@ Ernad informiše bakira putem gitlab ''Merge request'' opcije od svom radu:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm]{img/gitlab_merge_request.png}
+\includegraphics[width=15cm]{img/gitlab_merge_request.png}
 \caption{Merge request}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm]{img/gitlab_merge_request_2.png}
+\includegraphics[width=15cm]{img/gitlab_merge_request_2.png}
 \caption{Merge request}
 \end{figure}
 
@@ -569,14 +587,14 @@ Bakir prima informaciju:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm]{img/gitlab_merge_request_email_notification.png}
+\includegraphics[width=15cm]{img/gitlab_merge_request_email_notification.png}
 \caption{Bakir je o ''merge request''-u informisan putem email-a}
 \end{figure}
 
 Te odgovara pozitivno tako što vrši merge ''babo'' branch-a u ''master'' branch.
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm]{img/gitlab_merge_request_answer.png}
+\includegraphics[width=15cm]{img/gitlab_merge_request_answer.png}
 \caption{Merge request, Bakirov odgovor}
 \end{figure}
 
@@ -736,7 +754,7 @@ Untar našeg projekta podešavamo, git repozitorij (s obzirom da on već postoji
 Nakon toga su nam dostupne SCM operacije nad repozitorijom:
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{img/eclipse_git_02.png}
+\includegraphics[width=8cm]{img/eclipse_git_02.png}
 \caption{Eclipse IDE GIT - Project team support}
 \end{figure}
 
@@ -878,7 +896,7 @@ Koliko bi prevoda ovih termina bio neprimjeren, zorno pokazuje pokušaj prevoda 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=16cm]{img/cik_prevedi.png}
+\includegraphics[width=14cm]{img/cik_prevedi.png}
 \caption{Prevod na bosanski - nemoguća misija}
 \end{figure}
 
