@@ -46,7 +46,7 @@
 \usepackage{setspace}
 \onehalfspacing
 
-\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
+%\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
 \titlespacing{\section}{0pt}{0pt}{0pt}
 
 \begin{document}
@@ -67,7 +67,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.9.7}
+\verzija {0.9.8}
 
 \mentor{mr. Adil Joldić}
 
@@ -93,16 +93,16 @@ Prikazane su glavne operacije GIT klijenta koristeći navedene web servise.
 
 \chapter{Uvod}
 
-%\vspace*{-1.2cm}
+\vspace*{-1.2cm}
 \section{`Source code management' (SCM) software}
 
 `Source code management' (SCM) software obezbjeđuje pohranu različitih verzija programskog koda u zajednički repozitorij. 
-Iako je primarna namjena alata bilo čuvanje programskog koda, oni se mogu koristiti za za pohranu (verzioniranje) svih artifakta softverskog projekta uključujući dokumentaciju, dijagrame, kao i  binarni kod. Ovaj software se često naziva i `Version control' software.
+Iako je primarna namjena ovog alata čuvanje programskog koda, on se može koristiti za za pohranu (verzioniranje) svih artifakta softverskog projekta uključujući dokumentaciju, dijagrame, ali i binarni kod\footnote{Treba paziti da pojedijačni binarni fajl ne prelazi veličinu od 10-tak MB. Git nije dizajniran za pohranu velikih fajlova}. Često se koristi termin ''Version control'' za ovakav tip aplikacija.
 Sa stanovišta arhitekture, SCM sistemi se dijele na centralizovane i distribuirane (DSCM).
 
-\subsection{Centralizirani (mrežni) SCM}
+\subsection{Centralizovani (mrežni) SCM}
 
-Najpoznatiji predstavnici su `CVS' i `Subversion'. `CVS' je među prvim SCM alatima-ima koji je postigao veliku popularnost. `Subversion' je uveo značajna tehnička unapređenja, ali je arhitekturalno identičan svom predhodniku. Oba alata su `open source' software (OSS). Njihova glavna karakakteristika je klasična `client-server' arhitektura. Da bi se SCM operacije na klijentu izvršavale, neophodna je dostupnost SCM servera. Razlog je taj što se istorija promejan nalazi isključivo na serveru. Ova karakteristika danas se smatra ključnim nedostatkom centraliziranih SCM-ova
+Najpoznatiji predstavnici su `CVS' i `Subversion'. `CVS' je među prvim SCM alatima koji je postigao veliku popularnost. `Subversion' je uveo značajna tehnička unapređenja, ali je arhitekturalno identičan svom predhodniku. Oba alata su `open source' software (OSS). Njihova glavna karakakteristika je klasična `client-server' arhitektura. Da bi se SCM operacije na klijentu izvršavale, neophodna je dostupnost SCM servera. Istorija (baza) promjena se nalazi na serveru. Ova karakteristika danas se smatra ključnim nedostatkom centraliziranih SCM-ova.
 
 \subsection{Distribuirani SCM (DSCM)}
 
@@ -118,16 +118,16 @@ Ovaj koncept otvara mogućnost da se pojave značajni problemi unutar većeg tim
 
 \section{Gitlab servis}
 
-"Gitlab"\footnote{\url{http://gitlabhq.com}} je OSS projekat, po mnogo čemu "klon" popularnog "Github" servisa. 
+"Gitlab"\footnote{\url{http://gitlabhq.com}} je OSS projekat, funkcionalno OSS "klon" popularnog "Github" servisa. 
 Autor nudi komercijalni servis \href{https://gitlab.com}{\color{blue}{''gitlab.com''}} baziran na ovom serveru.
 
-S obzirom da se radi OSS software-u, korisnici bez ograničenja mogu kreirati sopstvene "gitlab" server-e.
+S obzirom da se radi OSS software-u, korisnici bez ograničenja mogu kreirati sopstvene "gitlab" servere.
 U ovom materijalu se koristi server \href{https://gitlab.knowhow.out.ba}{\color{blue}{''gitlab.knowhow.out.ba''}} instaliran upravo na taj način.
 
 \section{Git klijent}
 
-Tvorac git-a je kreator Linux-a, Linus Torvalds. Prve verzije git-a su se mogle koristiti samo ''unix-like'' sistemima\footnote{git se mogao koristiti na Windows-ima putem ''cygwin'' emulacijskog sloja, ali je rad sa iole većim repozitorijem bio veoma spor}. 
-Popularnost i otvorenost projekta je brzo rezultirala i ''native'' git verzijom klijenta.
+Tvorac git-a je kreator Linus Torvalds, kreator Linuxa. Prve verzije git-a su se mogle koristiti samo na ''unix-like'' sistemima\footnote{git se mogao koristiti na Windows-ima putem ''cygwin'' emulacijskog sloja, ali je rad sa iole većim repozitorijem bio veoma spor}. 
+Popularnost i otvorenost projekta je brzo rezultirala i ''native'' git verzijom klijenta za familiju ''Windows'' OS-ova.
 
 U našem primjeru je radi jednostavnosti korištenja na ''Windows'' klijentu korišten \href{http://railsinstaller.org/}{\color{blue}{''Rails installer''}}. 
 ''Rails installer'' sadrži kompletno ruby/rails/git razvojno okruženje za ''Windows'' XP/W7 OS.
@@ -170,15 +170,15 @@ ssh:
 Q== Bakir Husremovic <bakir.husremovic@gmail.com>
 \end{lstlisting}
 
-\subsection{Git resursi}
+\section{Git resursi}
 
 Internet je prepun resursa o git-u. Sve što vam je potrebno za rad sa Git-om možete naći u sjajnoj knjizi ''Pro Git''\citep{progit}. Knjiga je ''open source''\footnote{\href{https://github.s3.amazonaws.com/media/progit.en.pdf}{\color{blue}{PDF download}}}, tako da je možete koristiti bez ikakvih ograničenja.
 
-\subsection{Gitlab ssh pristup}
+\section{Gitlab ssh pristup}
 
 Gitlab web servis obezbjeđuje smještaj git repozitorija na server putem ssh i http(s) protokola.
-Takođe obezbjeđuje upravljanje korisnicima, pregled git repozitorija kao i niz drugih funkcija vezanih za rad na softverskim projektima\foonote{ ''Issues'', ''Wikies'', ''Code Snippets'', ''Code comments''}.
-U ovom materijalu ćemo se fokusirati na git funkcije.
+Takođe obezbjeđuje upravljanje korisnicima, pregled git repozitorija kao i niz drugih funkcija vezanih za rad na softverskim projektima\footnote{ ''Issues'', ''Wikies'', ''Code Snippets'', ''Commit comments''}.
+U ovom materijalu ćemo se fokusirati na osnovne funkcije git repozitorija.
 
 Podesimo autentifikaciju korisnika putem ssh ključa\footnote{O podešenju unix/linux klijenta pogledajte ovdje \url{https://help.github.com/articles/generating-ssh-keys}}:
 
@@ -188,9 +188,9 @@ Podesimo autentifikaciju korisnika putem ssh ključa\footnote{O podešenju unix/
 \caption{Gitlab ssh profil}
 \end{figure}
 
-\section{Git workflow}
+\chapter{Git workflow}
 
-\subsection{Novi projekat}
+\section{Novi projekat}
 
 Nakon podešenja ključ za udaljeni pristup, možemo kreirati naš prvi projekat ''helo\_ruby'':
 
@@ -263,7 +263,7 @@ Na taj način će tokom rada na ''parametar'' branch-u ''master'' branch ostati 
 \setlength{\parindent 0cm}
 Kreiramo novi branch:
 
-C:/Sites/hello\_ruby\$ \texttt{git branch parametri}
+C:/Sites/hello\_ruby> \texttt{git branch parametri}
 \begin{lstlisting}
   origin/HEAD -> origin/master
   origin/master
@@ -272,7 +272,7 @@ C:/Sites/hello\_ruby\$ \texttt{git branch parametri}
 
 Prebacujemo se na rad sa ''parametri'' branch-om.
 
-C:/Sites/hello\_ruby\$ \texttt{git checkout parametri}
+C:/Sites/hello\_ruby> \texttt{git checkout parametri}
 \begin{lstlisting}
 Branch parametri set up to track remote branch parametri from origin.
 Switched to a new branch 'parametri'
@@ -316,7 +316,7 @@ Kada se pozicioniramo na branch, vidimo sve ''commit''-e izvršene na tom branch
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/gitlab_new_branch_4_commits.png}
+\includegraphics[width=16cm]{img/gitlab_new_branch_4_commits.png}
 \caption{Gitlab commit-i na parametar branch-u}
 \end{figure}
 
@@ -336,7 +336,7 @@ Na gitlab serveru provjeravamo da li su promjene ''došle'' na server:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/gitlab_tags.png}
+\includegraphics[width=16cm]{img/gitlab_tags.png}
 \caption{Gitlab pregled tagova}
 \end{figure}
 
@@ -467,7 +467,7 @@ Pri tome mu daje maksimalna prava (Master uloga).
 \caption{Gitlab dodaj novog člana u projekat 2}
 \end{figure}
 
-\section{Email notifikacija}
+\subsection{Email notifikacija}
 
 Developer primaju email notifikacije o svim bitnim događajima na projektu. Tako Ernad prima informaciju o uključenju u ''hello\_ruby'':
 
@@ -495,7 +495,7 @@ Receiving objects: 100% (16/16), done.
 Resolving deltas: 100% (1/1), done.
 \end{lstlisting}
 
-Pregled branchova na udaljenom repozitoriju:
+Pregled branch-ova na udaljenom repozitoriju:
 
 hernad@hello\_ruby\$ \texttt{git branch -r}
 \begin{lstlisting}
@@ -554,7 +554,7 @@ Date:   Mon Nov 12 14:15:45 2012 +0100
     obradjuje decimalne brojeve
 \end{lstlisting}
 
-Kada završi promjene, Ernad vrši ''push'' svog brancha na server:
+Kada završi promjene, Ernad vrši ''push'' svog branch-a na server:
 
 hernad@hello\_ruby\$ \texttt{git push origin babo}
 \begin{lstlisting}
@@ -567,19 +567,20 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
  * [new branch]      babo -> babo
 \end{lstlisting}
 
-\section{Zajednički rad - gitlab ''merge request''}
+\section{Timski rad}
+\subsection{Gitlab ''merge request''}
 
 Ernad informiše bakira putem gitlab ''Merge request'' opcije od svom radu:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/gitlab_merge_request.png}
+\includegraphics[width=14cm]{img/gitlab_merge_request.png}
 \caption{Merge request}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/gitlab_merge_request_2.png}
+\includegraphics[width=14cm]{img/gitlab_merge_request_2.png}
 \caption{Merge request}
 \end{figure}
 
@@ -587,7 +588,7 @@ Bakir prima informaciju:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{img/gitlab_merge_request_email_notification.png}
+\includegraphics[width=12cm]{img/gitlab_merge_request_email_notification.png}
 \caption{Bakir je o ''merge request''-u informisan putem email-a}
 \end{figure}
 
@@ -641,7 +642,7 @@ C:/Sites/hello\_ruby> \texttt{git branch -r}
   origin/parametri
 \end{lstlisting}
 
-Bakir se operacijom ''checkout'' brancha ''babo'' povezuje sa udaljenim brahcno-om istog imena:
+Bakir se operacijom ''checkout'' branch-a ''babo'' povezuje sa udaljenim branch-om istog imena:
 
 C:/Sites/hello\_ruby> \texttt{git checkout babo}
 \begin{lstlisting}
@@ -730,61 +731,6 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
  - [deleted]         babo
 \end{lstlisting}
 
-\section{Git unutar IDE-a}
-
-Git ima podršku za sve poznate IDE-alate:
-
-\begin{itemize}
-  \item Microsoft visual studio ''GIT Source Control Provider'' - \url{http://gitscc.codeplex.com}
-  \item Jetbrains Idea - \url{http://www.jetbrains.com/idea/webhelp/using-git-integration.html}
-  \item Netbeans - \url{http://netbeans.org/kb/docs/ide/git.html}
-  \item Eclipse - \url{http://www.eclipse.org/egit}
-
-\subsection{Eclipse IDE}
-
-Instalacijom \href{http://www.vogella.com/articles/EGit/article.html}{\color{blue}{EGit plugin-a}} možemo unutar našeg IDE-a vršiti operacije nad git repozitorijom.
-
-Untar našeg projekta podešavamo, git repozitorij (s obzirom da on već postoji):
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{img/eclipse_git_01.png}
-\caption{Eclipse IDE git - setup postojećeg repozitorija u IDE-u}
-\end{figure}
-
-Nakon toga su nam dostupne SCM operacije nad repozitorijom:
-\begin{figure}[H]
-\centering
-\includegraphics[width=8cm]{img/eclipse_git_02.png}
-\caption{Eclipse IDE GIT - Project team support}
-\end{figure}
-
-Nakon izvršenih promjena unutar IDE-a, pokrećemo commit unutar IDE-a:
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{img/eclipse_git_03.png}
-\caption{Eclipse IDE commit dijalog}
-\end{figure}
-
-Push na remote repozitorij:
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=4.5cm]{img/eclipse_git_04.png}
-\caption{Eclipse push dijalog}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{img/eclipse_git_05.png}
-\caption{Eclipse IDE, informacija o izvršenoj push operaciji}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/eclipse_git_06.png}
-\caption{Naša promjena nalazi se na gitlab serveru}
-\end{figure}
-
 \section{''Collective code ownership''}
 
 \begin{quotation}
@@ -848,18 +794,74 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
 Treba uočiti da je ovaj proces brz i jednostavan. Ne traži nikakve posebne dogovore između developera.
 Jednostavno, svako ko uoči potrebu da napravi sitnu korekciju - to i čini.
 
+\chapter{Git unutar IDE-a}
+
+Git ima podršku za sve poznate IDE-alate:
+
+\begin{itemize}
+  \item Microsoft visual studio ''GIT Source Control Provider'' - \url{http://gitscc.codeplex.com}
+  \item Jetbrains Idea - \url{http://www.jetbrains.com/idea/webhelp/using-git-integration.html}
+  \item Netbeans - \url{http://netbeans.org/kb/docs/ide/git.html}
+  \item Eclipse - \url{http://www.eclipse.org/egit}
+
+\subsection{Eclipse IDE}
+
+Instalacijom \href{http://www.vogella.com/articles/EGit/article.html}{\color{blue}{EGit plugin-a}} možemo unutar našeg IDE-a vršiti operacije nad git repozitorijom.
+
+Untar našeg projekta podešavamo, git repozitorij (s obzirom da on već postoji):
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{img/eclipse_git_01.png}
+\caption{Eclipse IDE git - setup postojećeg repozitorija u IDE-u}
+\end{figure}
+
+Nakon toga su nam dostupne SCM operacije nad repozitorijom:
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{img/eclipse_git_02.png}
+\caption{Eclipse IDE GIT - Project team support}
+\end{figure}
+
+Nakon izvršenih promjena unutar IDE-a, pokrećemo commit unutar IDE-a:
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{img/eclipse_git_03.png}
+\caption{Eclipse IDE commit dijalog}
+\end{figure}
+
+Push na remote repozitorij:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=4.5cm]{img/eclipse_git_04.png}
+\caption{Eclipse push dijalog}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{img/eclipse_git_05.png}
+\caption{Eclipse IDE, informacija o izvršenoj push operaciji}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/eclipse_git_06.png}
+\caption{Naša promjena nalazi se na gitlab serveru}
+\end{figure}
+
+
 \chapter{Zaključak}
 
-Git nam omogućava da se jedan od ključnih prinicipa agilnog sofware dvelopmenta, ''Collective code ownership'', realizira u praksi.
+Git nam omogućava da se jedan od ključnih prinicipa agilnog sofware developmenta, \emph{''Collective code ownership''}, na najbolji način realizira u praksi.
 
-Git omogućava developeru da sve svoje ideje sa minimalnim ''overhead''-om pohrani u centralni repozitorij (branching).
+Git omogućava developeru da sve svoje ideje sa minimalnim ''overhead''-om pohrani u centralni repozitorij (branching, merging).
 
-Web servisi kao što su Github i Gitlab omogućavaju jednostavnu i efikasnu komunikaciju tima. Centralna tačka komunikacije je izvorni kod\footnote{Ovdje se misli na izvorni kod u širem smislu. Misli se na sve digitalne artifakte projekta. Dokumentacija je sastavni dio izvornog koda}.
-Kako je izvorni kod projekta je glavni proizvod programskog tima, to je i prirodno mjesto komunikacije.
+Web servisi kao što su ''Github'' i ''Gitlab'' omogućavaju jednostavnu i efikasnu komunikaciju tima. Centralna tačka komunikacije je izvorni kod\footnote{Ovdje se misli na izvorni kod u širem smislu. Misli se na sve digitalne artifakte projekta. Dokumentacija je sastavni dio izvornog koda}.
+Kako je izvorni kod projekta ujedno i glavni proizvod programskog tima, prirodno je da to bude centralno mjesto komunikacije.
 
-Pored mogućnosti da se direktno ispravlja programski koda, svaki član tima ima mogućnost komentara pojedinih ''commit''-a.
+Pored mogućnosti da se direktno ispravlja programski kod, svaki član tima ima mogućnost komentara pojedinih ''commit''-a.
 
-Ta opcija omogućava iskusnijim članovima tima (senior developer, product manager, agile couch) da junior programerima brzo i jednostavno daju upute za korekcije i nadogradnju njihovog koda.
+Ta opcija omogućava iskusnijim članovima tima (senior developer, ''product manager'', ''agile couch''\citep{agileart}) da mlađim kolegama brzo i jednostavno daju upute za korekcije i nadogradnju njihovog koda.
 
 
 %\begin{center}
@@ -890,9 +892,8 @@ Ta opcija omogućava iskusnijim članovima tima (senior developer, product manag
 Materijal je prepun anglizama, što odstupa od uobičajenih akademskih standarda pisanja. Međutim, s obzirom na ciljni auditorij, mišljenja smo da bi pokušaj prevođenja na maternji jezik izazvao više konfuzije nego što bi pomogao u razumjevanju sadržaja.
 
 Uzmimo za primjer \href{http://translate.google.com/#en/hr/commit}{\color{blue}{''commit''}} operaciju.
-Uzevši u obzir kontekst, ''commit'' operacijom se promjene šalju - predaju u lokalni repozitorij.
-Stoga bi prevod najadekvatnije bilo koristiti riječ ''predaj'' na bosanskom jeziku.
-Koliko bi prevoda ovih termina bio neprimjeren, zorno pokazuje pokušaj prevoda opcija na sljedećem ekranu:
+''Commit'' operacijom se promjene šalju - predaju u lokalni repozitorij.
+Stoga je prevod ''predaj'' vjerovatno najpogodniji. Međutim, kada taj prevod primjenili na sljedeći ekran:
 
 \begin{figure}[H]
 \centering
@@ -900,7 +901,7 @@ Koliko bi prevoda ovih termina bio neprimjeren, zorno pokazuje pokušaj prevoda 
 \caption{Prevod na bosanski - nemoguća misija}
 \end{figure}
 
-Stoga se termini ''hardware'', ''software'', ''commit'', ''push'', ''merge'', ''branch'' u materijalu koriste isključivo u izvornoj formi.
+dobili bi više-manje nerazumljiv sadržaj. Pored toga, developerski alati nisu lokalizirani. Stoga bi developer tokom korištenja alata (npr. git klijenta) stalno imao dodatnu operaciju prevoda (predaj -> commit). To je razlog zbog koga se termini ''commit'', ''push'', ''merge'', ''branch'' u materijalu koriste isključivo u izvornoj formi - na engleskom jeziku, ili kao anglizmi (merdžiranje, puširanje i sl.).
 
 \chapter{Software toolset}
 \begin{enumerate}
