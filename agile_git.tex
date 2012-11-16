@@ -44,7 +44,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.9.0}
+\verzija {0.9.5}
 
 \mentor{mr. Adil Joldić}
 
@@ -60,7 +60,7 @@
 
 Dokument na bazi konkretnog primjera\footnote{"HOWTO" stil} objašnjava uobičajeni developerski `workflow' pri korištenju GIT `Source Code Management' (SCM) alata. 
 U primjeru se koriste GIT web servisi `Github'\footnote{\url{https://www.github.com}} i `Gitlab'\footnote{\url{https://gitlab.knowhow.out.ba}, \url{http://gitlabhq.com}}.
-Čitalac će upoznati osnovne operacije GIT klijenta i način korištenje navedenih web servisa.
+Prikazane su glavne operacije GIT klijenta koristeći navedene web servise.
 
 
 \keywords{open source software, OSS, Source code management, SCM, DSCM, Version control, GIT}
@@ -74,21 +74,15 @@ U primjeru se koriste GIT web servisi `Github'\footnote{\url{https://www.github.
 \section{`Source code management' (SCM) software}
 
 `Source code management' (SCM) software obezbjeđuje pohranu različitih verzija programskog koda u zajednički repozitorij. 
-Iako je prvobitna ovih alata bilo čuvanje programskog koda, oni se mogu koriste za za pohranu (verzioniranje) svih artifakta softverskog projekta uključujući dokumentaciju, dijagrame, binarni kod.
-Ovaj software se često naziva i `Version control' software.
-
+Iako je primarna namjena alata bilo čuvanje programskog koda, oni se mogu koristiti za za pohranu (verzioniranje) svih artifakta softverskog projekta uključujući dokumentaciju, dijagrame, kao i  binarni kod. Ovaj software se često naziva i `Version control' software.
 Sa stanovišta arhitekture, SCM sistemi se dijele na centralizovane i distribuirane (DSCM).
 
 \subsection{Centralizirani (mrežni) SCM}
 
-Najpoznatiji predstavnici su `CVS' i `Subversion'. `CVS' je među prvim SCM alatima-ima koji je postigao veliku popularnost.
-
-`Subversion' je uveo značajna tehnička unapređenja, ali je arhitekturalno identičan svom predhodniku. Oba alata su `open source' software (OSS).
+Najpoznatiji predstavnici su `CVS' i `Subversion'. `CVS' je među prvim SCM alatima-ima koji je postigao veliku popularnost. `Subversion' je uveo značajna tehnička unapređenja, ali je arhitekturalno identičan svom predhodniku. Oba alata su `open source' software (OSS).
 
 Njihova glavna karakakteristika je klasična `client-server' arhitektura. Da bi se SCM operacije na klijentu izvršavale, neophodna je dostupnost SCM servera.
-Razlog je taj što se istorija promejan nalazi isključivo na serveru.
-
-Ova karakteristika danas se smatra ključnim nedostatkom centraliziranih SCM-ova
+Razlog je taj što se istorija promejan nalazi isključivo na serveru. Ova karakteristika danas se smatra ključnim nedostatkom centraliziranih SCM-ova
 
 \subsection{Distribuirani SCM (DSCM)}
 
@@ -97,7 +91,7 @@ Sami developeri određuju funkciju pojedinačnih repozitorija. Glavni repozitori
 Razmjena podataka (`commit'-a) se vrši sistemom sinhronizacije repozitorija klijenta i servera (`merge' proces). 
 Usljed nedostatka centralnog repozitorija, sasvim su normalne situacije u kojima se repozitoriji koji se usaglašavaju - sinhronizuju u stanju konflikta.
 U tom slučaju potrebno je izvršiti manuelni ''merge'' proces kojim se promjene primljene iz različitih izvora usaglašavaju.
-Iako ovaj koncept na prvi pogled djeluje kao izvor velikih glavobolja, pravilna primjena DSCM alatima daje veliku fleksibilnost i niz prednosti u odnosu na centralizirane SCM-ove.
+Ovaj koncept otvara mogućnost da se pojave značajni problemi unutar većeg tima prilikom usaglašavanja repozitorija. Međutim, praksa je pokazala da se pravilnom primjenom obezbjeđuje niz prednosti, prije svega \emph{fleksibilnost} u radu.
 
 Jedna od ključnih prednosti DSCM-ova je `off-line' režim rada, kao posljedica činjenice da svaki korisnik ima sopstveni lokalni repozitorij promjena.
 
@@ -112,10 +106,9 @@ Autor nudi komercijalni servis \href{https://gitlab.com}{\color{blue}{''gitlab.c
 S obzirom da se radi OSS software-u, korisnici bez ograničenja mogu kreirati sopstvene "gitlab" server-e.
 U ovom materijalu se koristi server \href{https://gitlab.knowhow.out.ba}{\color{blue}{''gitlab.knowhow.out.ba''}} instaliran upravo na taj način.
 
-\section{git klijent}
+\section{Git klijent}
 
-Tvorac git-a je kreator Linux-a, Linus Torvalds.
-Prve verzije git-a su se mogle koristiti samo ''unix-like'' sistemima\footnote{git se mogao koristiti na Windows-ima putem ''cygwin'' emulacijskog sloja, ali je rad sa iole većim repozitorijem bio veoma spor}. 
+Tvorac git-a je kreator Linux-a, Linus Torvalds. Prve verzije git-a su se mogle koristiti samo ''unix-like'' sistemima\footnote{git se mogao koristiti na Windows-ima putem ''cygwin'' emulacijskog sloja, ali je rad sa iole većim repozitorijem bio veoma spor}. 
 Popularnost i otvorenost projekta je brzo rezultirala i ''native'' git verzijom klijenta.
 
 U našem primjeru je radi jednostavnosti korištenja na ''Windows'' klijentu korišten \href{http://railsinstaller.org/}{\color{blue}{''Rails installer''}}. 
@@ -159,13 +152,16 @@ ssh:
 Q== Bakir Husremovic <bakir.husremovic@gmail.com>
 \end{lstlisting}
 
+\subsection{Git resursi}
+
+
 \subsection{Gitlab ssh pristup}
 
-Gitlab web servis obezbjeđuje smještaj git repozitorija na server putem ssh i http(s) protokola. 
-Takođe obezbjeđuje upravljanje korisnicima, pregled git repozitorija kao i niz drugih funkcija vezanih za rad na softverskim projektima\foonote{''Issues'', ''Wikies'', ''Code Snippets'', 'Code comments'}.
-U ovom materijalu ćemo se fokusirati na git funkcije. 
+Gitlab web servis obezbjeđuje smještaj git repozitorija na server putem ssh i http(s) protokola.
+Takođe obezbjeđuje upravljanje korisnicima, pregled git repozitorija kao i niz drugih funkcija vezanih za rad na softverskim projektima\foonote{ ''Issues'', ''Wikies'', ''Code Snippets'', ''Code comments''}.
+U ovom materijalu ćemo se fokusirati na git funkcije.
 
-Korisnik na svom računu podešava ssh ključ:
+Podesimo autentifikaciju korisnika putem ssh ključa\footnote{O podešenju unix/linux klijenta pogledajte ovdje \url{https://help.github.com/articles/generating-ssh-keys}}:
 
 \begin{figure}[H]
 \centering
@@ -177,14 +173,13 @@ Korisnik na svom računu podešava ssh ključ:
 
 \subsection{Novi projekat}
 
-Kreirajmo naš ''helo\_ruby'' projekat.
+Nakon podešenja ključ za udaljeni pristup, možemo kreirati naš prvi projekat ''helo\_ruby'':
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_new_project.png}
 \caption{Gitlab: novi projekat}
 \end{figure}
-
 
 \begin{figure}[H]
 \centering
@@ -202,21 +197,24 @@ Nakon što je git repozitorij kreiran, dobijamo informacije o operacijama koje s
 
 \section{Development}
 
+Na ''gitlab'' serveru je sve spremno za rad na našem prvom projektu. Napomenimo da u ovom trenutku na projektu radi samo jedan developer - Bakir. Kao kreator, on je ujedno i vlasnik projekta.
+
 \subsection{Prvi ''commit''}
+
+Slijedi rad na developerskoj radnoj stanici. Bakir će na svom "Windows" desktopu napraviti git repozitorij, te u njega smjestiti prvu verziju aplikacije.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_first_commit.png}
-\caption{Prve operacije na git repozitoriju: add, commit, push}
+\caption{Prve operacije na git repozitoriju: init, add, commit, push}
 \end{figure}
 
-
-Na konzoli smo napravili prve testove našeg hello.rb programa. Takođe, na gitlab konzoli, nakon "push" operacije programski kod vidimo i na serveru:
+Na konzoli su napravljeni prvi testovi hello.rb programa. Takođe, na gitlab web konzoli je nakon "push" operacije programski kod ''stigao'' i na server:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_first_commit_2.png}
-\caption{Izvorni kod našeg programa je na gitlab serveru}
+\caption{Izvorni kod programa na gitlab serveru}
 \end{figure}
 
 \begin{figure}[H]
@@ -225,7 +223,7 @@ Na konzoli smo napravili prve testove našeg hello.rb programa. Takođe, na gitl
 \caption{''Označavamo'' prvu verziju našeg software-a: release 0.1.0}
 \end{figure}
 
-Napravimo pregled izvršenih operacija:
+Napravimo pregled do sada izvršenih operacija:
 \begin{enumerate}
   \item \texttt{git init} - kreiramo .git direktorij, lokalni git repozitorij
   \item \texttt{git remote add origin} - navodimo lokaciju našeg udaljenog - serverskog git repozitorija 
@@ -235,21 +233,101 @@ Napravimo pregled izvršenih operacija:
   \item \texttt{git push origin master} - šaljemo master\footnote{novokreirani git repozitorij uvijek ima ''master'' branch - to je podrazumjevani (eng. default) branch} ''branch'' na server 
 \end{enumerate}
 
-Nakon svih ovih operacija možemo vidjeti pregled operacija koje su do sada izvršene na projektu:
+\subsection{Kreriranje novog ''branch''-a}
+
+Nakon što je realizovao prvu verziju, Bakir kreće u izradu varijante aplikacije koja će moći preuzeti parametre sa komandne linije.
+
+Pretpostavimo da se o zahtjevnom programskom zahvatu (rad tokom više radnih dana). Iz tog razloga ćemo otvoriti poseban branch ''parametri''.
+Na taj način će tokom rada na ''parametar'' branch-u ''master'' branch ostati funkcionalan.
+
+
+\setlength{\parindent 0cm}
+Kreiramo novi branch:
+
+C:/Sites/hello\_ruby\$ \texttt{git branch parametri}
+\begin{lstlisting}
+  origin/HEAD -> origin/master
+  origin/master
+  origin/parametri
+\end{lstlisting}
+
+Prebacujemo se na rad sa ''parametri'' branch-om.
+
+C:/Sites/hello\_ruby\$ \texttt{git checkout parametri}
+\begin{lstlisting}
+Branch parametri set up to track remote branch parametri from origin.
+Switched to a new branch 'parametri'
+\end{lstlisting}
+
+Pišemo novu verziju aplikacije, pa je testiramo.
+
+Tokom pisanja nove verzije aplikacije, vršimo ''commit'' promjena u lokalni repozitorij:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_branch_commit_with_vim}
+\caption{git commit, unos ''commit'' poruke sa ''vim'' editorom}
+\end{figure}
+
+''Commit'' se vrši nakon svakog značajnijeg seta promjena na projektu.  Između dva ''commit''-a ne treba praviti velike pauze. Poželjno je da vrijeme između dva commit-a ne bude duže od par sahata. Treba izbjegavati velike ''commit''-e. Dugački commiti su teški za praćenje i otklanjanje grešaka.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_branch_3.png}
+\caption{Testiranje aplikativnog koda ''parametri'' branch-a}
+\end{figure}
+
+Kada smo završili sa pisanjem nove verzije aplikacije, vršimo ''push'' na server:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_branch.png}
+\caption{Novi branch ''parametri'' na gitlab-u}
+\end{figure}
+
+Na web konzoli vidimo sve brach-ove i tag-ove našeg projekta:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_branch_2.png}
+\caption{Gitlab - pregled ''branch''-ova i ''tag''-ova}
+\end{figure}
+
+Kada se pozicioniramo na branch, vidimo sve ''commit''-e izvršene na tom branch-u:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_new_branch_4_commits.png}
+\caption{Gitlab commit-i na parametar branch-u}
+\end{figure}
+
+\subsection{''Merge'' promjena između dva ''branch''-a}
+
+Nakon što su planirane operacije unutar ''parametar'' branch-a završene, promjene integrišemo u glavni - ''master'' branch.
+
+To vršimo na sljedeći način:
+\begin{enumerate}
+  \item \texttt{git checkout master} - prebacujemo se na ''master'' brach
+  \item \texttt{git merge parametri} - vršimo vršimo ''merge'' (spajajnje, integraciju) promjena iz ''parametri'' u  master branch
+  \item \texttt{git tag 0.2.0} - označavamo verziju 0.2.0
+  \item \texttt{git push master --tags} - pushiramo master branch, sa tagom na server
+\end{enumerate}
+
+Na gitlab serveru provjeravamo da li su promjene ''došle'' na server:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/gitlab_tags.png}
+\caption{Gitlab pregled tagova}
+\end{figure}
+
+Pregled svih operacija koje su do sada izvršene na projektu nalazi se na \href{https://gitlab.knowhow.out.ba/hello\_ruby}{\color{blue}{URL-u projekta}}:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_project_show.png}
 \caption{Glavne aktivnosti na projektu}
 \end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/gitlab_tags.png}
-\caption{Pregled tagova}
-\end{figure}
-
 
 \section{Public mirror ''hello\_ruby'' projekta na Github-u}
 
@@ -277,10 +355,12 @@ Kreiranje novog korisničkog računa na github-u:
 \caption{Github ssh profil}
 \end{figure}
 
+Ako razvoj obavlja na više radnih stanica, developer za svaku od njih dodaje poseban ssh ključ.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/github_ssh_profile_2.png}
-\caption{Github ssh profil /2}
+\caption{Github pregled aktivnih ssh ključeva}
 \end{figure}
 
 \subsection{Github kreiranje repozitorija}
@@ -291,36 +371,48 @@ Kreiranje novog korisničkog računa na github-u:
 \caption{Github novi repozitorij}
 \end{figure}
 
+Nakon kreiranja servis nam prikazuje git operacije za uspostavljanje git repozitorija na radnoj stanici developera:
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/github_new_repos_2.png}
-\caption{Github novi repozitorij / 2}
+\caption{Github novi repozitorij - informacije o korištenju}
 \end{figure}
 
 \subsection{Kreiranje mirrora projekta na github-u}
 
+S obzirom da mi već imamo remote ''origin'' koji ukazuje na gitlab server, radimo modifikaciju linija koje nam je predložio github:
+
+\begin{enumerate}
+  \item \texttt{git remote add github gitlab@github.com:bakir/hello\_ruby.git} - podesi github remote repozitorij
+ \item \texttt{git push github master --tags} - pošalji master branch na github, zajedno sa tagovima
+ \item \texttt{git push github parametri} - pošalji parametri branch na github
+\end{enumerate}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/github_push_branches_and_tags.png}
-\caption{Pošalji sve branchove i tag-ove na github repozitorij}
+\caption{Repozitorij na github-u nakon ''push'' operacija}
 \end{figure}
 
-\section{Nova verzija}
+Na kraju, imamo github mirror našeg projekta \url{https://github.com/bakir/hello\_ruby}
 
-Vrijeme je za novu verziju, zato vršimo tagiranje git repozitorija sa ''0.2.0'':
+%\section{Nova verzija}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=16cm]{img/github_new_tag.png}
-\caption{Github - novi tag}
-\end{figure}
+%Vrijeme je za novu verziju, zato vršimo tagiranje git repozitorija sa ''0.2.0'':
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=16cm]{img/github_new_tag.png}
+%\caption{Github - novi tag}
+%\end{figure}
 
 
 \section{Gitlab ''Diff'' funkcija}
 
 Gitlab nam obezbjeđuje jednostavan pregled diff-ova (razlika) između različitih tačaka unutar git repozitorija.
 
-Te tačke mogu biti stanje branch-a ili tag-a. Pogledajmo ''diff'' verzija 0.1.0 i 0.2.0:
+Te tačke mogu biti stanje branch-a ili tag-a. Pogledajmo ''diff'' između verzija 0.1.0 i 0.2.0:
 
 \begin{figure}[H]
 \centering
@@ -336,24 +428,19 @@ Te tačke mogu biti stanje branch-a ili tag-a. Pogledajmo ''diff'' verzija 0.1.0
 \end{figure}
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=16cm]{img/github_new_tag.png}
-\caption{Github - novi tag}
-\end{figure}
-
-
 \section{Novi developer}
 
-\subsection{Gitlab: Uključenje novog developera u projekat}
+\subsection{Uključenje novog developera u projekat na gitlab-u}
 
-Vlasnik projekta ''hello\_ruby'' Bakir uključuje novog developera u projekat Ernad:
+Vlasnik projekta ''hello\_ruby'' Bakir uključuje novog developera Ernad u projekat:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/gitlab_add_new_member_to_project.png}
 \caption{Gitlab: dodaj novog člana u projekat}
 \end{figure}
+
+Pri tome mu daje maksimalna prava (Master uloga).
 
 \begin{figure}[H]
 \centering
@@ -363,7 +450,7 @@ Vlasnik projekta ''hello\_ruby'' Bakir uključuje novog developera u projekat Er
 
 \section{Email notifikacija}
 
-Developeri primaju email notifikacije o svim bitnim događajima na projektu:
+Developer primaju email notifikacije o svim bitnim događajima na projektu. Tako Ernad prima informaciju o uključenju u ''hello\_ruby'':
 
 \begin{figure}[H]
 \centering
@@ -371,8 +458,7 @@ Developeri primaju email notifikacije o svim bitnim događajima na projektu:
 \caption{Gitlab email notifikacija}
 \end{figure}
 
-
-\subsection{git clone}
+\subsection{Kloniranje repozitorija}
 
 \setlength{\parindent}{0cm}
 Prvi korak novog developera je kloniranje repozitorija projekta na svoj desktop. 
@@ -390,6 +476,8 @@ Receiving objects: 100% (16/16), done.
 Resolving deltas: 100% (1/1), done.
 \end{lstlisting}
 
+Pregled branchova na udaljenom repozitoriju:
+
 hernad@hello\_ruby\$ \texttt{git branch -r}
 \begin{lstlisting}
   origin/HEAD -> origin/master
@@ -397,41 +485,21 @@ hernad@hello\_ruby\$ \texttt{git branch -r}
   origin/parametri
 \end{lstlisting}
 
+\subsection{Novi developer, realizacija nove funkcije}
 
-hernad@hello\_ruby\$ \texttt{git branch parametri}
-\begin{lstlisting}
-  origin/HEAD -> origin/master
-  origin/master
-  origin/parametri
-\end{lstlisting}
+Ernad je senior developer. Uočava da njegov mladi kolega Bakir nije obradio bitne stavke kod obrade ulaznih parametara putem konzole.
 
+Otvara novi branch ''babo'', da ne bi remetio stanje u glavnom branchu-u.
 
-hernad@hello\_ruby\$ \texttt{git checkout parametri}
-\begin{lstlisting}
-Branch parametri set up to track remote branch parametri from origin.
-Switched to a new branch 'parametri'
-\end{lstlisting}
+hernad@hello\_ruby\$ \texttt{git branch babo}
 
+hernad@hello\_ruby\$ \texttt{git checkout babo}
 
-hernad@hello\_ruby\$ \texttt{git checkout master}
-\begin{lstlisting}
-Switched to branch 'master'
-\end{lstlisting}
+\subsection{Git log}
 
+Vrši niz promjena. Pregled tih promjena se može pogledati usa git log operacijom:
 
-hernad@hello\_ruby\$ \texttt{git branch -l}
-\begin{lstlisting}
-* master
-  parametri
-\end{lstlisting}
-
-hernad@hello\_ruby\$ \texttt{git tag -l}
-\begin{lstlisting}
-0.1.0
-0.2.0
-\end{lstlisting}
-
-Pregled lokalnog ''commit'' log-a:
+Pregled svog ''commit'' log-a:
 
 hernad@hello\_ruby\$ \texttt{git log}
 \begin{lstlisting}
@@ -467,18 +535,7 @@ Date:   Mon Nov 12 14:15:45 2012 +0100
     obradjuje decimalne brojeve
 \end{lstlisting}
 
-
-\subsection{Kreriranje novog ''branch''-a}
-
-Novi developer kreće u izradu varijante aplikacije koja će preuzeti parametre kod poziva aplikacije.
-
-Da ne bi ometao rad na ''master'' branchu-u, otvara branch ''parametri''.
-
-hernad@hello\_ruby\$ \texttt{git branch babo}
-
-hernad@hello\_ruby\$ \texttt{git checkout babo}
-
-Pošaljimo na server novi branch ''babo'':
+Kada završi promjene, Ernad vrši ''push'' svog brancha na server:
 
 hernad@hello\_ruby\$ \texttt{git push origin babo}
 \begin{lstlisting}
@@ -491,8 +548,40 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
  * [new branch]      babo -> babo
 \end{lstlisting}
 
-\section{Zajednički rad}
+\section{Zajednički rad - gitlab ''merge request''}
 
+Ernad informiše bakira putem gitlab ''Merge request'' opcije od svom radu:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{img/gitlab_merge_request.png}
+\caption{Merge request}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{img/gitlab_merge_request_2.png}
+\caption{Merge request}
+\end{figure}
+
+Bakir prima informaciju:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{img/gitlab_merge_request_email_notification.png}
+\caption{Bakir je o ''merge request''-u informisan putem email-a}
+\end{figure}
+
+Te odgovara pozitivno tako što vrši merge ''babo'' branch-a u ''master'' branch.
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{img/gitlab_merge_request_answer.png}
+\caption{Merge request, Bakirov odgovor}
+\end{figure}
+
+\subsection{Git pull}
+
+Git ''pull'' operacija uzima promjene sa servera. U slučaju novog branch-a, git klijent informiše o tome da se pojavio novi ''branch'', te da developer treba poduzeti odgovarajuće operacije da bi taj branch integrirao u svoj repozitorij:
 
 C:/Sites/hello\_ruby> \texttt{git pull}
 \begin{lstlisting}
@@ -522,6 +611,8 @@ use something like the following in your configuration file:
 See git-config(1) for details.
 \end{lstlisting}
 
+Pregled svih udaljenih branchova:
+
 C:/Sites/hello\_ruby> \texttt{git branch -r}
 \begin{lstlisting}
   github/master
@@ -531,11 +622,15 @@ C:/Sites/hello\_ruby> \texttt{git branch -r}
   origin/parametri
 \end{lstlisting}
 
+Bakir se operacijom ''checkout'' brancha ''babo'' povezuje sa udaljenim brahcno-om istog imena:
+
 C:/Sites/hello\_ruby> \texttt{git checkout babo}
 \begin{lstlisting}
 Branch babo set up to track remote branch babo from origin.
 Switched to a new branch 'babo'
 \end{lstlisting}
+
+Njegov radni branch je sada ''babo'':
 
 C:/Sites/hello\_ruby> \texttt{git branch -l}
 \begin{lstlisting}
@@ -544,11 +639,17 @@ C:/Sites/hello\_ruby> \texttt{git branch -l}
   parametri
 \end{lstlisting}
 
+Međutim, on ne želi raditi na tom branchu, nego ga integrira u master branch operacijom git merge. Prvo se prebacuje na ''master'':
+
 C:/Sites/hello\_ruby> \texttt{git checkout master}
 \begin{lstlisting}
 Switched to branch 'master'
+\end{lstlisting}
 
-C:\Sites\hello_ruby>git merge babo
+pa onda vrši merge babo branch-a:
+
+C:/Sites/hello\_ruby>git merge babo
+\begin{lstlisting}
 Updating feab5f1..585688a
 Fast-forward
  README.md |   36 +++++++++++++++++++++++++++++++++++-
@@ -556,7 +657,11 @@ Fast-forward
  2 files changed, 67 insertions(+), 7 deletions(-)
 \end{lstlisting}
 
+Bakir postavlja novu verziju aplikacije 0.3.0:
+
 C:/Sites/hello\_ruby> \texttt{git tag 0.3.0}
+
+Sve promjene koje je napravio (merge u master branch, novi tag 0.3.0) šalje na server:
 
 C:/Sites/hello\_ruby> \texttt{git push github --tags}
 \begin{lstlisting}
@@ -569,9 +674,9 @@ To git@github.com:bakir/hello_ruby.git
  * [new tag]         0.3.1 -> 0.3.1
 \end{lstlisting}
 
-\section{Brisanje privremenog ''branch''-a }
+\subsection{Brisanje privremenog ''branch''-a }
 
-Nakon merdžiranja branch-a, nema potrebe za brisanjem branch-a ''babo''.  
+Nakon merdžiranja branch-a koji je bio privremene prirode, radi preglednosti vršimo njegovo brisanje.
 
 Brišemo branch na lokalnom repozitoriju:
 
@@ -598,6 +703,8 @@ C:/Sites/hello\_ruby> \texttt{git branch -rd origin/babo}
 Deleted remote branch origin/babo (was 585688a).
 \end{lstlisting}
 
+Šaljemo promjene o brisanju na server. Naglašavamo operaciju ''delete'':
+
 C:/Sites/hello\_ruby> \texttt{git push origin --delete babo}
 \begin{lstlisting}
 To git@gitlab.knowhow.out.ba:hello_ruby.git
@@ -606,15 +713,16 @@ To git@gitlab.knowhow.out.ba:hello_ruby.git
 
 \section{Git unutar IDE-a}
 
-%http://gitscc.codeplex.com/
+Git ima podršku za sve poznate IDE-alate:
 
-%Git Source Control Provider is a Visual Studio extension that integrates Git with Visual Studio.
-
-%Idea Idea IDE http://www.jetbrains.com/idea/webhelp/using-git-integration.html
+\begin{itemize}
+  \item Microsoft visual studio ''GIT Source Control Provider'' - \url{http://gitscc.codeplex.com}
+  \item Jetbrains Idea - \url{http://www.jetbrains.com/idea/webhelp/using-git-integration.html}
+  \item Netbeans - \url{http://netbeans.org/kb/docs/ide/git.html}
+  \item Eclipse - \url{http://www.eclipse.org/egit}
 
 \subsection{Eclipse IDE}
 
-%
 Instalacijom \href{http://www.vogella.com/articles/EGit/article.html}{\color{blue}{EGit plugin-a}} možemo unutar našeg IDE-a vršiti operacije nad git repozitorijom.
 
 Untar našeg projekta podešavamo, git repozitorij (s obzirom da on već postoji):
