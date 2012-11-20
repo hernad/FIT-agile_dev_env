@@ -1,24 +1,21 @@
 \documentclass[times, utf8, seminar]{fit}
 
-
+\usepackage{verbatim}
 %\batchmode
 %\usepackage{booktabs}
 \usepackage{listings}
 \usepackage{longtable}
 \usepackage{xcolor}
 \usepackage{float}
-\usepackage{enumitem}
+
 \usepackage{hyperref}
-\usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage{etoolbox}
 \usepackage{datetime}
 \usepackage{needspace}
 \usepackage[compact]{titlesec}
-\usepackage{verbatim}
 %\usepackage{hyperref}
 %\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-
 
 %http://stackoverflow.com/questions/3279194/remove-spacing-before-chapter-in-latex
 %\usepackage{titlesec}
@@ -32,25 +29,34 @@
 
 % http://tex.stackexchange.com/questions/40436/vertical-space-before-section-title-with-titlesec
 
-%\usepackage[compact]{titlesec}
+\usepackage[compact]{titlesec}
 \usepackage{setspace}
 \onehalfspacing
 
 %\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
 %\titlespacing{\section}{0pt}{0pt}{0pt}
 
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{underscore}
+
 \begin{document}
 \widowpenalty=300
 \clubpenalty=300
+
 
 \lstset{
   language=bash,
   backgroundcolor=\color{gray!25},
   basicstyle=\ttfamily \footnotesize,
   breaklines=true,
-  prebreak=\raisebox{0ex}[0ex][0ex] \hookleftarrow,
-  columns=fullflexible
+  prebreak=\raisebox{0ex}[0ex][0ex] {\ensuremath{\hookleftarrow}},
+  columns=fullflexible,
+  keywords={},
+  mathescape=false
 }
+
 
 
 \title{Agilni \emph{software development},\newline test \& deployment}
@@ -72,12 +78,12 @@
 \begin{abstract}
 
 U ovom radu se na bazi konkretnog primjera\footnote{"HOWTO" stil} prezentuje infrastruktura za testiranje i instalaciju u produkcijskom okruženju (''test'' \& ''deploy'' infrastructure). Obradićemo instalaciju ''Gitlab'' servera koristeći sljedeće tehnologije i servise:
-\begin{enumerate}
+\begin{itemize}
   \item Github/git \url{https://github.com/hernad/gitlabhq}
   \item Vagrant  \url{http://vagrantup.com/}
   \item Chef opscode \url{http://www.opscode.com/chef}
   \item Rackspace cloud \url{http://www.rackspace.com/cloud}
-\end{enumerate}
+\end{itemize}
 
 \keywords{open source software, OSS, chef, vagrant, rackspace, git, github}
 \end{abstract}
@@ -89,14 +95,14 @@ U ovom radu se na bazi konkretnog primjera\footnote{"HOWTO" stil} prezentuje inf
 %\vspace*{-1.2cm}
 \section{Gitlab}
 Gitlab je web servis koji obezbjeđuje upravljanje softverskim projektima. Gitlab obezbjeđuje sljedeće funkcije:
-\begin{enumerate}
+\begin{itemize}
   \item Git source code management - hostiranje izvornog koda unutar git repozitorija
   \item Issue management - elektronsko praćenje aktivnosti developera
   \item Milestone management - pojedine aktivnosti (issues) se mogu vezati uz odgovarajuću verziju (iteraciju) - ''milestone''
   \item Code snippets (code templates) - publikovanje uzoraka izvornog koda koje će tim koristiti
   \item Code/Commit review - komentarisanje izvornog koda
   \item Wikies - wikiji omogućavaju timski razvoj projektne dokumentacije
-\end{enumerate}
+\end{itemize}
 
 \section{Gitlab arhitektura}
 ''Gitlab'' je složen softverski sistem sastaljen od sljedećih komponenti:
@@ -126,7 +132,7 @@ Naravno, produkcijskoj instalaciji sistema\footnote{instalaciji sistema namjenje
 ''Vagrant'' je popularni alagt koji su ''devops'' pobornici prihvatili kao alat za izgradnju testnog okruženja. 
 ''Vagrant'' automatizira instaciju i kreiranje ''Virtual Box'' virtuelnih sesija\footnote{\url{https://www.virtualbox.org}}. Konfiguracija tih sesija se vrši uz pomoć ''chef configuration management'' sistema\footnote{može da se koristi i ''Puppet'' configuration managment sistem}.
 
-\subsection{Instalacija testnog gitlab servera}
+\section{Instalacija testnog gitlab servera}
 
 Preuzmimo vagrant\_gitlab projekat sa Github-a:
 
@@ -141,6 +147,7 @@ vagrant\_gitlab\$ \verb+./install.sh+
 Komandom \verb+up.sh+ setujemo sistemske varijable, te kreiramo virutelnu sesiju:
 
 vagrant\_gitlab\$ \verb+source up.sh+
+
 \begin{lstlisting}
 OS_AUTH_SYSTEM=rackspace
 OS_AUTH_URL=https://identity.api.rackspacecloud.com/v2.0/
@@ -165,7 +172,7 @@ vagrant\_gitlab\$ \verb+source ./up.sh+
 [default] -- 22 => 2222 (adapter 1)
 [default] Creating shared folders metadata...
 ...
-[default] Waiting for VM to boot. This can take a few minutes. <<<<<<<<< virtualbox sesija kreirana
+[default] Waiting for VM to boot. This can take a few minutes. <<<<<<< virtualbox sesija kreirana
 [default] VM booted and ready for use!
 [default] Detected Virtualbox Guest Additions 4.2.4 --- OK.
 [default] Configuring and enabling network interfaces...
@@ -174,7 +181,7 @@ vagrant\_gitlab\$ \verb+source ./up.sh+
 [default] -- v-csc-1: /tmp/vagrant-chef-1/chef-solo-1/cookbooks
 [default] Running provisioner: Vagrant::Provisioners::ChefSolo...
 [default] Generating chef JSON and uploading...
-[default] Running chef-solo... <<<<<<<<<<<<<<<<<<<<<<<<< Pokreće se chef-solo na virtualbox sesiji
+[default] Running chef-solo... <<<<<<<<<<< Pokrece se chef-solo na virtualbox sesiji
 stdin: is not a tty
 [Mon, 19 Nov 2012 11:33:15 +0000] INFO: *** Chef 0.10.10 ***
 [Mon, 19 Nov 2012 11:33:15 +0000] INFO: Setting the run_list to ["recipe[build-essential]", "recipe[rvm::system]", "recipe[mysql::client]", "recipe[mysql::ruby]", "recipe[postgresql::client]", "recipe[postgresql::ruby]", "recipe[gitlab::default]", "recipe[gitlab::nginx]", "recipe[gitlab::database]"] from JSON
@@ -196,7 +203,7 @@ stdin: is not a tty
 \end{lstlisting}
 
 
-\chapter{Gitlab merge from upstream}
+\section{Gitlab merge from upstream}
 
 \setlength{\parindent 0cm}
 gitlabhq\$ \verb+git fetch gitlabhq+
@@ -209,7 +216,6 @@ Resolving deltas: 100\% (262/262), completed with 122 local objects.
 From git://github.com/gitlabhq/gitlabhq
    dd4d124..3c7806c  master     -> gitlabhq/master
 \end{lstlisting}
-
 
 gitlabhq\$ \verb+git branch -l+
 \begin{lstlisting}
@@ -250,8 +256,7 @@ index 51ab207..19eb8eb 100644
 \end{lstlisting}
 
 
-gitlabhq\$ git merge gitlabhq/master
-
+gitlabhq\$ \verb+git merge gitlabhq/master+
 \begin{lstlisting}
 Removing lib/gitlab/encode.rb
 Removing gitlab
@@ -295,9 +300,7 @@ Merge made by the recursive strategy
  create mode 100644 vendor/assets/javascripts/g.raphael-min.js
 \end{lstlisting}
 
-
-
-gitlabhq\$ git push origin master
+gitlabhq\$ \verb+git push origin master+
 
 \begin{lstlisting}
 Counting objects: 581, done.
@@ -307,7 +310,6 @@ Writing objects: 100\% (350/350), 45.00 KiB, done.
 Total 350 (delta 267), reused 342 (delta 262)
 To git@github.com:hernad/gitlabhq.git
    038ac96..28f5807  master -> master
-
 \end{lstlisting}
 
 \begin{figure}[H]
@@ -330,10 +332,9 @@ To git@github.com:hernad/gitlabhq.git
 \end{figure}
 
 
-\chapter{Instalacija gitlab-a na rackspacecloud server}
+\chapter{Instalacija gitlab-a na rackspace cloud server}
 
 \begin{lstlisting}
-
 Server sa imenom gitlab.knowhow.out.ba vec postoji !
 Server: gitlab.knowhow.out.ba IP: 198.101.149.48
 server je kreiran !
@@ -384,20 +385,18 @@ Restartujem server gitlab.knowhow.out.ba
 real15m29.472s
 user0m3.928s
 sys0m0.387s
-
 \end{lstlisting}
 
-
-root@gitlab:~# \texttt{sudo su - www-data}
+root@gitlab:~# \verb+sudo su - www-data+
 \begin{lstlisting}
-www-data@gitlab:~$ chefd /opt/gitlab
+www-data@gitlab:~\$ cd /opt/gitlab
 Using /usr/local/rvm/gems/ruby-1.9.3-p327
 Using ruby-1.9.3-p327 with gemset gitlab
 Using /usr/local/rvm/gems/ruby-1.9.3-p327 with gemset gitlab
 \end{lstlisting}
 
 
-www-data@gitlab:/opt/gitlab\$ \texttt{cat /etc/init.d/gitlab | grep ruby}
+www-data@gitlab:/opt/gitlab\$ \verb+cat /etc/init.d/gitlab | grep ruby+
 \begin{lstlisting}
 source "/usr/local/rvm/environments/ruby-1.9.3-p327"
 declare -r GITLAB_RUBY="ruby-1.9.3-p327@gitlab"
