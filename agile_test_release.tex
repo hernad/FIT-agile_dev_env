@@ -90,7 +90,7 @@ U ovom radu se na bazi konkretnog primjera\footnote{"HOWTO" stil} prezentuje inf
 \section{Gitlab}
 Gitlab je web servis koji obezbjeđuje upravljanje softverskim projektima. Gitlab obezbjeđuje sljedeće funkcije:
 \begin{enumerate}
-  \item Git source code management - hostiranje git repozitorija
+  \item Git source code management - hostiranje izvornog koda unutar git repozitorija
   \item Issue management - elektronsko praćenje aktivnosti developera
   \item Milestone management - pojedine aktivnosti (issues) se mogu vezati uz odgovarajuću verziju (iteraciju) - ''milestone''
   \item Code snippets (code templates) - publikovanje uzoraka izvornog koda koje će tim koristiti
@@ -102,12 +102,98 @@ Gitlab je web servis koji obezbjeđuje upravljanje softverskim projektima. Gitla
 ''Gitlab'' je složen softverski sistem sastaljen od sljedećih komponenti:
 \begin{enumerate}
   \item ubuntu linux server
+  \item openssh server za razmjenu git repozitorija putem ssh protokola 
+  \item ''nginx'' web server
+  \item ''postfix'' email server
   \item ''ruby on rails'' framework je korišten za izradu web front-end-a.
   \item ''resque'' za background jobs \url{https://github.com/defunkt/resque}
   \item ''redis'' nosql (koristi ga ''resque'')
   \item ''mysql'' database backend\footnote{može se koristiti i postgresql}
-  \item ''gitolite'' za upravljanje git repozitorijima
+  \item ''gitolite'' perl za upravljanje git repozitorijima
+  \item ''pygments'' python ''source code higlighter''
 \end{enumerate}
+
+\section{''Devops'' metode}
+Instalacija ovako složene infrastruktura traži značajno vrijeme i resurse za postavljanje testnog i produkcijskog okruženja. 
+Agilni razvoj software-a potencira česte promjene i nadogradnje sistema. Testiranje i instalacija tih promjena u produkcijsko okruženje na konvencionalni način traži značajne resurse i vrijeme za realizaciju. Agilni pristup ovim zadacima potencira automatizaciju testnog i produkcijskog okruženje. Manuelne operacije se zamjenjuju atomatiziranim procedurama. Operacije instalacije i održavanja sistema se i same mogu posmatrati kao sofverski projekti.
+Rezultat agilnog pristupa u segmentu instalacije i održavanja softverskog sistema je rezultirao ''Devops''\footnote{\url{http://en.wikipedia.org/wiki/DevOps}} metodama.
+
+\section{Vagrant testno okruženje}
+
+''Chef'' je dobar primjer ''devops'' alata. ''Chef'' recepti (''cookies'') sadrže programe kojim se instaliraju pojedine komponente sistema. Skup tih recepata definiše instalacijsku proceduru.
+
+Naravno, produkcijskoj instalaciji sistema\footnote{instalaciji sistema namjenjenoj krajnjem kurisniku} predhodi testiranje.
+''Vagrant'' je popularni alagt koji su ''devops'' pobornici prihvatili kao alat za izgradnju testnog okruženja. 
+''Vagrant'' automatizira instaciju i kreiranje ''Virtual Box'' virtuelnih sesija\footnote{\url{https://www.virtualbox.org}}. Konfiguracija tih sesija se vrši uz pomoć ''chef configuration management'' sistema\footnote{može da se koristi i ''Puppet'' configuration managment sistem}.
+
+\subsection{Instalacija testnog gitlab servera}
+
+Preuzmimo vagrant\_gitlab projekat sa Github-a:
+
+\$ \verb+git clone git://github.com/hernad/vagrant_gitlab.git+
+
+Install skripta instalira sve potrebne ruby pakete koje će vagrant koristi\footnote{Naravno, prije toga je potrebno imati instalirano ''ruby'' programsko okruženje, preporučeno ''rvm'' ruby okruženje}, kao i sve ''cookbooks'' koje će koristiti ''chef'':
+
+vagrant\_gitlab\$ \verb+./install.sh+
+
+\verb+Vagrantfile+\footnote{\url{https://github.com/hernad/vagrant\_gitlab/blob/master/Vagrantfile}} sadrži konfiguraciju testnog gitlab servera. Vagrantfile nije ništa drugo nego ''ruby'' program. Konkretno, vagrant\_gitlab koristi niz sistemskih varijabli (OS environment)  kao parametre instalacije sistema\footnote{Parametri sadrže sve ono što su privatni podaci korisnika i što ne treba biti javno dostupno - imena hostova, korisnika, lozinke i sl.}
+
+Komandom \verb+up.sh+ setujemo sistemske varijable, te kreiramo virutelnu sesiju:
+
+vagrant\_gitlab\$ \verb+source up.sh+
+\begin{lstlisting}
+OS_AUTH_SYSTEM=rackspace
+OS_AUTH_URL=https://identity.api.rackspacecloud.com/v2.0/
+OS_DNS_DOMAIN=test.out.ba
+OS_ENVARS='GMAIL_USER=bring.out.sa@gmail.com GMAIL_PASSWORD=pwd1 MYSQL_ROOT_PWD=pwd2 MYSQL_PWD=pwd3 GITHUB_USER=hernad GITHUB_PROJECT=vagrant_gitlab OS_SERVER_NAME=gitlab-stable.test.out.ba OS_DNS_DOMAIN=test.out.ba GITLAB_VERSION=v3.0.2 GITLAB_REPOS=git://github.com/hernad/gitlabhq.git'
+OS_NO_CACHE=1
+OS_PASSWORD=<rackspacecloud_api_key>
+OS_PROJECT_ID=<rackspace_user>
+OS_REGION_NAME=DFW
+OS_SERVER_NAME=gitlab-stable.test.out.ba
+OS_TENANT_NAME=bringout
+OS_USERNAME=bringout
+...
+\end{lstlisting}
+
+Nakon kreiranja gitlab ''VirtualBox'' testne sesije, slijedi pokretanje ''chef-solo''-a unutar sesije. ''chef-solo'' je zadužen za instalaciju i konfiguraciju testne sesije:
+
+vagrant\_gitlab\$ \verb+source ./up.sh+
+\begin{lstlisting}
+[default] Clearing any previously set forwarded ports...
+[default] Forwarding ports...
+[default] -- 22 => 2222 (adapter 1)
+[default] Creating shared folders metadata...
+...
+[default] Waiting for VM to boot. This can take a few minutes. <<<<<<<<< virtualbox sesija kreirana
+[default] VM booted and ready for use!
+[default] Detected Virtualbox Guest Additions 4.2.4 --- OK.
+[default] Configuring and enabling network interfaces...
+[default] Mounting shared folders...
+[default] -- v-root: /vagrant
+[default] -- v-csc-1: /tmp/vagrant-chef-1/chef-solo-1/cookbooks
+[default] Running provisioner: Vagrant::Provisioners::ChefSolo...
+[default] Generating chef JSON and uploading...
+[default] Running chef-solo... <<<<<<<<<<<<<<<<<<<<<<<<< Pokreće se chef-solo na virtualbox sesiji
+stdin: is not a tty
+[Mon, 19 Nov 2012 11:33:15 +0000] INFO: *** Chef 0.10.10 ***
+[Mon, 19 Nov 2012 11:33:15 +0000] INFO: Setting the run_list to ["recipe[build-essential]", "recipe[rvm::system]", "recipe[mysql::client]", "recipe[mysql::ruby]", "recipe[postgresql::client]", "recipe[postgresql::ruby]", "recipe[gitlab::default]", "recipe[gitlab::nginx]", "recipe[gitlab::database]"] from JSON
+[Mon, 19 Nov 2012 11:33:15 +0000] INFO: Run List is [recipe[build-essential], recipe[rvm::system], recipe[mysql::client], recipe[mysql::ruby], recipe[postgresql::client], recipe[postgresql::ruby], recipe[gitlab::default], recipe[gitlab::nginx], recipe[gitlab::database]]
+[Mon, 19 Nov 2012 11:33:15 +0000] INFO: Run List expands to [build-essential, rvm::system, mysql::client, mysql::ruby, postgresql::client, postgresql::ruby, gitlab::default, gitlab::nginx, gitlab::database]
+[Mon, 19 Nov 2012 11:33:15 +0000] INFO: Starting Chef Run for precise32
+...
+[Mon, 19 Nov 2012 11:36:20 +0000] INFO: Processing package[ssl-cert] action install (/tmp/vagrant-chef-1/chef-solo-1/cookbooks/rvm/providers/ruby.rb line 156)
+[Mon, 19 Nov 2012 11:36:22 +0000] INFO: package[ssl-cert] installed version 1.0.28ubuntu0.1
+[Mon, 19 Nov 2012 11:36:22 +0000] INFO: Building rvm_ruby[ruby-1.9.3-p327], this could take awhile...
+...
+[Mon, 19 Nov 2012 14:18:58 +0000] INFO: Processing service[nginx] action reload (nginx::default line 39)
+[Mon, 19 Nov 2012 14:18:58 +0000] INFO: service[nginx] reloaded
+[Mon, 19 Nov 2012 14:18:58 +0000] INFO: template[/etc/init.d/gitlab] sending enable action to service[gitlab] (delayed)
+[Mon, 19 Nov 2012 14:18:58 +0000] INFO: Processing service[gitlab] action enable (gitlab::default line 183)
+[Mon, 19 Nov 2012 14:18:58 +0000] INFO: Chef Run complete in 994.730999 seconds
+[Mon, 19 Nov 2012 14:18:58 +0000] INFO: Running report handlers
+[Mon, 19 Nov 2012 14:18:58 +0000] INFO: Report handlers complete
+\end{lstlisting}
 
 
 \chapter{Gitlab merge from upstream}
@@ -136,7 +222,6 @@ gitlabhq\$ \verb+git commit -a+
 [master 9bacff4] http://www.quora.com/Ruby-on-Rails/What-is-schema-rb-in-rails-project
  1 file changed, 19 insertions(+), 19 deletions(-)
 \end{lstlisting}
-
 
 
 gitlabhq\$ \verb+git diff HEAD^1 HEAD+
