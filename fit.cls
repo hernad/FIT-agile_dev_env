@@ -259,6 +259,7 @@
   \def\@mentor{\@latex@warning@no@line{Mentor nije naveden.
   Koristi \noexpand\mentor za definisanje}}
 \else%
+  \def\mentor#1{\gdef\@mentor{#1}}
   \def\thesisnumber#1{\gdef\@thesisnumber{#1}}
   \def\@thesisnumber{\@latex@warning@no@line{Broj rada nije definisan.
   Koristi \noexpand\thesisnumber za definisanje}}
@@ -307,7 +308,10 @@
                        \\
                   \small{ver: \@verzija}
 	        	\else
-				    \@author
+  	          Student: {\itshape \@author, \@brindex} \\
+	        	  Mentor: {\itshape \@mentor} \\
+                       \\
+                  \small{ver: \@verzija}
 				\fi
 			\end{tabular}\par}%
 		\end{center}\par
