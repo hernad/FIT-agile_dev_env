@@ -15,6 +15,8 @@
 \usepackage{setspace}
 \onehalfspacing
 
+\usepackage[parfill]{parskip}
+
 \begin{document}
 \widowpenalty=300
 \clubpenalty=300
@@ -67,7 +69,6 @@ Za realizaciju ćemo koristiti sljedeće komponente:
 % abstract end
 
 \begin{document}
-
 \chapter{Uvod}
 
 \section{Zašto ''Continuous integration'' ?}
@@ -76,9 +77,88 @@ Mnogi softverski projekti imaju skriveno kašnjenje između trenutka kada develo
 Spajanje pojedinih komponenti, kreiranje ''installer''-a, kreiranje inicijalne verzije baze podatataka, kreiranje korisničkog uputstva, itd.
 U međuvremenu, kompletan tim je pod stresom, ne uzimajući u obzir činjenicu da će ove "post-development" procedure trajati tako dugo. Takvo stanje redovno generira dodatne greške i kašnjenje.
 Kontinuirana integracija (CI) prevenira ovakve situacije. Ona obezbjeđuje da se nakon svakog novog commit-a kreira i testira nova verzija software-a. CI omogućava da se odmah nakon razvojnog ciklusa korisniku može isporučiti nova verzija (produkcija).
+
 \begin{quotation}
-\centerline{\emph{Glavni cilj CI-a je mogućnost isporuke (eng. deployment) projekta korisniku u svako vrijeme.}}
+\noindent \emph{\large Glavni cilj CI-a je mogućnost isporuke (eng. deployment) projekta korisniku u svako vrijeme.}
 \end{quotation}
+
+\section{Travis CI}
+''Travis CI'' je slobdan CI sistem za opensource developere. Jedini preduslov je da se sofverski repozitorij koji ''travis'' pokriva nalazi na ''github''-u.
+
+Travis funkcioniše tako što se aktivacijom usluge za određenih github projekat, nakon svakog ''commit''-a keira vagrant box\footnote{Više o vagrantu materijalu ''Agilni software development, test \& deploy''\citep[str. 3]{agiletestdeploy}}. Po kreiranju vagrant box-a, pokreću se komande i vrši konfiguracija box-a u skladu sa konfiguracijskim fajlom \href{https://github.com/knowhow/F18_knowhow/blob/master/.travis.yml}{\color{blue}{.travis.yml}}.
+
+Interesatno je uočiti da je kompletan projekat spoznoriran od više sofverskih vendora koji na principu sponzorstva dodjeljuju dio svoje infrastrukture projektu\footnote{Organizacija projekta je u potpunosti u duhu ''opensource''-a, nema šta.}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/F18_failing.png}
+\caption{travis F18\_knowhowERP build neuspješan - ''failing - red build''}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/prvi_green_f18.png}
+\caption{travis F18\_knowhowERP prvi uspješan build - ''green build''}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/travis_test_report_failed.png}
+\caption{travis F18\_knowhowERP test report - jedan test neuspješan - ''red build''}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/travis_test_report.png}
+\caption{travis F18\_knowhowERP test report prvog uspješnog build-a}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/F18_green.png}
+\caption{travis F18\_knowhowERP uspješno - ''green''}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/github_webhook_1.png}
+\caption{github travis ''webhook''}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{img/github_webhook_2.png}
+\caption{github travis ''webhook'' /2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/github_webhook_trello_1.png}
+\caption{github trello ''webhook'' /1}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/github_webhook_trello_2.png}
+\caption{Prikaz ''commit''-a na trello listi ''Commmits''}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{img/github_webhook_trello_3.png}
+\caption{Git ''commit'' kao ''trello card''}
+\end{figure}
+
+
+
+
+
 
 \bibliography{literatura}
 \bibliographystyle{fit}
