@@ -1,0 +1,89 @@
+\documentclass[times, utf8, seminar]{fit}
+
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{datetime}
+\usepackage{needspace}
+\usepackage[compact]{titlesec}
+\usepackage{setspace}
+\onehalfspacing
+
+\begin{document}
+\widowpenalty=300
+\clubpenalty=300
+
+\lstset{
+  language=bash,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily \footnotesize,
+  breaklines=true,
+  prebreak=\raisebox{0ex}[0ex][0ex] {\ensuremath{\hookleftarrow}},
+  columns=fullflexible,
+  keywords={},
+  mathescape=false
+}
+
+\title{Agilni \emph{software development},\newline \emph{Continous Integration (CI)}}
+
+\author{Ernad Husremović}
+\brindex{DL 2792}
+\verzija {0.1.0}
+
+\mentor{mr. Adil Joldić}
+
+\maketitle
+
+\tableofcontents
+
+%\listoftables
+%\listoffigures
+\newpage
+
+\begin{abstract}
+
+U ovom radu se na bazi konkretnog primjera\footnote{"HOWTO" stil} prezentuje infrastruktura za kontinuiranu integraciju (CI) 
+
+CI infrastruktura je usko vezana za testnu i SCM\footnote{Source Code management} infrastrukturu\citep{agilegit}
+
+Unutar materijala ćemo obraditi implementaciju \href{http://travis-ci.org}{\color{blue}{''Travis Continous Integration''}} za projekat \href{http://redmine.bring.out.ba/projects/knowhow}{\color{blue}{''F18 knowhow''}}.
+
+Za realizaciju ćemo koristiti sljedeće komponente:
+\begin{itemize}
+  \item Github servis, F18 knowhowERP repozitorij - \url{https://github.com/knowhow/F18\_knowhow}
+  \item Travis CI  \url{https://travis-ci.org}
+  \item Vagrant test environment  \url{http://vagrantup.com}
+\end{itemize}
+
+\keywords{open source software, OSS, travis, CI, continuous integration, vagrant, github, git}
+\end{abstract}
+
+% abstract end
+
+\begin{document}
+
+\chapter{Uvod}
+
+\section{Zašto ''Continuous integration'' ?}
+
+Mnogi softverski projekti imaju skriveno kašnjenje između trenutka kada developerski tim kaže "Gotovi smo" i stvarnog trenutka kada je softwarew spreman za isporuku klijentu\citep[str. 183]{agileart}. Nekada je se to kašnjenje može rastegnuti na mjesece.
+Spajanje pojedinih komponenti, kreiranje ''installer''-a, kreiranje inicijalne verzije baze podatataka, kreiranje korisničkog uputstva, itd.
+U međuvremenu, kompletan tim je pod stresom, ne uzimajući u obzir činjenicu da će ove "post-development" procedure trajati tako dugo. Takvo stanje redovno generira dodatne greške i kašnjenje.
+Kontinuirana integracija (CI) prevenira ovakve situacije. Ona obezbjeđuje da se nakon svakog novog commit-a kreira i testira nova verzija software-a. CI omogućava da se odmah nakon razvojnog ciklusa korisniku može isporučiti nova verzija (produkcija).
+\begin{quotation}
+\centerline{\emph{Glavni cilj CI-a je mogućnost isporuke (eng. deployment) projekta korisniku u svako vrijeme.}}
+\end{quotation}
+
+\bibliography{literatura}
+\bibliographystyle{fit}
+
+\appendix
+
+
+\end{document}
