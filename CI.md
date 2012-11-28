@@ -17,7 +17,7 @@ F18_knowhow$ git submodule add git://github.com/knowhow/harbour.git harbour
 
 
 
-## F18 knowhwhowERP
+## F18 knowhwhowERP trello integracija
 
 https://trello.com/board/f18-knowhowerp/50af43adf5c6f78820000223
 
