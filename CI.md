@@ -11,12 +11,13 @@ http://files.travis-ci.org/boxes/provisioned/travis-standard.box
 ## travis knowhowERP
 
 F18_knowhow$ git submodule add git://github.com/knowhow/harbour.git harbour
+
      Cloning into 'harbour'...
      remote: Counting objects: 5816, done.
 
 
 
-## F18 knowhwhowERP
+## F18 knowhwhowERP trello integracija
 
 https://trello.com/board/f18-knowhowerp/50af43adf5c6f78820000223
 
