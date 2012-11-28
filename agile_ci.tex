@@ -36,7 +36,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.9.0}
+\verzija {0.9.9}
 
 \mentor{mr. Adil Joldić}
 
@@ -310,6 +310,16 @@ Jenkins je organizovan java web servlet aplikacija koja se povezuje sa različit
 
 Agenti obavljaju build operacije po ''instrukcijama'' servera. Korisnik na serveru putem web interfejsa, Webhook-ova prati build proces. Primjetimo da je ''client-agents'' princip jenkinsa sličan ''build matrix'' konceptu ''travis''-a ali omogućava testiranje na različitim operativnim sistemima.
 
+\chapter{Zaključak}
+
+Agilni software development snažno promovira praksu \emph{CI}-a. Ona značajno utiče na smanjenje \emph{technical debth}-a. Dosljednja primjena CI-a omogućava razvojnom timu da se korisnicima isporučuju nove verzije u najkraćemo roku po okončanju razvojnog ciklusa razvoja software-a. Kvalitetna pokrivenost testovima, koje CI sistem svakodnevno izvršava \textbf{prije isporuke} software-a krajnjem korisniku, obezbjeđuju minimalnu isporuku verzija koje unose regresije u softverski sistem.\footnote{Verzije koje se najbolje opisuju kolokvijalnim riječnikom sa "Majstor jedno napravio, al' dva pokvario"} 
+
+Na kraju, bitno je uočiti \textbf{prožimanje} agilnog razvojnog \emph{toolset}-a:
+\begin{itemize}
+  \item \emph{Github}/git SCM alat je vezivna tačka većine operacija i praksi agilnog developera
+  \item \emph{Vagrant} koji smo koristili za uspostavljanje testne infrastrukture\citep{agiletestdeploy} ali i debugiranje \emph{travis} build-a
+  \item \emph{Continous integration} bez prakse korištenja SCM-a, testiranja gubi smisao. 
+\end{itemize}
 
 \bibliography{literatura}
 \bibliographystyle{fit}
@@ -357,6 +367,5 @@ Gemnasium\footnote{\url{https://gemnasium.com/questions}} je samostalan web serv
 \begin{itemize}
   \item ''Thoughtbot'' \href{http://playbook.thoughtbot.com/tooling-development-process/continuous-integration}{\color{blue}{o travisu}}
 \end{itemize}
-
 
 \end{document}
