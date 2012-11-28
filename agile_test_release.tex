@@ -30,11 +30,11 @@
   mathescape=false
 }
 
-\title{Agilni \emph{software development},\newline \emph{test} \& \emph{deployment}}
+\title{Agilni \emph{software development},\newline \emph{test} \& \emph{deploy} infrastructure}
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.9.0}
+\verzija {0.9.5}
 
 \mentor{mr. Adil Joldić}
 
@@ -416,7 +416,7 @@ Nakon 30-tak minuta naš novokreirani rackspace server je konfigurisan i spreman
 
 \subsection{Kako \emph{bootstrap} funkcioniše}
 
-Generalno, boostrap projekat nakon isntalacije servera preuzima cookbooks iz projekta zadanog parametrom \verb+GITHUB_PROJECT=vagrant_gitlab+.
+Generalno, boostrap projekat nakon instalacije servera preuzima \emph{cookbooks} iz projekta zadanog parametrom \verb+GITHUB_PROJECT=vagrant_gitlab+.
 To znači da je ova procedura primjenljiva i na različite projekte (npr. \verb+GITHUB_PROJECT=vagrant_redmine+), naravno pod uslovom da se u njima obezbjedi sadržaj i struktura kakvu boostrap okruženje traži.  
 
 U ''cookbook'' projektu se moraju nalaziti \href{https://github.com/hernad/vagrant_gitlab/blob/master/solo.rb}{\color{blue}{solo.rb}} i \href{https://github.com/hernad/vagrant_gitlab/blob/master/node.json}{\color{blue}{node.json}}. Oni imaju identičnu funkciju kakav ima Vagrantfile u testnoj instalaciji\footnote{Lahko je uočiti, da je \href{https://github.com/hernad/vagrant_gitlab/blob/master/roles/gitlab.rb}{\color{blue}{roles/gitlab.rb}} dobijen sa copy-paste sadržaja \href{https://github.com/hernad/vagrant_gitlab/blob/master/Vagrantfile}{\color{blue}{Vagrantfile-a}}}
