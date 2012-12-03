@@ -59,11 +59,27 @@
 
 Testiranje je neizostavna tehnika agilnog software developmenta.
 
-\chapter{Test driven development (TDD)}
+\chapter{\emph{Test driven development} (TDD)}
+
+TDD se često uzima za "ekstremnu" agilnu tehniku. Naime, TDD kod implementacije kao prvi korak stavlja pisanje testa, a ne pisanje produkcijskog k\^oda - ''test first''. Jedan TDD ciklus se dijeli na sljedeće faze:
+
+\begin{enumerate}
+  \item Misli
+  \item Crveno
+  \item Zeleno
+  \item refactor
+  \item Ponovo ...
+\end{enumerate}
+
+\section{TDD i \emp{Legacy Code}}
+
+
 
 \section{Unit tests}
 
 Unit testovi se fokusiraju na određenu klasu ili metod. Oni se trebaju izvršiti u potpunosti u memoriji.\citep[str. 300]{agileart}
+
+\section{Refactoring}
 
 \section{Integracijski testovi}
 
@@ -75,9 +91,17 @@ Testiranje kod koga se unutar testova dešava interakcija sa fajl sistemom, mre�
 
 Testiranje korisničkog interfejsa
 
-Zašto je gornja podjela testova bitna ? Veoma bitan faktor testova je brzina izvršenja. Ako je za izvođenje testova potrebno više od 1-2 sekunde, oni se moraju isključiti iz TDD procesa.
+\section{Brzina izvršenja testova}
 
-\chapter{Istraživačko testiranje}
+Veoma bitan faktor testova je brzina izvršenja. Ako je za izvođenje testova potrebno više od 1-2 sekunde, oni se moraju isključiti iz TDD procesa. 
+
+''Spori'' integracijski testovi bi se pokretali jednom ili par puta u toku dana manuelno, odnosno automatski tokom CI procesa\footnote{\citep{agileci}}.
+
+\chapter{Customer tests}
+
+\citep[str. 308]{agileart}
+
+\chapter{\emph{Exploratory Testing}}
 
 Istraživačko testiranje (eng. Exploratory Testing) je glavni zadatak testera. Istraživačko testiranje sadrži ljudski element koji automatske metode testiranja (\emph{unit tests}, \{integration tests}) testiranja ne mogu nadomjestiti.\citep[str. 342]{agileart}
 
@@ -88,6 +112,7 @@ Istraživačka testna sesija traje 1 do 2 sahata. Testeri se tokom sesije služe
   \item Uzimanje bilješki
   \item Heuristika
 \end{enumerate}
+
 
 \chapter{Zaključak}
 
