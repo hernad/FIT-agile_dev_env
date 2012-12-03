@@ -19,6 +19,7 @@
 \begin{document}
 \widowpenalty=300
 \clubpenalty=300
+\setlength{\parindent}{0pt}
 
 \lstset{
   language=bash,
@@ -96,12 +97,21 @@ Principi:
 \item Kontinuirano pažnja na \emph{kvalitet} tehničkih operacije i dobar dizajn povećava agilnost.
 \item \emph{Jednostavnost}, kao vještina postizanja maksimalnog učinka sa što manje rada, je krucijalni agilni princip.
 \item Najbolja arhitektura, funkcionalni zahtjevi i dizajn se postižu u \emph{samo-organizovanim} timovima.
-\item Tim redovno analizira predhodne operacije u cilju bolje efektivnosti (\emph{refleksija}). Na osnovu tih rezultata, tim podešava i koriguje buduće operacije.
+\item Tim redovno analizira predhodne operacije u cilju bolje efektivnosti (\emph{refleksija}). Na osnovu tih rezultata, tim utvrđuje buduće operacije.
 \end{itemize}
 
 
+\chapter{Početak projekta}
 
-\chapter{Test chapter}
+\section{Vizija}
+
+TODO
+
+\section{Prva iteracija}
+
+TODO
+
+\chapter{Praćenje projekta}
 \vspace*{-0.7cm}
 
 \begin{figure}[H]
@@ -110,14 +120,49 @@ Principi:
 \caption{trello}
 \end{figure}
 
-\chapter{Praćenje projekta}
+\section{Empirijska kontrola procesa}
 
 Defined Process Control vs Empirical Process control\citep{agiletransition}
 
+\chapter{Development}
+
+\section{Testiranje}
+
+Detaljno u materijalu ''Agilni \emph{software development}, Tehnike testiranja''\citep{agiletest}
+
+\section{Stalna integracija (CI)}
+Detaljno u materijalu ''Agilni \emph{software development}, \emph{Test} \& \{deploy} infrastruktura''\citep{agiletestdeploy}
+
+
+
+
+\section{\emph{''Jednom i samo jednom''}}
+
+''Jednom i samo jednom'' (eng. ''Once and Only once'') princip:
+
+\begin{quotation}
+  Svaki koncept izrazi jednom. (i samo jednom !).\footnote{\citep[str. 319]{agileart}}
+\end{quotation}
+
+
+\section{\emph{Spike} rješenja}
+
+Spike (\href{http://translate.google.com/#en/hr/spike}{\color{blue}{bos. ekser, smeč}}) razjašnjavaju tehička pitanja koje susrećemo, pri čemu se izbjegava kompleksnost produkcijskog k\^oda.\citep[str. 334]{agileart}
 
 \chapter{Zaključak}
 
-TODO.
+Agilni \emph{software development} naravno nije \emph{Silver Bullet}\footnote{\url{http://en.wikipedia.org/wiki/No_Silver_Bullet}}
+
+Međutim, on iz temelja mijenja uvriježene inžinjerske prakse. Agilni pristup, može se reći unosi ''životnost'' u razvojni proces software-a.
+
+U toku životnog ciklusa sofverskog projekta se često, kao znak rezignacije, konstatacije:
+\begin{quotation}
+  \emph{Da, to bi bilo dobro rješenje da živimo u idealnom svijetu.}
+\end{quotation}
+
+Agilni pristup kao temeljno polazište uzima realni svijet, realne potrebe korisnika software-a.
+
+On razvojni tim stalno podsjeća i usmjerava da je glavni cilj sofverskog projekta ostvariti vrijednost za \emph{korisnika}(eng. customer value).\footnote{Prvi slogan moje firme je bio: \emph{Iskoristite računar}. Slogan se međutim nije dugo koristio. Još gore, firma u svom djelovanju u mnogim segmentima odstupila od principa ovog slogana. Nakon 16 godina, rad na ovoj temi me je podsjetio na taj slogan.}
 
 % -------------------------------------------------
 \bibliography{literatura}
@@ -125,11 +170,6 @@ TODO.
 
 % -------------------------------------------------
 \appendix
-
-\chapter{Instalacija}
-\vspace*{-0.7cm}
-\setlength{\parindent}{0cm}
-%\setlength{\parindent}{default}
 
 \chapter{Software toolset}
 \begin{enumerate}
@@ -141,7 +181,7 @@ TODO.
 \chapter{Software repozitoriji}
 
 \begin{itemize}
-  \item Agilni developerski environment  \url{https://github.com/hernad/atile\_dev\_env}
+  \item Agilni developerski environment - \url{https://github.com/hernad/agile\_dev\_env}
 
 \end{itemize}
 

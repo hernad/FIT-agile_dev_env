@@ -1,0 +1,100 @@
+\documentclass[times, utf8, seminar]{fit}
+
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{datetime}
+\usepackage{needspace}
+\usepackage{titlesec}
+
+\begin{document}
+\widowpenalty=300
+\clubpenalty=300
+\setlength{\parindent}{0pt}
+
+\lstset{
+  language=bash,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily \footnotesize,
+  breaklines=true,
+  prebreak=\raisebox{0ex}[0ex][0ex] {\ensuremath{\hookleftarrow}},
+  columns=fullflexible,
+  keywords={},
+  mathescape=false
+}
+
+\title{Agilni \emph{software development}\newline Tehnike testiranja}
+
+\author{Ernad Husremović}
+\brindex{DL 2792}
+\verzija {0.0.1}
+\mentor{mr. Adil Joldić}
+
+\maketitle
+
+\tableofcontents
+
+%\listoftables
+%\listoffigures
+\newpage
+
+% abstract begin
+%\begin{abstract}
+%
+%To be done 
+%
+%\keywords{open source software, OSS, Bosna i Hercegovina}
+%\end{abstract}
+
+% abstract end
+
+\chapter{Uvod}
+\vspace*{-0.7cm}
+
+Testiranje je neizostavna tehnika agilnog software developmenta.
+
+\chapter{Test driven development (TDD)}
+
+\section{Unit tests}
+
+Unit testovi se fokusiraju na određenu klasu ili metod. Oni se trebaju izvršiti u potpunosti u memoriji.\citep[str. 300]{agileart}
+
+\section{Integracijski testovi}
+
+\subsection{Fokusirani integracijski testovi}
+
+Testiranje kod koga se unutar testova dešava interakcija sa fajl sistemom, mrežnim resursima.
+
+\subsection{End-To-End integracijski testovi}
+
+Testiranje korisničkog interfejsa
+
+Zašto je gornja podjela testova bitna ? Veoma bitan faktor testova je brzina izvršenja. Ako je za izvođenje testova potrebno više od 1-2 sekunde, oni se moraju isključiti iz TDD procesa.
+
+\chapter{Istraživačko testiranje}
+
+Istraživačko testiranje (eng. Exploratory Testing) je glavni zadatak testera. Istraživačko testiranje sadrži ljudski element koji automatske metode testiranja (\emph{unit tests}, \{integration tests}) testiranja ne mogu nadomjestiti.\citep[str. 342]{agileart}
+
+Istraživačka testna sesija traje 1 do 2 sahata. Testeri se tokom sesije služe sa sljedeće četiri tehnike - alata:
+\begin{enumerate}
+  \item \emph{Charters} - (\href{http://translate.google.com/#en/hr/spike}{\color{blue}{bos. čarter, iznajmljivanje}})
+  \item Obzervacija
+  \item Uzimanje bilješki
+  \item Heuristika
+\end{enumerate}
+
+\chapter{Zaključak}
+
+TODO.
+
+% -------------------------------------------------
+\bibliography{literatura}
+\bibliographystyle{fit}
+
+\end{document}
