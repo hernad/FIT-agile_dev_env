@@ -86,6 +86,41 @@ Unit testovi se fokusiraju na određenu klasu ili metod. Oni se trebaju izvršit
 
 \section{Refactoring}
 
+Reflektivni dizajn\citep[str. 306]{agileart}
+
+Detekcija \emph{Code smells}
+\begin{itemize}
+  \item Divergent Change - klasa sadrži previše koncepata
+  \item Shotgun Surghery - suprotno od predhodnog, više klasa obrađuje jedan koncept
+  \item Primitive Obsession - konceptvi višeg nivoa prezentovani primitivnim tipovima (Decimal prezentuje Money klasu)
+  \item Data Clumps - slično predhodnom - više primitivnih koncepata je grupirano, umjesto da bude enkapsulirano u jednu klasu\footnote{indikator je kada istu grupu varijabli prosljeđujemo između metoda}
+  \item Data Class and Wannabee Static Class - data i k\^od u različitim klasama.
+  \item Coding Nulls - umjesto kodiranja NULL vrijednosti primjeniti ''fast fail'' strategiju
+  \item Time Depenedencies - Umjesto da svojim upravlja stanjem, klasa očekuje da pozivaoci postave njeno stanje
+  \item Half baked objects - posebna varijanta predhodnog slučaja - ovakvi objekti moraju biti prvo konstruirani, pa inicijalizirani nekom metodom, pa tek na kraju korišteni 
+  
+\end{itemize}
+
+\subsection{Analiza k\^oda}
+
+Šta je svrha određenog komponente (paketa, klase) ?
+
+Koje interakcije ostvaruje sa drugim komponenntama ?
+
+Alati za analizu:
+\begin{itemize}
+  \item UML sekvencijalni dijagrami
+  \item CRC kartice
+\end{itemize}
+
+
+\subsection{Refactoring != rewriting}
+
+Refactoring je niz \emph{malih} trasformacija k\^oda.
+Svaka značajna promjena dizajna traži niz \emph{refactoring}-a.
+
+Refactoring se obavlja konstantno i svakodnevno. Princip ''malih koraka'' nam omogućava da refactoring ne remeti realizaciju našeg glavnog zadatka.
+
 \section{Integracijski testovi}
 
 \subsection{Fokusirani integracijski testovi}
@@ -102,9 +137,26 @@ Veoma bitan faktor testova je brzina izvršenja. Ako je za izvođenje testova po
 
 ''Spori'' integracijski testovi bi se pokretali jednom ili par puta u toku dana manuelno, odnosno automatski tokom CI procesa\footnote{\citep{agileci}}.
 
+\section{Testiranje i programski jezici}
+
+
+
+\section{Type safe jezici}
+
+C++ Java imaju kompilacijusku fazu koja provjerava sintaksne greške.
+
+\section{Dinamički jezici}
+
+\section{Testiranje vs debugiranje}
+
+Više testiranja, manje potrebe za debugiranjem.
+
+
 \chapter{Customer tests}
 
 \citep[str. 308]{agileart}
+
+
 
 \chapter{\emph{Exploratory Testing}}
 
@@ -117,6 +169,7 @@ Istraživačka testna sesija traje 1 do 2 sahata. Testeri se tokom sesije služe
   \item Uzimanje bilješki
   \item Heuristika
 \end{enumerate}
+
 
 \chapter{Test \emph{frameworks}}
 

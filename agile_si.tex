@@ -253,7 +253,31 @@ Iz njih se vrlo brzo dođe do informacija kojim vještinama član raspolaže, ko
   \item Zajednički rad sa iskusnijim kolegama itd.
 \end{itemize}
 
-\chapter{Inkrementalni dizajn}
+\chapter{Agilni pristup dizajnu}
+
+\section{Inkrementalni dizajn}
+
+Izbjegava se zasebna, dugotrajna faza dizajna (''up-front''). 
+
+To znači da se k\^odiranju (implementaciji) pristupa bez jasnog dizajna ?!
+
+Zagovarači agilnih metoda developmenta na ovakva pitanja daju sljedeći odgovor:
+
+\begin{quote}
+   \emph{\large Smatrate da je dizajn zanemaren u agilnom software developmentu ? Upravo suprotno - Mi dizajn smatramo iznimno bitnim. Zato ga \textbf{prakticiramo} kroz \textbf{sve faze} razvojnog procesa !} 
+\end{qutote}
+\\
+\\
+Suštinska razlika u odnosu na klasični ''up-front'' je ta da se dizajniranje realizira u onoj mjeri i u onom trenutku kada je to najpogodnije i najprirodnije za razvojni tim.
+
+Prakticiranje inkrementalnog i jednostavnog dizajn zato spriječava ''overengineering''\footnote{http://en.wikipedia.org/wiki/Overengineering}
+
+\section{Jednostavni dizajn}
+
+\subsection{\emph{You Aren't Gonna Need It} (YAGNI)}
+
+YAGNI\footnote{Ovo vam neće trebati} princip je bazni aspekt jednostavnog dizajna\footnote{\citep[str. 318]{agileart}}
+
 
 \chapter{Development}
 
@@ -306,10 +330,56 @@ Nedostatak anticipacije će voditi ''siromašnim'', ''kratkovidnim'' rješenjima
 {\color{red}{::ODGOVORITI, ELABORIRRATI::}}
 
 
+\chapter{Ograničenja}
+
+Agilni \emph{software development} pretpostavlja visoko motiviran tim, tim koji je spreman da uči. 
+
+Članovi tima moraju posjedovati bazne vještina iz oblasti koje pokrivaju.
+
+Ako se te vještine i uvriježene prakse u slučaju programera svode na očekivanja prema vodećim članovima tima na:
+
+\begin{quotation}
+  \emph{Dajte vi meni šta trebam uraditi (izk\^odirati), to je sve što me interesuje (dalje od toga nije moj posao) !}
+\end{quotation}
+
+onda ovaj tim (još) \emph{nije spreman} za agilni development.
+
+Agilni pristup jednostavno nudi i očekuje od svakog pojedinca da maksimalno doprinosi projektu u cjelini. Kolokvijalnim riječnikom, neprihvatljivo je da članovi tima probleme koji nisu direktno vezani za njihovu trenutnu aktivnost i zaduženja adresiraju kao:
+
+\begin{quotation}
+  \emph{To nije moj ''rejon'' !\footnote{Legendarna šala iz serije ''Nadrealisti''} ?}
+\end{quotation}
+
+Naravno da je i u agilnom timu neophodno poslove raporediti na najbolji način, te da je svaštarenje potrebno smanjiti na namanju moguću mjeru.
+Međutim, treba uvijek imati na umu da je agilni tim multi-funkcionalan, usmjeren na ciljeve projekta.
+
+Stoga je sve što ima bitan uticaj na ciljeve i tok projekta ''rejon'' svakog člana.
+
+\section{Komptencije i vještine}
+
+Potreban (ali ne i dovoljan) uslov u primjeni agilnih metoda su odgovarajuće kompetencije i veštine članova tima. Ako one ne postoje, agilni pristup će doživjeti potpuni fjasko.
+
+Ovdje treba naglasiti da se prvenstveno misli na bazne kompetencije i vještine, ne kompentencije koje se stiču dugogodišnjim iskustvom. Naravno, iskusniji članovi, članovi koji posjeduju višegodišnjim iskustvom iz problemskog domena projekta su bitan faktor.\footnote{Ako projekat ima kratke rokove za realizaciju, najčešće i neophodan} Međutim, tim koji je spreman da uči može nadoknaditi nedostatak iskustva. Takav tim zasigurno neće moći brzo realizovati ciljeve projekta, ali će pravilnim pristupom doći do cilja.
+
+\section{Agilni software development u Bosni}
+
+Nedostatak kompetencija uslovljen lošim sistemom obrazovanja je razlog zbog koga se u Bosni agilni software development ne primjenjuje\footnote{Ove teze iznosim spekulativno bez odgovarajućeg istraživanja stanja developerskh praksi u BiH. Spekulativno, ali ipak iskustveno.}
+
+\subsection{Eksperti i izvršioci}
+
+U nedostatku kompetencija se pribjegava klasičnom hijerarhijskom sistemu\footnote{''vojni'' sistem} u kome unutar tima postoje jedan - dva eksperta\footnote{ekspert = ''guru''}, dok ostatak tima (i većinski dio tima) čine striktni izvršioci\footnote{izvršioc = ''hamal''}
+
+
+\chapter{Agilni software development u \emph{Opensource} projektima}
+
+Most of the analyzed projects adapted a fixed cycle and others are in the process of transition. Fixed cycles can also be found in agile software engineering methods, such as Extreme Programming or the Scrum method. While not equal to those methods, the analyzed projects seem to benefit from such an approach. The release schedule with fixed cycles is often already fixated before development starts and each project tries to stick to it as close as possible.\citep[str. 95]{Siegel2012}
+
+As shown by Mockus, Fielding and Herbsleb the role of the release manager is vital for every project.\citep[str. 95]{Siegel2012}
+
 
 \chapter{Zaključak}
 
-Agilni \emph{software development} naravno nije \emph{Silver Bullet}\footnote{\url{http://en.wikipedia.org/wiki/No_Silver_Bullet}}
+Agilni \emph{software development} svakako nije \emph{Silver Bullet}\footnote{\url{http://en.wikipedia.org/wiki/No_Silver_Bullet}}
 
 Međutim, on iz temelja mijenja uvriježene inžinjerske prakse. Agilni pristup unosi ''životnost'' u razvojni proces software-a.
 
@@ -322,6 +392,9 @@ Agilni pristup kao temeljno polazište uzima realni svijet i realne potrebe kori
 
 On razvojni tim stalno podsjeća i usmjerava da je glavni cilj sofverskog projekta ostvariti vrijednost za \emph{korisnika software}-a.\footnote{Prvi slogan moje firme je bio: \emph{Iskoristite računar}. Međutim, slogan se nije puno koristio. Još gore, firma u svom djelovanju u mnogim segmentima odstupila od principa ovog slogana. Nakon 16 godina, rad na ovoj temi me je podsjetio na taj slogan. Iz ove perspetkive mogu konstatovati da je to bio sjajan slogan. Šteta što smo ga zaboravili - i slovom i djelom.}
 Ta vrijednost (upotrebljivost, korisnost) je sama po sebi vremenski \emph{dinamična} kategorija. Agilni \emph{software development} nastoji razvojni ciklus usaglasiti sa tom činjenicom.
+
+Agilni pristup zahtjeva visok nivo kompetencija unutar tima, te postojanje kulture učeće organizacije\footnote{\url{http://en.wikipedia.org/wiki/Learning_organization}}.
+
 
 % -------------------------------------------------
 \bibliography{literatura}
