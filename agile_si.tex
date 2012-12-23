@@ -48,9 +48,9 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.0.7}
-\thesisnumber{9999}
-\mentor{mr. Adil Joldić}
+\verzija {0.1.0}
+\thesisnumber{0000}
+\mentor{doc. dr. Jasmin Azemović}
 
 \maketitle
 
@@ -79,7 +79,8 @@ Agilni razvoj software-a ne predstavlja specifični proces. Agilni razvoj je na�
 
 Osnovna polazišta ovog pristupa opisuje "Agilni manifest"\footnote{\url{http://agilemanifesto.org/iso/en/principles.html}}, koji je definisan kroz četiri vrijednosti i 12 principa:
 
-Vrijednosti:
+\section{Vrijednosti}
+
 \begin{itemize}
 \item Ljudi i interakcije ispred procesa i softverskih alata
 \item \emph{Software} koji funkcioniše ispred detaljne dokumentacije
@@ -87,7 +88,8 @@ Vrijednosti:
 \item Odgovor na promjene ispred slijeđenja plana
 \end{itemize}
 
-Principi:
+\section{Principi}
+
 \begin{itemize}
 \item Glavni prioritet je zadovoljiti zahtjeve klijente kroz ranu i kontinuiranu \emph{isporuku} software-a
 \item Blagonaklono prihvatiti \emph{promjene} funkcionalnih zahtjeva, čak i u kasnijim fazama razvoja.
@@ -107,14 +109,10 @@ Agilni development koristi ''feedback'' u cilju konstantnih prilagodbi djelovanj
 
 \section{Agilne metode}
 
-Najpoznatije Agilne metode\footnote{\citep{agiledacs}}:
+Predmet detaljnijeg istraživanja su sljedeće agilne metode\footnote{\citep{agiledacs}}:
 \begin{itemize}
   \item XP - \emph{Extreme programming}
   \item \emph{Scrum}
-  \item \emph{The Crystal Methods}
-  \item \emph{Feature Driven Development}
-  \item \emph{Lean Development}
-  \item \emph{Agile Modeling}
 \end{itemize}
 
 \begin{savenotes}
@@ -133,58 +131,80 @@ Metoda & Dužina iteracije & Veličina tima & Distribucija tima\footnote{{Moguć
 \end{table}
 \end{savenotes}
 
-\chapter{Početak projekta}
+%\chater{Polazišne definicije \emph{Agilnog software development}-a}
 
-\section{Vizija}
+\section{\emph{''Done Done''} princip}
+
+Objasniti "done done" princip: Feature je done-done tek kada se može isporučiti klijentu.
+
+\section{Tri nepobitne projektne istine}
+
+Svaki projekat karakteriše sljedeće\citep{agilesamurai}
+\begin{itemize}
+  \item{Nemoguće je prikupiti sve zahtjeve klijenata na početku projekta}
+  \item{Koliko god dobro prikupljni, zahtjevi klijenata će se mijenjati}
+  \item{U svakom projektu će uvijek biti više posla nego li raspoloživih resursa (novca i vremena)}
+\end{itemize}
 
 
-TODO
+\section{Organizacija i uloge unutar tima}
 
-\chapter{Organizacija i uloge unutar tima}
-
-\section{XP}
+\subsection{XP organizacija tima}
 
 \begin{itemize}
-
   \item{Product menadžer}
   \item{Couch}
   \item{Klijent}
   \item{Tester}
   \item{Developer}
-
 \end{itemize}
+
+\subsection{Scrum organizacija tima}
 
 \begin{itemize}
     \item Product owner (PO)
-    \item Product manager
-    \item Developer
+    \item ScrumMaster
+    \item The team
 \end{itemize}
+
+Note: Suštinske razlike u organizaciji između XP-a i Scrum-a ne postoje. 
+
+\chapter{Početak projekta}
+
+\section{Planiranje}
+
+Generalno, agilni proces planiranja izbjegava detaljno ''head-on'' planiranje.
+
+Objasniti šta znači "Addaptive planning"
 
 \chapter{Analiza}
 
-\section{\emph{Stories} vs \emph{Requirements}}
+\section{\emph{Stories}}
 
-Incremental requirements 
+Objasniti "Incremental requirements" princip.
+
+Pragmatičan pristup analizi, analogno planiranju: analizira se do nivoa detalja koji se može postići u datom trenutku.
+
+Definisanje detalja se vrši što je kasnije moguće, zato što tim kako projekat odmiče prikuplja sve više detalja - zato je razrada detalja kvalitetnija u kasnijim fazama projekta.
 
 \subsection{\emph{Story card}}
 
-Njihova glavna osobina je da su ''customer-centric'' - usmjereni na korisnika. 
-Svaka \emph{Story card} treba za cilj imati isporuku nove vrijednosti kljentu.
+Njihova glavna osobina je da su ''customer-centric'' - usmjereni na korisnika.  Svaka \emph{Story card} treba za cilj imati isporuku nove vrijednosti kljentu.
+
+\section{Početne iteracije}
+
+Početnim iteracijama se uspostavlja projekat, definiše toolset. U prvih par iteracija se takođe utvrđuje "velocity" tima.
+U prvih par iteracija "velocity" značajno varira, dok se u kasnijim fazama "velocity" stabilizira.
 
 
-\section{Prva iteracija}
-
-TODO
-
-\chapter{Planiranje i praćenje projekta}
+\chapter{Praćenje projekta}
 \vspace*{-0.7cm}
 
-\section{Uvod}
 \subsection{Empirijska kontrola procesa}
 
-Defined Process Control vs Empirical Process control\citep{agiletransition}
+Predefinisana kontrola procesa naspram empirijske kontrole procesa\citep{agiletransition}. Agilni pristup primjenjuje empirijsku kontrolu procesa.
 
-\sctrion{\emph{Trello} agilni projekt menadžment sistem}
+\section{\emph{Trello} agilni projekt menadžment sistem}
 
 \begin{figure}[H]
 \centering
@@ -204,12 +224,14 @@ Velocity, points,  Consistent Estimates
 
 \section{Commitment}
 
+Objasniti kada tim daje "commitment" u smislu realizacije plana.
+Objasniti zašto je bitno da upravo tim vrši "estimating".
+
 \chapter{Komunikacija}
 
-\section{Meetings}
+\section{Review meetings}
 
-
-TODO
+Bez sastanaka nije moguće postići iterativnost. Stoga, je ovo obavezna praksa ASD-a.
 
 \section{\emph{Issue management} (ISSUE)}
 
@@ -278,8 +300,8 @@ Zagovarači agilnih metoda developmenta na ovakva pitanja daju sljedeći odgovor
 \begin{quote}
    \emph{\large Smatrate da je dizajn zanemaren u agilnom software developmentu ? Upravo suprotno - Mi dizajn smatramo iznimno bitnim. Zato ga \textbf{prakticiramo} kroz \textbf{sve faze} razvojnog procesa !} 
 \end{qutote}
-\\
-\\
+
+
 Suštinska razlika u odnosu na klasični ''up-front'' je ta da se dizajniranje realizira u onoj mjeri i u onom trenutku kada je to najpogodnije i najprirodnije za razvojni tim.
 
 Prakticiranje inkrementalnog i jednostavnog dizajn zato spriječava ''overengineering''\footnote{http://en.wikipedia.org/wiki/Overengineering}
@@ -301,6 +323,8 @@ Detaljno u materijalu ''Agilni \emph{software development}, GIT SCM''\citep{agil
 
 Testiranje i refactoring etaljno u materijalu ''Agilni \emph{software development}, Tehnike testiranja''\citep{agiletest}
 
+Objasniti zašto je TDD ujedno i testiranje i implementacija(kodiranje) i dizajn !
+
 \section{Stalna integracija (CI)}
 
 Detaljno u materijalu ''Agilni \emph{software development}, \emph{Continuous Integration} (CI)''\citep{agileci}
@@ -313,11 +337,9 @@ Detaljno u materijalu ''Agilni \emph{software development}, \emph{Continuous Int
   Svaki koncept izrazi jednom. (i samo jednom !).\footnote{\citep[str. 319]{agileart}}
 \end{quotation}
 
-
 \section{\emph{Spike} rješenja}
 
 Spike (\href{http://translate.google.com/#en/hr/spike}{\color{blue}{bos. ekser, smeč}}) razjašnjavaju tehička pitanja koje susrećemo, pri čemu se izbjegava kompleksnost produkcijskog k\^oda.\citep[str. 334]{agileart}
-
 
 \chapter{Release management}
 
@@ -325,7 +347,9 @@ Spike (\href{http://translate.google.com/#en/hr/spike}{\color{blue}{bos. ekser, 
 
 Detaljno u materijalu ''Agilni \emph{software development}, \emph{Test} \& \emph{deploy} infrastruktura''\citep{agiletestdeploy}
 
-\chapter{Agilno = haotično ?!}
+\chapter{Ostalo}
+
+\section{ASD vodi ka haosu ?!}
 
 Striktne granice između faza dizajna, implementacije i isporuke rješenja korisniku nestaju.
 
@@ -339,10 +363,9 @@ Nemamo potrebu anticiparti dizajnerska i arhitektonska rješenja na duge staze.
 
 Nedostatak anticipacije će voditi ''siromašnim'', ''kratkovidnim'' rješenjima ?
 
-{\color{red}{::ODGOVORITI, ELABORIRRATI::}}
+ASD svakako nije pogodan za svaki tim. ASD doista može uzrokovati paralizu tima koji nije pripremljen za ASD.
 
-
-\chapter{Ograničenja}
+\section{Rizici i ograničenja ASD-a}
 
 Agilni \emph{software development} pretpostavlja visoko motiviran tim, tim koji je spreman da uči. 
 
@@ -373,21 +396,18 @@ Potreban (ali ne i dovoljan) uslov u primjeni agilnih metoda su odgovarajuće ko
 
 Ovdje treba naglasiti da se prvenstveno misli na bazne kompetencije i vještine, ne kompentencije koje se stiču dugogodišnjim iskustvom. Naravno, iskusniji članovi, članovi koji posjeduju višegodišnjim iskustvom iz problemskog domena projekta su bitan faktor.\footnote{Ako projekat ima kratke rokove za realizaciju, najčešće i neophodan} Međutim, tim koji je spreman da uči može nadoknaditi nedostatak iskustva. Takav tim zasigurno neće moći brzo realizovati ciljeve projekta, ali će pravilnim pristupom doći do cilja.
 
-\section{Agilni software development u Bosni}
-
-Nedostatak kompetencija uslovljen lošim sistemom obrazovanja je razlog zbog koga se u Bosni agilni software development ne primjenjuje\footnote{Ove teze iznosim spekulativno bez odgovarajućeg istraživanja stanja developerskh praksi u BiH. Spekulativno, ali ipak iskustveno.}
-
 \subsection{Eksperti i izvršioci}
 
 U nedostatku kompetencija se pribjegava klasičnom hijerarhijskom sistemu\footnote{''vojni'' sistem} u kome unutar tima postoje jedan - dva eksperta\footnote{ekspert = ''guru''}, dok ostatak tima (i većinski dio tima) čine krajnji izvršioci\footnote{izvršioc = ''hamal''}
 
+Note: Ovdje je bitno razgraničiti da se od junior programera ili novog člana tima naravno ne može očekivati previše, ali je ključna stvar postići visoku dinamičnost njegove pozicije od početnika do člana koji daje značajan doprinos projektu.
 
-\chapter{Agilni software development u \emph{Opensource} projektima}
+
+\section{Agilni software development u \emph{Opensource} projektima}
 
 Most of the analyzed projects adapted a fixed cycle and others are in the process of transition. Fixed cycles can also be found in agile software engineering methods, such as Extreme Programming or the Scrum method. While not equal to those methods, the analyzed projects seem to benefit from such an approach. The release schedule with fixed cycles is often already fixated before development starts and each project tries to stick to it as close as possible.\citep[str. 95]{Siegel2012}
 
 As shown by Mockus, Fielding and Herbsleb the role of the release manager is vital for every project.\citep[str. 95]{Siegel2012}
-
 
 \chapter{Zaključak}
 
@@ -414,6 +434,15 @@ Agilni pristup zahtjeva visok nivo kompetencija unutar tima, te postojanje kultu
 
 % -------------------------------------------------
 \appendix
+
+\chapter{Riječnik termina}
+
+\begin{itemize}
+  \item Coach - mentor razvojnog tima, onaj koji se brine o primjeni praksi, moderira tok procesa i komunikaciju unutar tima
+  \item Velocity - sposobnost, kapacitet tima u toku iteracije
+\end{itemize}
+
+
 
 \chapter{Software toolset}
 \begin{enumerate}
