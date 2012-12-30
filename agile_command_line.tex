@@ -32,19 +32,9 @@
 %\title{Agilni \emph{software development}\newline \emph{Command-line} interfejs (CLI)}
 \title{Agilni \emph{software development}\newline \emph{Toolbox} nove generacije developera}
 
-% http://en.wikipedia.org/wiki/System_console
-% http://en.wikipedia.org/wiki/Computer_terminal
-
-
-% A terminal emulator, terminal application, term, or tty for short, is a program that emulates a video terminal within some other display architecture. Though typically synonymous with a command line shell or text terminal, the term terminal covers all remote terminals, including graphical interfaces. A terminal emulator inside a graphical user interface is often called a terminal window.
-
-
-% programerski kalkulator
-
-
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.7.0}
+\verzija {0.8.0}
 \mentor{mr. Adil Joldić}
 
 \maketitle
@@ -56,12 +46,20 @@
 \newpage
 
 % abstract begin
-%\begin{abstract}
-%
-%To be done 
-%
-%\keywords{open source software, OSS, Bosna i Hercegovina}
-%\end{abstract}
+\begin{abstract}
+
+\emph{Graphic user interface} (GUI) je standardan interfejs modernih operativnih sistema. Donekle začuđujuće, nova - ''web generacija'' developera intenzivno koristi Command-line interface (CLI) alate. 
+
+Ta skupina developera je na stanovištu da se u većini programerskih \emph{Use-case}-ova, maksimalna produktivnost najbolje može postići uz pomoć ovih, za mnoge ''old-fasion'' alata.
+ 
+U ovom materijalu ćemo ključne koncepte rješavanja problema programerske produktivnosti u predhodnih 20-tak godina računarstva. 
+
+Takođe, prikazaćemo glavne komponente programerskog seta ''novog'' developera. Taj ''novi'' developer je gotovo u pravilu i pobornih agilnih metoda razvoja software-a, što je od posebnog interesa u kontekstu šire teme koju autor izučava: \emph{Agilni software development}.
+
+Takođe, potražićemo uzroke takvom odabiru developera, polazeći od principa koje izučava \emph{Human-computer interaction} (HCI). 
+
+\keywords{Programmer productivity, Agile software development, Regular expression, regex, regexp, Human-computer interaction, HCI, Command-line interface, CLI, GUI, vi editor, vim, vi macro, programmer's editor, code editor, IDE, REPL, javascript, java, ruby}
+\end{abstract}
 
 % abstract end
 
@@ -538,7 +536,7 @@ irb> "%x" % (0x0FF + 0x0EE)
 
 \section{\emph{Regular expressions}}
 
-\emph{Regular expressions}\footnote{\url{http://en.wikipedia.org/wiki/Regular_expression}} (regex) se koriste kod mnogih CLI alata. Takođe, moderni programski jezici imaju ugrađenu podršku za \emph{regexp}-e:
+\emph{Regular expressions}\footnote{\url{http://en.wikipedia.org/wiki/Regular_expression}} (regexp) se koriste kod mnogih CLI alata. Takođe, moderni programski jezici imaju ugrađenu podršku za \emph{regex}-e:
 \begin{itemize}
    \item ruby podrška\footnote{\url{http://www.ruby-doc.org/core-1.9.3/Regexp.html}}
    \item grep \emph{text search} alat\footnote{\url{http://en.wikipedia.org/wiki/Grep}}
