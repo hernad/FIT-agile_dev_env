@@ -34,7 +34,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {0.9.0}
+\verzija {1.0.0}
 \mentor{mr. Adil Joldić}
 
 \maketitle
@@ -88,7 +88,7 @@ U uputstvima za korištenje software-a se ovakva kategorizacija korisnika jednos
 
 \section{Produktivnost korisnika}
 
-Dobro softversko rješenje bez dvojbe treba sa stanovišta \emph{ciljnog korisnika} biti \emph{produktivan} alat. Svrha software-a je pomoći da se obavi brže i efikasnije nega li bi to bio slučaj bez njega.
+\emph{Software} sa stanovišta \emph{ciljnog korisnika} treba biti \emph{produktivan} alat. On treba pomoći da se određeni zadatak obavi brže i efikasnije nego li bi to bio slučaj bez njega.
 
 Produktivnost pretpostavlja niz elemenata koje je potrebno zadovoljiti:
 \begin{itemize}
@@ -101,7 +101,7 @@ Produktivnost pretpostavlja niz elemenata koje je potrebno zadovoljiti:
 
 Poduktivnost "ne leži" samo u implementaciji softverskog rješenja. Produktivnost se postiže dobrim poznavanjem software-a od strane korisnika. Time dolazimo do još jedne bitne karakteristike software-a: Potrebni period učenja - \emph{Learning curve}.\footnote{Doslovni prevod na bio bi bosanski "krivulja učenja"}
 
-Cilj je svakako da taj period bude što manji. Ono što je veoma bitno, jeste postizanje napretka u početnom periodu učenja. Ukoliko korisnik ne stekne osjećaj postignuća u početnom periodu, postoji velika mogućnost da će odustati od ponuđenog, posebno ako su mu na raspolaganju alternativna rješenja.
+Cilj je svakako da period učenja bude što manji. Ono što je veoma bitno, jeste postizanje napretka u početnom periodu učenja. Ukoliko korisnik ne stekne osjećaj postignuća u tom periodu, postoji velika mogućnost da će odustati od korištenja software-a (posebno ako su mu na raspolaganju alternativna rješenja).
 
 \section{Navike korisnika}
 
@@ -116,15 +116,15 @@ Fokusirajmo se sada na programere kao posebnu ciljnu grupu. Sa stanovišta prima
   \item programer baznih funkcija (\emph{"core libraries"}) - zadužen za niže nivoe arhitekture software-a
 \end{itemize}
 
-Aplikativni programer je tako zadužen za izradu novog izvještaja "Pregled dugovanja kupaca koji su prekoračili rok dospijeća obaveze",  dok je "core" programer zadužen za realizaciju opcije "Razmjene podataka između prodavnica i centralne lokacije".  
+Tako će npr. aplikativni programer biti zadužen za izradu izvještaja ''Pregled dugovanja kupaca koji su prekoračili rok dospijeća obaveze'',  dok će ''core'' programer realizovati funkciju ''Razmjene podataka između prodavnica i centralne lokacije''.  
 
-Možemo nastaviti u dubinu sa ovom podjelom po sljedećim karakteristikama. Prema nivou vještina i iskustva: 
+Sa stanovišta vještina i iskustva, značajna je podjela:
 \begin{itemize}
   \item početnik - junior programer
   \item iskusni - senior programer
 \end{itemize}
 
-Softverska rješenja su složeni sistemi. Pojedine komponente traže dodatnu ekspertizu - specijalizaciju programera:
+Softverska rješenja su složeni sistemi. Pojedine komponente traže dodatnu ekspertizu - specijalizaciju programera. To nas vodi ka sljedećoj kategorizaciji programera:
 \begin{itemize}
   \item database programer
   \item programer korisničkog interfejsa (UI)
@@ -135,16 +135,17 @@ Softverska rješenja su složeni sistemi. Pojedine komponente traže dodatnu eks
       \end{itemize}
 \end{itemize}
 
-Ako posmatramo softverski projekat i njegov životni ciklus u cjelini, pored razvoja imamo i operacije podrške i instalacije\footnote{Često su u sve ove operacije programeri u većoj ili manjoj mjeri uključeni. Može se reći da je to čak pravilo ununtar manjih razvojnih timova}: 
+Ako posmatramo softverski projekat i njegov životni ciklus u cjelini, pored razvoja imamo i operacije podrške i instalacije\footnote{Često su u sve ove operacije programeri u većoj ili manjoj mjeri uključeni. Može se reći da je to čak pravilo ununtar manjih razvojnih timova}. Iz toga slijedi nova kategorizacija: 
 \begin{itemize}
    \item poslovi podrške
    \item poslovi sistemske administracije
    \item poslovi razvoja i dizajna
 \end{itemize}
 
+Sve ove kategorizacije definišu definišu ciljne grupe  \emph{software}-a koje čini developerski \emph{toolbox}. 
 \section{Agilni software development}
 
-Agilni pristup se bazira na multi-funkcionalnim. Članovi takvog tima su posljedično generalisti\citep[str. 19]{agilesamurai}:
+Agilni pristup se bazira na multi-funkcionalnim timovima. Članovi takvog tima su posljedično generalisti \citep[str. 19]{agilesamurai}:
 
 \begin{quote}
 \emph{Kada formirate vaš tim, trebate generaliste, osobe koje nemaju problem raditi široki spektar stvari. Za programere, to znači naći osobe koje su sposobne raditi sa kompletnim tehnološkim stekom projekta (ne samo front-end ili back-end). Za testere i analiste, to znači osobe koje su spremne obaviti kako uobičajena testiranja, tako i detaljne analize korisničkih zahtjeva.}
@@ -152,7 +153,7 @@ Agilni pristup se bazira na multi-funkcionalnim. Članovi takvog tima su posljed
 
 \section{Programerska produktivnost}
 
-U predhodnih 20 godina, problemu povećanja programerske produktivnosti se pokušalo postići na mnoge načine. Izdvojimo načine koji su posebno interesantni za ovo izlaganje:
+U predhodnih 20 godina, povećanje programerske produktivnosti se pokušalo postići na mnoge načine. Izdvojimo načine koji su posebno interesantni za ovo izlaganje:
 
 \begin{itemize}
   \item Izrada visoko sofisticiranih CASE\footnote{\url{http://en.wikipedia.org/wiki/Computer-aided_software_engineering#Tools}} alata
@@ -161,17 +162,13 @@ U predhodnih 20 godina, problemu povećanja programerske produktivnosti se poku�
 
 \subsection{CASE alati}
 
-CASE alati su bili posebno popularan koncept kraja 80-ih i 90-ih godina (do ekspanzije interneta). CASE alati su pred sebe postavili iznimno ambiciozan cilj: napraviti okruženje koje će automatizirati kompletan životni ciklus razvoja software-a. Pri tome, zamišljeno je da se sam razvoj aplikacije realizira na visokom stepenu apstrakcije. Da bi se to postiglo, dizajneri CASE alata su trebali obezbjediti "kostur" aplikacije koji bi aplikativni programeri koristili kao polaznu tačku. Međutim, na kraju se pokazalo da tom konceptu nedostaje \emph{fleksibilnost}. Koliko god dobar dobro dizajniran CASE alati nisu mogli obuhvatiti sve moguće scenarije razvoja aplikacija. U konačnici, CASE alat može pružiti visoki stepen produktivnosti u početku razvoja, ali se ta prednost brzo "istopi" u kasnijim fazama razvoja aplikacija. 
+CASE alati su bili posebno popularan koncept kraja 80-ih i 90-ih godina (do ekspanzije interneta). CASE alati su pred sebe postavili iznimno ambiciozan cilj: napraviti okruženje koje će automatizirati kompletan životni ciklus razvoja software-a. Pri tome, zamišljeno je da se sam razvoj aplikacije realizira na visokom stepenu apstrakcije. Da bi se to postiglo, dizajneri CASE alata su trebali obezbjediti "kostur" aplikacije koji bi aplikativni programeri koristili kao polaznu tačku. Međutim, na kraju se pokazalo da tom konceptu nedostaje \emph{fleksibilnost}. Koliko god bio dobro dizajniran,  CASE alati nisu mogli predvidjeti sve moguće scenarije razvoja aplikacija. U konačnici, CASE alati su pružali visoki stepen produktivnosti u početku razvoja, ali se ta prednost ''topila'' u kasnijim fazama razvoja aplikacija. 
 
-Može se reži da su CASE alati pokušali pokušali kompleksne, kreativne faze razvoja software-a što više prebaciti u same CASE proizvode. Eksperti - dizajneri CASE alata prave ''kostur'' (eng. application skeleton), dok programeri - korisnici CASE-a realiziraju po tom već ustavnovljenom šablonu programska rješenja za krajnjeg korisnika. Zamisao je da se time posao aplikativnog programera svodi na manje više rutinski, dosta jednostavan posao.
-
-Međutim, rezultat su bila rješenja koja nisu mogla zadovoljiti potrebama korisnika. CASE alati se jednostavno nisu mogli obuhvatiti svu raznolikost zahtjeva i potreba korisnika u realnom okruženju.
-
-Drugi bitan faktor neuspjeha CASE koncepta je internet era, odnosno potreba za www\footnote{\url{http://hr.wikipedia.org/wiki/World_Wide_Web}} rješenjima. CASE alati nisu bili platforma za razvoj web rješenja\footnote{Web standardi su bili u povoju. Arhitektura web rješenja je u početku bila nejasna, fagmentacija web browsera velika}.
+Drugi bitan faktor neuspjeha CASE koncepta je internet era, odnosno rapidan rast potrebe za www\footnote{\url{http://hr.wikipedia.org/wiki/World_Wide_Web}} rješenjima. CASE alati nisu mogli ponuditi kvalitetnu platformu za razvoj web rješenja\footnote{Web standardi su bili u povoju. Arhitektura web rješenja je u početku bila nejasna, fagmentacija web browsera velika}.
 
 \subsection{IDE alati}
 
-IDE alati su, za razliku od CASE alata ipak našli svoje mjesto u standardnom developerskom setu alata. Tu međutim treba imati na umu na opcije koje su u početku smatrane ključnim, marginalizirane po sličnom principu kao u slučaju CASE-a alata. Dobar primjer je funkcija Vizuelnog dizajnera formi (eng. Visual Forms Designer). Prve generacije IDE alata su ovu funkciju stavljale na vrh liste funkcija. Pokazalo se međutim da funkcije vizuelnog dizajniranja, čim aplikacija dosegne određeni nivo kompleksnosti, zna postati neadekvatna. Kada se to desi, vizuelni mod se napušta, i programer (ponovo) piše forme direktno u kodu. Takođe, ''Visual Forms'' alati do sada nisu postigli veliku primjenu na području razvoja web aplikacija, što je konceptu ''vizuelnog programiranja'' dodatno umanjilo na bitnosti. 
+IDE alati su, za razliku od CASE alata, standardni dio developerskog \emph{toolbox}-a. Tu međutim treba izvodijit jednu opciju koja je u početku smatrana ključnom, da bi na kraju postala marginalizirana. To je funkcija Vizuelnog dizajnera formi (eng. Visual Forms Designer). Prve generacije IDE alata su ovu funkciju stavljale na vrh svojih \emph{Feature} listi. Slično CASE alatimima,  vizuelnog programiranje formi se pokazalo neadekvatnim kada aplikacija dosegne određeni nivo kompleksnosti. Kada se to desi, vizuelni mod razvoja se napušta i programer programira korisnički interfejs direktno u k\^odu. Takođe, ''Visual Forms'' alati do sada nisu postigli veliku primjenu na području razvoja web aplikacija, što je negativno išlo u prilog konceptu ''vizuelnog programiranja''. 
 
 IDE okruženja su zato fokus razvoja usmjerili na produktivnost programera unutar \emph{source code} editora. Ključne opcije postaju funkcije koje asistiraju programeru:
 \begin{itemize}
@@ -194,11 +191,11 @@ IDE okruženja su zato fokus razvoja usmjerili na produktivnost programera unuta
   \item kompleksnost java serverskog steka J2EE\footnote{\url{http://radio-weblogs.com/0135826/2004/03/17.html}} 
 \end{itemize}
 
-U posljednjim implementacijama J2EE\footnote{\url{http://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition}} su napravljeni značajni pomaci. Međutim, veliki broj developera je prihvatio alternativne tehnologije i programske jezike.
+U posljednjim implementacijama J2EE\footnote{\url{http://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition}} su napravljeni značajni pomaci. Međutim, veliki broj developera je u međuvremenu prihvatio alternativne tehnologije i programske jezike.
 
 \subsection{Dinamički programski jezici}
 
-Ekspanzija zahtjeva za web i mobilnim rješenjima je rezultirala pravom ''invazijom'' programskih jezika. 
+Ekspanzija zahtjeva za web i mobilnim rješenjima je rezultiralo pravom ''invazijom'' programskih jezika. 
 
 Nova generacija developera, posebno u domenu razvoja web aplikacija, usvaja dinamičke programske jezike\footnote{\url{http://en.wikipedia.org/wiki/Dynamic_programming_language}}. 
  
@@ -206,7 +203,7 @@ Jedan od ključnih faktora tog trenda je značajno skraćen \emph{Learning curve
 
 \subsection{Javascript, \emph{''Lingua franca''} web-a}
 
-Ekspanzija web-a je dovela do neslućene ekspanzije ``Javascript`` programskog jezika\footnote{\url{http://en.wikipedia.org/wiki/JavaScript}}. Primarno zamišljen kao programski jezik \emph{web browsera}, javascript se počinje primjenjivati i van browsera:
+Ekspanzija web-a je dovela do neslućene ekspanzije ''Javascript'' programskog jezika\footnote{\url{http://en.wikipedia.org/wiki/JavaScript}}. Primarno zamišljen kao programski jezik \emph{web browsera}, javascript se počinje primjenjivati i van browsera:
 \begin{itemize}
   \item mobilni klijent - appcelerator titanium\footnote{\url{http://www.appcelerator.com/platform/titanium-sdk}}
   \item \emph{server-side} - node.js\footnote{\url{http://nodejs.org}}
@@ -216,33 +213,30 @@ Ekspanzija web-a je dovela do neslućene ekspanzije ``Javascript`` programskog j
 
 \section{Efekat masovnog usvajanja programske platforme}
 
-Nakon teze o ''java''-i kao univerzalnom programskom jeziku, pojavila se teza o ''javascript''-u kao de-facto univerzalnom jeziku web-a\footnote{\url{http://www.codinghorror.com/blog/2007/05/javascript-the-lingua-franca-of-the-web.html}}. Cilj ovog materijala nije dokazati ili osporiti ovu tezu.
+Tezu o ''java''-i kao univerzalnom programskom jeziku, zamijenila je teza o ''javascript''-u kao de-facto univerzalnom jeziku web-a\footnote{\url{http://www.codinghorror.com/blog/2007/05/javascript-the-lingua-franca-of-the-web.html}}. Cilj ovog materijala nije dokazati ili osporiti ovu tezu.
 
-Međutim, svakako je bitno uočiti snagu usvajanja određene platforme, odnosno programskog jezika od strane velike grupe korisnika. 
+Međutim, svakako je bitno uočiti značaj usvajanja određene platforme, odnosno programskog jezika od strane velike grupe korisnika. 
 
 \emph{Web browser} i \emph{Internet} općenito su postali univerzalna računarska platforma. 
 
-To je razlog što je nova generacija developera tako dobro usvojila javascript/HTML/CSS. To je razlog što mnogi programerski alati kao bazični koncept uzimaju familijarnost sa ovim tehnologijama\footnote{\url{http://wiki.developerforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options}}.
+To je razlog što je nova generacija developera prigrlila javascript/HTML/CSS. To je razlog što nova generacija programerskih alata želi obezbjediti visok stepen integracije i/ili korištenje ovih tehnologija\footnote{\url{http://wiki.developerforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options}}.
 
-Usvajenje ovih tehnologija je doslovno natjerala tržišne lidere na strateške promjene:
+Ovaj developerski trend je doslovno natjerao najveće IT kompanije na strateške promjene u posljednje dvije godine\footnote{Ako su se ove kompanije odlučile ''odreći'' platformi koje su im do sada obezbjeđivale dominaciju na tržištu, onda svaki drugi učesnik u IT industriji treba, ako ništa drugo, dobro razmisliti o svojoj budućoj strategiji razvoja}: 
 \begin{itemize}
   \item ''Microsoft'' stavlja fokus na HTML5 pored sopstvene RIA\footnote{\url{http://en.wikipedia.org/wiki/Rich_Internet_application}} platforme ''Silverlight''\footnote{\href{http://www.technologyreview.com/view/426083/html5-triumphant-silverlight-flash-discontinuing}{\color{blue}{Trijumf HTML5 nad zatvorenim vendorskim tehnologijama}}}
-  \item ''Adobe'' takođe fokus budućeg razvoja usmjerava na HTML5, pored Flash RIA platforme\footnote{\url{http://www.adobe.com/products/flash/flash-to-html5.html}}
-\end{itemize}
+  \item ''Adobe'' se takođe usmjerava na HTML5, pored sopstvene Flash platforme\footnote{\url{http://www.adobe.com/products/flash/flash-to-html5.html}}
 
-Ako su se oni spremi ''odreći'' platformi koje su im obezbjeđivale dominaciju na tržištu, onda i svaki drugi učesnik u IT industriji treba, ako ništa drugo, dobro razmisliti o svojoj budućoj strategiji razvoja. 
+\end{itemize}
 
 \chapter{\emph{Toolbox} nove generacije developera}
 
 Dinamički programski jezici (php, python, ruby, javascript) su generirali potrebe za razvojem nove generacije programerskih alata. 
 
-Tu se pojavio značajan problem. Niz funkcija koje je relativno jednostavno implementirati kod \emph{strong-type}\footnote{\url{http://en.wikipedia.org/wiki/Strong_typing}} programskih jezika\footnote{Dobar je primjer \emph{autocomplete} funkcija IDE-a}, je teško realizovati kod dinamičkih jezika.
-
-Nova generacija developera iz temelja mijenja svoj toolbox. Kako konvencionalni IDE alati manjkaju naprednom podrškom dinamičkim jezicima, oni ponovo istražuju alternativna rješenja.
+Tu se pojavio značajan problem. Niz funkcija koje je relativno jednostavno implementirati kod \emph{strong-type}\footnote{\url{http://en.wikipedia.org/wiki/Strong_typing}} programskih jezika\footnote{Dobar je primjer \emph{autocomplete} funkcija IDE-a} je teško realizovati kod dinamičkih jezika.
 
 \section{Povratak u prošlost - komandna linija i programerski editor}
 
-Njihov odabir je krajnje interesantan. Oni u svakodnevnom radu intenzivno koriste ''starinske'' alate:
+Nova generacija developera se ne može osloniti na postojeće alate i prakse. Prisiljeni su tragati za alternativnim rješenjima. Njihov odabir je krajnje interesantan. Oni u svakodnevnom radu intenzivno koriste ''starinske'' alate:
 \begin{itemize}
   \item Umjesto IDE okruženja, koriste programerske editore\footnote{\url{http://net.tutsplus.com/tag/code-editors/}} vi, emacs\footnote{Oni konvencinalniji Notepad++, TextMate, jEdit}
   \item intenizvno koriste terminal i komandnu liniju\footnote{\url{http://en.wikipedia.org/wiki/Strong_typing}} 
@@ -272,7 +266,7 @@ TDD se brzo pokazao kao pozitivna programerska praksa koja utiče na povećanje 
 \caption{mvim, Mac OS X grafička verzija vim editora}
 \end{figure}
 
-Vi editor je neintuitivan za početnika. \emph{''Learning curve''} ovog editora iznimno visok. \emph{vi} ima sasvim drugačiju paradigmu korištenja. Sa druge strane, \emph{vi} se uvijek nalazi na listi najpopularnijih programerskih editora\footnote{\href{http://tutorialzine.com/2012/07/battle-of-the-tools-which-is-the-best-code-editor}{\color{blue}{Pregled programerskih editora}}}.
+Vi editor je neintuitivan za početnika. \emph{''Learning curve''} ovog editora je iznimno nepovoljan. \emph{Vi} ima sasvim drugačiji koncept korištenja u odnosu na konvencionalne editora. Sa druge strane, \emph{vi} se uvijek nalazi na listi najpopularnijih programerskih editora\footnote{\href{http://tutorialzine.com/2012/07/battle-of-the-tools-which-is-the-best-code-editor}{\color{blue}{Pregled programerskih editora}}}.
 
 \subsection{\emph{Vi} - editor koji ''misli'' kao programer}
 
@@ -286,7 +280,7 @@ Autor ovog teksta je često i sam isfrustriran \emph{vi}-om. Moji razlozi za usv
  \item brz rad i na računarima sa minimum RAM-a\footnote{Ovaj argument postaje sve manje bitan, ali i dalje postoje postojati uređaji koji imaju ograničene resurse - npr. \url{https://openwrt.org}}
 \end{itemize}
 
-Ukratko, \mvim{vi} je obavljao ono što trebam. Međutim, nikada nisam uspio do kraja usvojiti ''vi-način'' korištenja. Pripremajući se za ovaj rad nabavio sam knjigu ''Practical Vim, Edit Text at the Speed of Thought''\citep{pragvim}.
+Ukratko, \emph{vi} je obavljao ono što trebam. Međutim, nikada nisam uspio do kraja usvojiti ''vi-način'' korištenja. Pripremajući se za ovaj rad nabavio sam knjigu ''Practical Vim, Edit Text at the Speed of Thought''\citep{pragvim}.
 
 Čitajući knjigu brzo sam došao do sljedećeg zaključka:
 \begin{itemize}
@@ -298,16 +292,18 @@ Da bi se postalo \emph{vi masterom}, treba puno vježbe. Takođe, treba imati bi
 
 Učenje i istraživanje \emph{vi}-a će sigurno pomoći (posebno mlađem) programeru da podigne svoje vještine na viši nivo. To učenje će biti od koristi bez obzira da li će \emph{vi} biti primarni editor ili ne. \emph{Vi} ''tjera'' korisnika na \emph{rethink} svakodnevnih operacija pisanja programskog k\^oda. On pokazuje da uvijek postoji drugačiji i efikasniji način da se one obave. Mišljenja sam da je usvajanje tog \emph{rethink} pristupa ključni preduslov na putu ka \textbf{izvrsnosti} u programerskom poslu.
 
-Bez obzira na ove zaključke, \emh{vi} ostaje moj izbor programerskog editora.  Koliko got puta se osjećao ''glupim'' pred ekranom \emph{vi}-a, ostaje zabavno otkrivati njegove mogućnosti i nove načine korištenja. Dodatno, pitanje razvojnog toolseta nije samo lično pitanje programera, nego pitanje od interesa za čitav razvojni tim. 
-Ako ja i ne mogu postati \emph{vi master}, drugi članovi mogu. Svojim kolegama ipak mogu pomoći, posebno na početku, da bolje razumiju \emph{vi} i počnu razmišljati na ''vi-način''. Zato unutar svog razvojnog tima druge kolege potičem na korištenje \emph{vi}-a. Upravo to i jeste jedan od glavnih motiva za pisanje ovog rada.
+Bez obzira na ranije zaključke, \emph{vi} ostaje moj izbor programerskog editora.  Koliko god često se osjećao ''glupim'' pred ekranom \emph{vi}-a, i dalje ostaje zabavno otkrivati njegove mogućnosti i nove načine korištenja. Dodatno, pitanje developerskog \emph{toolset}-a nije samo lično pitanje programera, nego pitanje od interesa za čitav razvojni tim. 
+Ako ja i ne mogu postati \emph{vi master}, drugi članovi mogu. Novim kolegama ipak mogu pomoći, posebno na početku, da bolje razumiju osnovne koncepte \emph{vi}, da počnu razmišljati na ''vi-način''. Zato unutar razvojnog tima u kome djelujem svoje kolege potičem na korištenje \emph{vi}-a. To i jeste jedan od glavnih motiva za pisanje ovog rada.
 
-\subsection{\emph{Vi} - primjer iz prakse}
+\subsection{\emph{Vi} - primjer korištenja}
 
-Dugo sam razmišljao o tome šta bi to moglo pokazati snagu \emph{vi} koncepta, a da pri tome ne bude teško razumljivo čitaocu koji se po prvi put susreće sa \emph{vi}-om.
+Dugo sam razmišljao o tome šta bi to moglo demonstrirati ''vi-način'' pisanja programskog k\^oda, a da pri tome bude razumljivo čitaocu koji se po prvi put susreće sa njim.
 
-Onda sam se sjetio jednog primjera od prije par mjeseci. Zadatak je bio napraviti unos HTML ''select''-a za unos godine rođenja\footnote{Striktno gledajući, jedino dobro rješenje je napraviti dinammičko kreiranje takve kontrole kao što je to realizovano \href{https://github.com/hernad/FIT\_WT/blob/master/09\_2012/util.js\#L9}{\color{blue}{ovdje}}. S obzirom da tražimo najbrže rješenje, tu opciju isključujemo}
+Na kraju sam se sjetio jednog primjera od prije par mjeseci. Zadatak je napraviti unos HTML ''select''-a elementa radi unosa godine rođenja\footnote{Striktno gledajući, jedino dobro rješenje je napraviti dinammičko kreiranje takve kontrole kao što je to realizovano \href{https://github.com/hernad/FIT\_WT/blob/master/09\_2012/util.js\#L9}{\color{blue}{ovdje}}. S obzirom da tražimo brzo rješenje, tu opciju isključujemo}.
 
-Otvorite vi editor i unesite sljedeći tekst\footnote{Ili kopirajte ovaj \href{https://gist.github.com/raw/4412263/1e751a7305ab75823689cfb7654304337f75336e/gistfile1.txt}{\color{blue}{gist}}}
+Demonstriraćemo dva načina rješavanja ovog zadatka. Krenismo sa prvom varijantom.
+
+Pokrenite \emph{vi} i unesite sljedeći tekst\footnote{Ili kopirajte ovaj \href{https://gist.github.com/raw/4412263/1e751a7305ab75823689cfb7654304337f75336e/gistfile1.txt}{\color{blue}{gist}}}
 \begin{lstlisting}[numbers=left]
 <html>
 <body>
@@ -334,7 +330,7 @@ Onda ukucajte sljedeće:
 \end{tabular}
 \end{center}
 
-Nakon ovoga smo na poziciji drugog ''option'' elementa. Zastanimo malo. Razmislimo kao programer. Šta mi trebamo uraditi ? 
+Nakon ovoga smo na poziciji drugog ''option'' elementa. Zastanimo malo. Razmislimo. Šta trebamo uraditi da dođemo do cilja ? 
 \begin{itemize}
   \item Trebamo iskopirati tekuću ''option'' liniju
   \item U toj novoj liniji trebamo povećati godinu na oba mjesta
@@ -343,8 +339,7 @@ Nakon ovoga smo na poziciji drugog ''option'' elementa. Zastanimo malo. Razmisli
 
 \subsection{\emph{Don't Repeat Yourself} (DRY) princip i \emph{vi}}
  
-Vi ''macro'' sistem nam omogućava da gornje operacije realizujemo. Ali, kao programer - \textbf{bez ponavljanja}.
-
+Vi ''macro'' sistem nam omogućava da gornje operacije realizujemo poštujući DRY princip. Napravićemo našu prvu \emph{vi} makro komandu:
 \begin{center}
 \begin{tabular}{ |p{4cm}|p{10cm}| }
   \hline                        
@@ -363,9 +358,9 @@ Vi ''macro'' sistem nam omogućava da gornje operacije realizujemo. Ali, kao pro
 \end{tabular}
 \end{center}
 
-Stavimo sve na jedno mjesto. Dobijamo sekvencu: \verb+qa0yyp<C-a>w<c-A>yyq+. \newline Testirajmo naš makro sa \verb+@a+ (\emph{replay} makro ''a''). 
+Stavimo sve iz gornje tabele u jednu sekvencu komandi: \verb+qa0yyp<C-a>w<c-A>yyq+. \newline Testirajmo naš makro sa \verb+@a+ (\emph{replay} makro ''a''). 
 
-Trebali bi dobiti novu liniju \verb+<option value="1911">1911</option>+. 
+Trebamo dobiti novu liniju sljedećeg sadržaja: \verb+<option value="1911">1911</option>+. 
 
 Na kraju, zadajmo \emph{vi}-u da istu operaciju ponovi još 101 put. Ukucajmo: \verb+101@a+. 
 
@@ -387,11 +382,11 @@ Godina rodjenja:
 </html>
 \end{lstlisting}
 
-\emph{Vi master} (vidi \ref{sec:vimaster}) ovakav zadatak doista može realizovati ''briznom misli''.
+Zaključujemo: \emph{vi master} (vidi \ref{sec:vimaster}) ovakav zadatak doista može realizovati ''brzinom misli''.
 
 \subsection{Realizacija zadatka na drugi način: \emph{vi} + dinamički jezik}
 
-Uzmimo dinamički jezik koji poznajemo. U njemu napravimo program koji će izgenerisati željeni tekst. Ruby program izgledao bi ovako:
+Uzmimo dinamički jezik koji poznajemo. U njemu ćemo napraviti program koji će izgenerisati željeni tekst. Ruby program izgledao bi ovako:
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -413,7 +408,7 @@ Sa \verb+r+ komandom učitavamo izlaz iz programa (ono što program pošalje na 
 :r !ruby /tmp/gen_option.rb
 \end{lstlisting}
 
-Uočavamo da je prva varijanta efikasnija kako sa stanovišta utroška vremena, kao i potrebne energije programera da dođe do cilja\footnote{Pod uslovom da je programer dobro uvježban i sa \emph{vi}-om i sa \emph{ruby}-jem (odnosno dinamičkim jezikom po izboru)}.
+Uočavamo da je prva varijanta efikasnija kako sa stanovišta utroška vremena, tako i potrebne energije programera da dođe do cilja\footnote{Pod uslovom da je programer dobro uvježban i sa \emph{vi}-om i sa \emph{ruby}-jem (odnosno dinamičkim jezikom po izboru)}.
 
 \subsection{IDE na \emph{Command-line} interfejsu}
 
@@ -502,10 +497,12 @@ Nedostaci:
 \end{figure}
 
 
-\section{\emph{Read-eval-print-loop} (REPL)}
+\section{\emph{Read-eval-print-loop} (REPL) konzola}
 
-Dinamički jezik redovno sadrži REPL\footnote{\url{http://en.wikipedia.org/wiki/Read–eval–print_loop}} režim.
-REPL omogućava interaktivni unos komandi dinamičkog programskog jezika.
+Dinamički jezici redovno posjeduju odgovarajuću REPL\footnote{\url{http://en.wikipedia.org/wiki/Read–eval–print_loop}} konzolu.
+REPL konzola omogućava interaktivni unos komandi dinamičkog programskog jezika.
+
+Mogućnosti primjene su raznovrsne - od testiranja do ad-hoc primjena kao što je to demonstrirano u sljedećem primjeru.
 
 \subsection{Programerski kalkulator bez limita - \emph{irb}}
 
@@ -608,7 +605,7 @@ Poznavanje i korištenje \emph{regex}-a je bitan faktor produktivnosti programer
 
 CLI aplikacije se navode na komandnoj liniji - \emph(shell)-u operativnog sistema\footnote{Windows: cmd, PowerShell, Unix: sh, bash, zsh}.
 
-\subsection{git klijent}
+\subsection{Primjer: ''git'' klijent}
 \label{sec:git}
 
 Git je popularni SCM alat\footnote{Detaljnije u Git SCM \citep{agilegit}}
@@ -707,7 +704,7 @@ Za razliku od ''običnog'' korisnika, kod programera je potreba za fleksibilnoš
  
 Programer je prirodom svog sposla sposobniji komunicirati sa računarskim sistemom na nižem nivou apstrakcije (CLI interfejs). Ukratko, programer može maksimalno iskoristiti prednosti CLI-a (vidi \ref{sec:cli_hci}), a da mu pri tome evidenta ograničenja CLI-a ne budu nepremostiv problem (nepovoljan ''Learning Curve'').
 
-Niz je primjera u kojima ''novi web developer'' uvodi značajne inovacije na planu programerske produktivnosti i koncepta softverskih rješenja općenito. Novi develoeper je svjestan da do tih rješenja nije moguće doći bez promjena paradigme u pristupu razvoju software-u.\footnote{Mišljenja sam da se u toku dosadašnjeg studija FIT-a ovom aspektu izučavanja razvoja software-a nije poklonila potrebna pažnja. To je bio drugi značajan motiv da napišem ovaj rad (za prvi vidi\ref{sec:vimaster}).}
+Niz je primjera u kojima ''novi web developer'' uvodi značajne inovacije na planu programerske produktivnosti i koncepta softverskih rješenja općenito. Novi develoeper je svjestan da do tih rješenja nije moguće doći bez promjena paradigme u pristupu razvoju software-u.\footnote{Nakon tri gotine studija na FIT-u, nisam uočio da se ovim temama pridaje potrebna pažnja. To me je dodatno motiviralno na izradu ovog rada (primarni motiv - vidi \ref{sec:vimaster}).}
 
 Internet tehnologije i otvoreni standardi su temelj tih inovacija.
 
