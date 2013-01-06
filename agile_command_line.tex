@@ -29,12 +29,12 @@
   mathescape=false
 }
 
-%\title{Agilni \emph{software development}\newline \emph{Command-line} interfejs (CLI)}
+%\title{Agilni \emph{software development}\newline \emph{Command-Line} interfejs (CLI)}
 \title{Agilni \emph{software development}\newline \emph{Toolbox} nove generacije developera}
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {1.0.0}
+\verzija {1.5.0}
 \mentor{mr. Adil Joldić}
 
 \maketitle
@@ -48,17 +48,17 @@
 % abstract begin
 \begin{abstract}
 
-\emph{Graphic user interface} (GUI) je standardan interfejs modernih operativnih sistema. Donekle začuđujuće, nova - ''web generacija'' developera intenzivno koristi Command-line interface (CLI) alate. 
+\emph{Graphic user interface} (GUI) je standardan interfejs modernih operativnih sistema. Donekle začuđujuće, ''nova'', ''web generacija'' developera intenzivno koristi \emph{Command-Line interface (CLI) alate}. 
 
-Ta skupina developera je na stanovištu da se u većini programerskih \emph{Use-Case}-ova, maksimalna produktivnost najprije može postići uz pomoć ovih, po mnogo čemu ''old-fashion''\footnote{Većina ovih alata vuče korjenje iz prvih \emph{Unix} sistema} alata.
+Novi developer utvrđuje da se uz pomoć ovih, ''old-fashion''\footnote{Većina ovih alata vuče korjenje iz prvih \emph{Unix} sistema} alata, može postići maksimalna produktivnost. \emph{Fleksibilnost} kao jedna od ključnih karakteristika pruža novom developeru velike mogućnosti.
  
-U ovom materijalu ćemo navesti ključne koncepte rješavanja problema programerske produktivnosti u predhodnih 20-tak godina računarstva. 
+U ovom materijalu ćemo navesti ključne koncepte rješavanja problema \textbf{programerske produktivnosti} u predhodnih 20-tak godina računarstva (CASE, IDE alati). 
 
 Takođe, prikazaćemo glavne komponente programerskog seta ''novog'' developera. 
 
-Pomenuti ''novi'' developer je, gotovo u pravilu,  ujedno i pobornih agilnih metoda razvoja software-a. Ta činjenica je od posebnog značaja u kontekstu šire teme koju autor izučava: \emph{Agilni software development}.
+''Novi'' developer je, gotovo u pravilu,  ujedno i pobornih agilnih metoda razvoja software-a. Ta činjenica je od posebnog značaja u kontekstu šire teme koju autor izučava: \emph{Agilni software development}.
 
-Takođe, potražićemo uzroke takvom odabiru developera, polazeći od principa koje izučava \emph{Human-computer interaction} (HCI). 
+Takođe, potražićemo uzroke odabira ovakvog \emph{toolbox}-a, polazeći od principa koje izučava \emph{Human-computer interaction} (HCI). 
 
 \keywords{Programmer productivity, Agile software development, Regular expression, regex, regexp, Human-computer interaction, HCI, Command-line interface, CLI, GUI, vi editor, vim, vi macro, programmer's editor, code editor, CASE, IDE, REPL, javascript, java, ruby}
 \end{abstract}
@@ -142,14 +142,48 @@ Ako posmatramo softverski projekat i njegov životni ciklus u cjelini, pored raz
    \item poslovi razvoja i dizajna
 \end{itemize}
 
-Sve ove kategorizacije definišu definišu ciljne grupe  \emph{software}-a koje čini developerski \emph{toolbox}. 
-\section{Agilni software development}
+Sve ove kategorizacije definišu definišu ciljne grupe korisnika \emph{software}-a koje predstavlja developerski \emph{toolbox}.
+
+\section{''Novi developer''}
+
+U ovom materijalu se često koristi sintagma ''novi developer''.
+
+Umjesto da ih opisujemo (što je na kraju krajeva svrha ovog rada), navedimo kompanije, pojedince i grupe koje su svojevrsni simboli i predstavnici te nove generacije developera:
+\begin{itemize}
+	\item Developeri nove generacije IT kompanija kao što su \emph{''Github''}, \emph{''Twitter''}, \emph{''Facebook''}\footnote{\url{https://github.com/blog}, \url{http://twitter.github.com/}, \url{https://github.com/facebook}} 
+\       \item Predstavnici \emph{''Ruby''} i \emph{''Ruby on Rails'' community}-a\footnote{\url{http://www.ruby-lang.org/en}, \url{http://david.heinemeierhansson.com}, \url{http://yehudakatz.com}, \emph{''Thoughtbot''} developeri \url{http://www.thoughtbot.com/about}, \emph{Hashrocket} tim \url{http://hashrocket.com/people} itd.}
+        \item Predstavnici \emph{''Python''} i \emph{''Django''} developerskih zajednica
+        \item \emph{''node.js'' community} \footnote{\url{http://nodejs.org/community}}
+        \item Kreatori i korisnici nove generacije programskih jezika \emph{''Coffee script''}, \emph{''Clojure''}, \emph{''JRuby''}, \emph{Erlang}, \emph{''Dart''}, \emph{''F\#''}\footnote{\url{http://coffeescript.org}, \url{http://clojure.org/community}, \emph{http://www.dartlang.org}, \emph{http://research.microsoft.com/en-us/projects/fsharp}}
+	\item \emph{''DevOps''}-eri \footnote{\url{http://theagileadmin.com/what-is-devops}}
+	\item \emph{''Cloud developeri''} \footnote{\url{http://www.openstack.org/community}}
+	\item 
+\end{itemize}
+
+Novi developeri su aktivni unutar developerskih zajednica\footnote{eng. \emph{community}}. Oni ''vidljivi'' i stiču kredibilitet na javnim developerskim servisima kao što je ''github''. Oni su spremni eksperimentisati. Oni su spremni na novo i drugačije. Oni su inovativni.
+
+\section{Agilni \emph{software developer} je ''generalist''}
 
 Agilni pristup se bazira na multi-funkcionalnim timovima. Članovi takvog tima su posljedično generalisti \citep[str. 19]{agilesamurai}:
 
 \begin{quote}
 \emph{Kada formirate vaš tim, trebate generaliste, osobe koje nemaju problem raditi široki spektar stvari. Za programere, to znači naći osobe koje su sposobne raditi sa kompletnim tehnološkim stekom projekta (ne samo front-end ili back-end). Za testere i analiste, to znači osobe koje su spremne obaviti kako uobičajena testiranja, tako i detaljne analize korisničkih zahtjeva.}
 \end{quote}
+
+\subsection{Posljedice generalističkog pristupa}
+
+Generalistički pristup rezultira time da agilni developer svakodnevno koristi niz različitih razvojnih okruženja. Pored rada na svom računaru\footnote{eng. \emph{developer workstation}}, on svakodnevno pristupa i radi na udaljenim serverima\footnote{Monitoring servera - praćenje aktivnih procesa, analiza logova i sl. Ti serveri su često bez GUI-a, a i kada postoji GUI u mnogim situacijama je direktni rad na konzoli efikasniji.}
+
+Multiplatformski razvoj (ili barem izloženost različitim platformama) postaje dio developerske svakodnevnice:
+\begin{itemize}
+    \item Desktop platforme (Windows, Mac OS X, različite Unix/Linux platforme) 
+    \item Mobilne platforme (IOS, Android, Mobile Phone, BlackBerry)
+    \item Web kao univerzalna platforma\footnote{Web egzistira unutar mobilnih i desktop platformi. Ona se međutim u kontekstu razvoja često izvaja kao zasebna platforma}
+\end{itemize}
+
+Čak i kada je ograničen na jednu platfomu, \emph{usvajanje} i korištenje novih tehnologija i novih programskih jezika je neizostavna osobina novog, agilnog developera (vidi \ref{sec:dynlang}, \ref{sec:jslang}).
+
+Agilni \emph{software development} za temeljne principe uzima \textbf{kontinuirano unapređenje razvojnog procesa}. Da bi se to unapređenje postiglo, (novi) agilni developer je po definiciji ''otvoren'' za nove tehnologije.
 
 \section{Programerska produktivnost}
 
@@ -194,7 +228,7 @@ IDE okruženja su zato fokus razvoja usmjerili na produktivnost programera unuta
 U posljednjim implementacijama J2EE\footnote{\url{http://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition}} su napravljeni značajni pomaci. Međutim, veliki broj developera je u međuvremenu prihvatio alternativne tehnologije i programske jezike.
 
 \subsection{Dinamički programski jezici}
-
+\label{sec:dynlang}
 Ekspanzija zahtjeva za web i mobilnim rješenjima je rezultiralo pravom ''invazijom'' programskih jezika. 
 
 Nova generacija developera, posebno u domenu razvoja web aplikacija, usvaja dinamičke programske jezike\footnote{\url{http://en.wikipedia.org/wiki/Dynamic_programming_language}}. 
@@ -202,6 +236,7 @@ Nova generacija developera, posebno u domenu razvoja web aplikacija, usvaja dina
 Jedan od ključnih faktora tog trenda je značajno skraćen \emph{Learning curve} u odnosu na konvencionalne platforme (J2EE, .NET).
 
 \subsection{Javascript, \emph{''Lingua franca''} web-a}
+\label{sec:jslang}
 
 Ekspanzija web-a je dovela do neslućene ekspanzije ''Javascript'' programskog jezika\footnote{\url{http://en.wikipedia.org/wiki/JavaScript}}. Primarno zamišljen kao programski jezik \emph{web browsera}, javascript se počinje primjenjivati i van browsera:
 \begin{itemize}
@@ -234,7 +269,7 @@ Dinamički programski jezici (php, python, ruby, javascript) su generirali potre
 
 Tu se pojavio značajan problem. Niz funkcija koje je relativno jednostavno implementirati kod \emph{strong-type}\footnote{\url{http://en.wikipedia.org/wiki/Strong_typing}} programskih jezika\footnote{Dobar je primjer \emph{autocomplete} funkcija IDE-a} je teško realizovati kod dinamičkih jezika.
 
-\section{Povratak u prošlost - komandna linija i programerski editor}
+\section{Komandna linija i programerski editor - povratak u prošlost ?!}
 
 Nova generacija developera se ne može osloniti na postojeće alate i prakse. Prisiljeni su tragati za alternativnim rješenjima. Njihov odabir je krajnje interesantan. Oni u svakodnevnom radu intenzivno koriste ''starinske'' alate:
 \begin{itemize}
@@ -250,9 +285,26 @@ TDD se brzo pokazao kao pozitivna programerska praksa koja utiče na povećanje 
 
 \section{Programerski editor umjesto IDE-a}
 
-\subsection{\emph{Vi} editor} 
+\subsection{\emph{Vim} editor} 
 
-\emph{Vi} editor\footnote{\url{http://en.wikipedia.org/wiki/Vim_(text_editor)}} je svojom popularnošću kod nove generacije developera\footnote{\url{https://github.com/tpope}, \url{http://blog.sanctum.geek.nz/vim-koans/}} po mnogo čemu fenomen savremene istorije razvoja software-a.
+\emph{Vim} editor\footnote{\url{http://en.wikipedia.org/wiki/Vim_(text_editor)}} je svojom popularnošću kod nove generacije developera\footnote{\url{https://github.com/tpope}, \url{http://blog.sanctum.geek.nz/vim-koans/}} po mnogo čemu fenomen savremene istorije razvoja software-a.
+
+Iako po standardnima softverske industrije prastar proizvod\footnote{prva verzija objavljena 1991. godine, pri čemu korjene vuče još iz 70-tih godina prošlog vijeka}, on je iznimno popularan u developerskoj zajednici.
+
+Popularnost ''vim''-a na ''github''-u je velika\footnote{Rezultati pretrage ukazuju na veliki broj aktivnih projekata sa ''VimL'' programskim jezikom. ''VimL'' je skriptni jezik sa kojim se izrađuju ''vim'' \emph{plugin}-ovi. Pluginovi se mogu praviti i u ''python''-u i ''ruby''-ju. Broj ''fork''-ova je dobra mjera popularnosti projekta na github-u}:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{img/github_vim_search.png}
+\caption{''github'' projekti u kojima se pominje ''vim''}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{img/github_vim_search_forks.png}
+\caption{''github'' projekti u kojima se pominje ''vim'' i imaju više od 10 ''fork''-ova}}
+\end{figure}
+
 
 \begin{figure}[H]
 \centering
@@ -268,7 +320,7 @@ TDD se brzo pokazao kao pozitivna programerska praksa koja utiče na povećanje 
 
 Vi editor je neintuitivan za početnika. \emph{''Learning curve''} ovog editora je iznimno nepovoljan. \emph{Vi} ima sasvim drugačiji koncept korištenja u odnosu na konvencionalne editora. Sa druge strane, \emph{vi} se uvijek nalazi na listi najpopularnijih programerskih editora\footnote{\href{http://tutorialzine.com/2012/07/battle-of-the-tools-which-is-the-best-code-editor}{\color{blue}{Pregled programerskih editora}}}.
 
-\subsection{\emph{Vi} - editor koji ''misli'' kao programer}
+\subsection{\emph{Vim} - editor koji ''misli'' kao programer}
 
 \label{sec:vimaster}
 
@@ -276,7 +328,7 @@ Autor ovog teksta je često i sam isfrustriran \emph{vi}-om. Moji razlozi za usv
 \begin{itemize}
  \item podrška linux serverima bez GUI interfejs-a
  \item Linux, Mac, Windows desktop - dostupnost GUI (gvim, mvim) ili terminal varijante, po izboru 
- \item najbolja podrška za \emph{harbour}\footnote{\footnote{http://en.wikipedia.org/wiki/Harbour_(software)}}
+ \item najbolja podrška za \emph{harbour}\footnote{\url{http://en.wikipedia.org/wiki/Harbour_(software)}}
  \item brz rad i na računarima sa minimum RAM-a\footnote{Ovaj argument postaje sve manje bitan, ali i dalje postoje postojati uređaji koji imaju ograničene resurse - npr. \url{https://openwrt.org}}
 \end{itemize}
 
@@ -347,7 +399,7 @@ Vi ''macro'' sistem nam omogućava da gornje operacije realizujemo poštujući D
    \hline
    \verb+qa+     & započni snimanje \emph{vi} makroa u ''a'' registar \\
    \verb+0+      & idi na početak linije \\
-   \verb+yy+     & snimi (''yank'') tekuću liniju u registar \\
+   \verb+yy+     & snimi (''yank'') tekuću liniju u neimenovani (\verb+""+) registar \\
    \verb+p+      & kreiraj (''paste'') novu liniju tako što ćeš je uzeti iz tekućeg registra (registar napunjenom predhodnom ''yank'' operacijom) \\
    \verb+<C-a>+  & <Ctrl> + 'a' - na tekućoj liniji pronađi broj i uvećaj ga za 1 (add operator, <C-x> je minus operator) \\
    \verb+w+      & otiđi na sljedeću riječ (pomjeri sa pozicije prvog broja) \\
